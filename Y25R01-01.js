@@ -31,7 +31,7 @@
                 'ghost': {
                     css:   { backgroundColor: 'transparent', color: '#333', border: '1px solid #ccc' },
                     hover: { backgroundColor: '#f3f4f6', color: '#000' },
-                    disabled
+                    disabled: { backgroundColor: 'black'}
                 }
             },
             // Rozmiary
