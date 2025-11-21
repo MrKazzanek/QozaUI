@@ -3,70 +3,95 @@
     // 1. KONFIGURACJA (Baza danych)
     // ============================================================
     const config = {
-        // A. DEFINICJE KOMPONENTÓW (Szablony)
-        components: {
-            // PRZYCISKI
-            'btn': {
-                base: {
-                    default: {
-                        border: 'none', cursor: 'pointer', display: 'inline-flex',
-                        alignItems: 'center', justifyContent: 'center',
-                        fontFamily: 'sans-serif', borderRadius: '4px',
-                        transition: 'all 0.2s', userSelect: 'none', textDecoration: 'none'
-                    },
-                    ':disabled': { opacity: '0.6', cursor: 'not-allowed', filter: 'grayscale(1)' },
-                    ':active:not(:disabled)': { transform: 'scale(0.97)' }
+    "components": {
+        "btn": {
+            "base": {
+                "default": {
+                    "border": "none",
+                    "cursor": "pointer",
+                    "display": "inline-flex",
+                    "alignItems": "center",
+                    "justifyContent": "center",
+                    "fontFamily": "sans-serif",
+                    "borderRadius": "4px",
+                    "transition": "all 0.2s",
+                    "userSelect": "none"
                 },
-                variants: {
-                    'primary': {
-                        default: { backgroundColor: '#3b82f6', color: 'white' },
-                        ':hover:not(:disabled)': { backgroundColor: '#2563eb' }
-                    },
-                    'danger': {
-                        default: { backgroundColor: '#ef4444', color: 'white' },
-                        ':hover:not(:disabled)': { backgroundColor: '#dc2626' }
-                    },
-                    'success': {
-                        default: { backgroundColor: '#22c55e', color: 'white' },
-                        ':hover:not(:disabled)': { backgroundColor: '#16a34a' }
-                    },
-                    'dark': {
-                        default: { backgroundColor: '#1f2937', color: 'white' },
-                        ':hover:not(:disabled)': { backgroundColor: '#111827' }
-                    },
-                    'outline': {
-                        default: { backgroundColor: 'transparent', border: '1px solid #ccc', color: '#333' },
-                        ':hover:not(:disabled)': { borderColor: '#333', backgroundColor: '#f3f4f6' }
-                    }
+                ":disabled": {
+                    "opacity": "0.6",
+                    "cursor": "not-allowed",
+                    "filter": "grayscale(1)"
                 },
-                sizes: {
-                    '1': { default: { padding: '6px 12px', fontSize: '12px' } },
-                    '2': { default: { padding: '10px 20px', fontSize: '14px' } }, // Średni
-                    '3': { default: { padding: '14px 28px', fontSize: '18px' } }
+                ":active:not(:disabled)": {
+                    "transform": "scale(0.97)"
                 }
             },
-            // ALERTY
-            'alert': {
-                base: {
-                    default: { padding: '15px', borderRadius: '6px', borderLeft: '4px solid', marginBottom: '10px', fontFamily: 'sans-serif' }
+            "variants": {
+                "primary": {
+                    "default": {
+                        "backgroundColor": "#3b82f6",
+                        "color": "white"
+                    },
+                    ":hover:not(:disabled)": {
+                        "backgroundColor": "#2563eb"
+                    }
                 },
-                variants: {
-                    'info': { default: { backgroundColor: '#e0f2fe', borderColor: '#0284c7', color: '#0c4a6e' } },
-                    'warn': { default: { backgroundColor: '#fef9c3', borderColor: '#ca8a04', color: '#713f12' } },
-                    'error': { default: { backgroundColor: '#fee2e2', borderColor: '#dc2626', color: '#7f1d1d' } }
+                "danger": {
+                    "default": {
+                        "backgroundColor": "#ef4444",
+                        "color": "white"
+                    },
+                    ":hover:not(:disabled)": {
+                        "backgroundColor": "#dc2626"
+                    }
+                }
+            },
+            "sizes": {
+                "1": {
+                    "default": {
+                        "padding": "6px 12px",
+                        "fontSize": "12px"
+                    }
+                },
+                "2": {
+                    "default": {
+                        "padding": "10px 20px",
+                        "fontSize": "14px"
+                    }
                 }
             }
-        },
-
-        // B. STAŁE DLA UTILITIES
-        vars: {
-            colors: { 'white':'#fff', 'black':'#000', 'red':'#ef4444', 'blue':'#3b82f6', 'green':'#22c55e' },
-            sides: { 'lft':'Left', 'rgt':'Right', 'up':'Top', 'dwn':'Bottom' },
-            units: { 'px':'px', 'p':'%', 'vh':'vh', 'rem':'rem' },
-            fonts: { '1':'12px', '2':'14px', '3':'16px', '4':'20px', '5':'24px', '6':'32px' }
         }
-    };
-
+    },
+    "vars": {
+        "colors": {
+            "white": "#fff",
+            "black": "#000",
+            "red": "#ef4444",
+            "blue": "#3b82f6",
+            "green": "#22c55e"
+        },
+        "sides": {
+            "lft": "Left",
+            "rgt": "Right",
+            "up": "Top",
+            "dwn": "Bottom"
+        },
+        "units": {
+            "px": "px",
+            "p": "%",
+            "vh": "vh",
+            "rem": "rem"
+        },
+        "fonts": {
+            "1": "12px",
+            "2": "14px",
+            "3": "16px",
+            "4": "20px",
+            "5": "24px",
+            "6": "32px"
+        }
+    }
+};
     // ============================================================
     // 2. LOGIKA UTILITIES (Parsery)
     // ============================================================
