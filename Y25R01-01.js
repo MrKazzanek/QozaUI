@@ -1,218 +1,216 @@
 (function() {
-    // ==========================================
-    // 1. KONFIGURACJA (Twoja "Design System")
-    // ==========================================
+    // ============================================================
+    // 1. KONFIGURACJA (Baza danych)
+    // ============================================================
     const config = {
-        // A. KOMPONENTY (np. przyciski, karty - zdefiniowane warianty i rozmiary)
+        // A. DEFINICJE KOMPONENTÓW (Szablony)
         components: {
+            // PRZYCISKI
             'btn': {
-                // Style bazowe (zawsze aplikowane)
                 base: {
                     default: {
-                        border: 'none',
-                        cursor: 'pointer',
-                        fontFamily: 'sans-serif',
-                        borderRadius: '4px',
-                        transition: 'all 0.2s ease',
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        userSelect: 'none'
+                        border: 'none', cursor: 'pointer', display: 'inline-flex',
+                        alignItems: 'center', justifyContent: 'center',
+                        fontFamily: 'sans-serif', borderRadius: '4px',
+                        transition: 'all 0.2s', userSelect: 'none', textDecoration: 'none'
                     },
-                    ':disabled': { // Obsługa disabled
-                        opacity: '0.6',
-                        cursor: 'not-allowed',
-                        filter: 'grayscale(80%)'
-                    },
-                    ':active:not(:disabled)': {
-                        transform: 'scale(0.98)'
-                    }
+                    ':disabled': { opacity: '0.6', cursor: 'not-allowed', filter: 'grayscale(1)' },
+                    ':active:not(:disabled)': { transform: 'scale(0.97)' }
                 },
-                // Warianty (np. kolory)
                 variants: {
                     'primary': {
-                        default: { backgroundColor: '#2563eb', color: 'white' },
-                        ':hover:not(:disabled)': { backgroundColor: '#1d4ed8' }
+                        default: { backgroundColor: '#3b82f6', color: 'white' },
+                        ':hover:not(:disabled)': { backgroundColor: '#2563eb' }
                     },
                     'danger': {
-                        default: { backgroundColor: '#dc2626', color: 'white' },
-                        ':hover:not(:disabled)': { backgroundColor: '#b91c1c' }
+                        default: { backgroundColor: '#ef4444', color: 'white' },
+                        ':hover:not(:disabled)': { backgroundColor: '#dc2626' }
+                    },
+                    'success': {
+                        default: { backgroundColor: '#22c55e', color: 'white' },
+                        ':hover:not(:disabled)': { backgroundColor: '#16a34a' }
+                    },
+                    'dark': {
+                        default: { backgroundColor: '#1f2937', color: 'white' },
+                        ':hover:not(:disabled)': { backgroundColor: '#111827' }
                     },
                     'outline': {
-                        default: { backgroundColor: 'transparent', border: '2px solid #ccc', color: '#333' },
-                        ':hover:not(:disabled)': { borderColor: '#333', backgroundColor: '#f5f5f5' }
+                        default: { backgroundColor: 'transparent', border: '1px solid #ccc', color: '#333' },
+                        ':hover:not(:disabled)': { borderColor: '#333', backgroundColor: '#f3f4f6' }
                     }
                 },
-                // Rozmiary
                 sizes: {
-                    '1': { default: { padding: '4px 8px', fontSize: '12px' } },
-                    '2': { default: { padding: '8px 16px', fontSize: '16px' } }, // Domyślny, jeśli nie podano
-                    '3': { default: { padding: '12px 24px', fontSize: '20px' } }
+                    '1': { default: { padding: '6px 12px', fontSize: '12px' } },
+                    '2': { default: { padding: '10px 20px', fontSize: '14px' } }, // Średni
+                    '3': { default: { padding: '14px 28px', fontSize: '18px' } }
+                }
+            },
+            // ALERTY
+            'alert': {
+                base: {
+                    default: { padding: '15px', borderRadius: '6px', borderLeft: '4px solid', marginBottom: '10px', fontFamily: 'sans-serif' }
+                },
+                variants: {
+                    'info': { default: { backgroundColor: '#e0f2fe', borderColor: '#0284c7', color: '#0c4a6e' } },
+                    'warn': { default: { backgroundColor: '#fef9c3', borderColor: '#ca8a04', color: '#713f12' } },
+                    'error': { default: { backgroundColor: '#fee2e2', borderColor: '#dc2626', color: '#7f1d1d' } }
                 }
             }
         },
 
-        // B. UTILITIES (Dynamiczne wartości, np. kolory, marginesy)
-        // Funkcja otrzymuje "wartość" (np. 'ff0000') i zwraca obiekt stylów
-        utilities: {
-            // Użycie: Q&clr-ff0000 (Hex bez hash)
-            'clr': (val) => ({
-                default: { color: `#${val}` }
-            }),
-            // Użycie: Q&bg-333333
-            'bg': (val) => ({
-                default: { backgroundColor: `#${val}` }
-            }),
-            // Użycie: Q&m-20 (margin: 20px)
-            'm': (val) => ({
-                default: { margin: `${val}px` }
-            }),
-            // Użycie: Q&w-100p (width: 100%) - mały hack na znaki specjalne
-            'w': (val) => ({
-                default: { width: val.replace('p', '%').replace('vh', 'vh') }
-            })
+        // B. STAŁE DLA UTILITIES
+        vars: {
+            colors: { 'white':'#fff', 'black':'#000', 'red':'#ef4444', 'blue':'#3b82f6', 'green':'#22c55e' },
+            sides: { 'lft':'Left', 'rgt':'Right', 'up':'Top', 'dwn':'Bottom' },
+            units: { 'px':'px', 'p':'%', 'vh':'vh', 'rem':'rem' },
+            fonts: { '1':'12px', '2':'14px', '3':'16px', '4':'20px', '5':'24px', '6':'32px' }
         }
     };
 
-    // ==========================================
-    // 2. LOGIKA GENERATORA (Nie musisz tu grzebać)
-    // ==========================================
+    // ============================================================
+    // 2. LOGIKA UTILITIES (Parsery)
+    // ============================================================
     
-    const generatedClasses = new Set();
+    const getUnit = (u) => config.vars.units[u] || u || 'px';
+    const getSide = (s) => config.vars.sides[s] ? `-${config.vars.sides[s].toLowerCase()}` : '';
+    
+    const parseColor = (parts, idx) => {
+        if(parts[idx] === 'set') return { val: `#${parts[idx+1]}`, consumed: 2 };
+        return { val: config.vars.colors[parts[idx]] || parts[idx], consumed: 1 };
+    };
+
+    const utilities = {
+        // Q&clr-red, Q&clr-set-aaaaaa
+        'clr': (p) => ({ color: parseColor(p, 0).val }),
+        'bg': (p) => ({ backgroundColor: parseColor(p, 0).val }),
+        
+        // Q&mg-10-px-lft
+        'mg': (p) => parseSpacing('margin', p),
+        'pd': (p) => parseSpacing('padding', p),
+        
+        // Q&w-100-px, Q&h-50-p
+        'w': (p) => ({ width: `${p[0]}${getUnit(p[1])}` }),
+        'h': (p) => ({ height: `${p[0]}${getUnit(p[1])}` }),
+        
+        // Q&bd-1-px-solid-red-dwn
+        'bd': (p) => {
+            let i=0;
+            const v=p[i++], u=getUnit(p[i++]), t=p[i++];
+            const cObj = parseColor(p, i);
+            const col = cObj.val;
+            i += cObj.consumed;
+            const side = getSide(p[i]);
+            return { [`border${side}`]: `${v}${u} ${t} ${col}` };
+        },
+        
+        // Q&fs-1, Q&fs-set-20-px
+        'fs': (p) => p[0]==='set' ? ({fontSize: `${p[1]}${getUnit(p[2])}`}) : ({fontSize: config.vars.fonts[p[0]]}),
+        'br': (p) => ({ borderRadius: `${p[0]}${getUnit(p[1])}` }),
+        'cursor': (p) => ({ cursor: p[0] }),
+        'txt': (p) => ({ textAlign: p[0] }),
+        'd': (p) => ({ display: p[0] })
+    };
+
+    function parseSpacing(prop, p) {
+        const v = p[0];
+        let u = 'px', s = '';
+        if(p.length > 1) {
+            if(config.vars.units[p[1]] || p[1]==='p') { u=getUnit(p[1]); if(p[2]) s=p[2]; }
+            else if(config.vars.sides[p[1]]) s=p[1];
+        }
+        return { [`${prop}${getSide(s)}`]: `${v}${u}` };
+    }
+
+    // ============================================================
+    // 3. SILNIK GENERATORA (Core)
+    // ============================================================
+    const generated = new Set();
     const styleTag = document.createElement('style');
-    styleTag.id = 'q-style-system';
+    styleTag.id = 'q-style-hybrid';
     document.head.appendChild(styleTag);
 
-    function objToCss(obj) {
+    function objToCss(obj, important = false) {
         return Object.entries(obj).map(([k, v]) => {
             const key = k.replace(/([A-Z])/g, '-$1').toLowerCase();
-            return `${key}: ${v};`;
+            return `${key}: ${v}${important ? ' !important' : ''};`;
         }).join(' ');
     }
 
-    function generateCSS(className) {
-        if (generatedClasses.has(className)) return;
-
-        const rawName = className.substring(2); // usuń "Q&"
-        const firstDash = rawName.indexOf('-');
-        
-        let key, argsString;
-
-        if (firstDash === -1) {
-            key = rawName; // np. Q&btn (bez argumentów)
-            argsString = '';
-        } else {
-            key = rawName.substring(0, firstDash); // np. btn
-            argsString = rawName.substring(firstDash + 1); // np. danger-2
+    function mergeDeep(target, source) {
+        for(const key in source) {
+            if(typeof source[key] === 'object') {
+                if(!target[key]) target[key] = {};
+                mergeDeep(target[key], source[key]);
+            } else {
+                target[key] = source[key];
+            }
         }
+    }
 
-        let rules = {}; // Struktura: { 'default': {}, ':hover': {} }
+    function generate(className) {
+        if(generated.has(className)) return;
 
-        // --- SCIEŻKA 1: KOMPONENTY ---
-        if (config.components[key]) {
+        const raw = className.substring(2); // remove Q&
+        const parts = raw.split('-');
+        const key = parts[0];
+        const args = parts.slice(1);
+
+        let rules = {}; // { default: {}, ':hover': {} }
+        let isUtility = false;
+
+        // A. CZY TO KOMPONENT? (np. btn)
+        if(config.components[key]) {
             const comp = config.components[key];
-            const args = argsString ? argsString.split('-') : [];
-
-            // 1. Aplikuj Base
-            mergeStyles(rules, comp.base);
-
-            // 2. Szukaj wariantów i rozmiarów w argumentach
-            // Dzięki temu kolejność (danger-2 czy 2-danger) nie ma znaczenia,
-            // a brakujące argumenty są ignorowane.
+            // 1. Baza
+            mergeDeep(rules, comp.base);
+            // 2. Warianty i Rozmiary (kolejność dowolna)
             args.forEach(arg => {
-                if (comp.variants && comp.variants[arg]) {
-                    mergeStyles(rules, comp.variants[arg]);
-                }
-                else if (comp.sizes && comp.sizes[arg]) {
-                    mergeStyles(rules, comp.sizes[arg]);
-                }
+                if(comp.variants && comp.variants[arg]) mergeDeep(rules, comp.variants[arg]);
+                if(comp.sizes && comp.sizes[arg]) mergeDeep(rules, comp.sizes[arg]);
             });
-
-            // Opcjonalnie: Domyślny rozmiar jeśli żaden nie został podany
-            // (Możesz to usunąć jeśli nie chcesz defaultów)
-            const hasSize = args.some(arg => comp.sizes && comp.sizes[arg]);
-            if (!hasSize && comp.sizes && comp.sizes['2']) {
-                mergeStyles(rules, comp.sizes['2']);
+            // Fallback size
+            if(comp.sizes && comp.sizes['2'] && !args.some(a => comp.sizes[a])) {
+                mergeDeep(rules, comp.sizes['2']);
             }
+        }
+        // B. CZY TO UTILITY? (np. mg, clr)
+        else if(utilities[key]) {
+            try {
+                // Utilities nie mają hoverów w tej prostej wersji, wrzucamy do default
+                rules.default = utilities[key](args);
+                isUtility = true;
+            } catch(e) {}
         } 
-        // --- SCIEŻKA 2: UTILITIES ---
-        else if (config.utilities[key] && argsString) {
-            // Przekazujemy resztę stringa jako wartość do funkcji
-            const utilStyles = config.utilities[key](argsString);
-            mergeStyles(rules, utilStyles);
-        } 
-        else {
-            return; // Nieznana klasa
+        else return;
+
+        // Budowanie CSS
+        const safeClass = className.replace(/&/g, '\\&').replace(/\./g, '\\.');
+        let cssStr = '';
+        
+        for(const [state, styles] of Object.entries(rules)) {
+            const selector = state === 'default' ? `.${safeClass}` : `.${safeClass}${state}`;
+            // Utilities dostają !important, żeby nadpisywać szablony (np. btn color)
+            cssStr += `${selector} { ${objToCss(styles, isUtility)} }\n`;
         }
 
-        // Budowanie CSS stringa
-        const safeClassName = className.replace(/&/g, '\\&'); // Escape znaku &
-        let cssString = '';
-
-        for (const [pseudo, styles] of Object.entries(rules)) {
-            const selector = pseudo === 'default' 
-                ? `.${safeClassName}` 
-                : `.${safeClassName}${pseudo}`; // np. .klasa:hover
-            
-            cssString += `${selector} { ${objToCss(styles)} }\n`;
-        }
-
-        styleTag.innerHTML += cssString;
-        generatedClasses.add(className);
+        styleTag.innerHTML += cssStr;
+        generated.add(className);
     }
 
-    // Funkcja pomocnicza do łączenia obiektów stylów (deep merge dla pseudo-klas)
-    function mergeStyles(target, source) {
-        for (const [state, styles] of Object.entries(source)) {
-            if (!target[state]) target[state] = {};
-            Object.assign(target[state], styles);
-        }
-    }
-
-    // Skaner i Observer
-    function scan() {
-        document.querySelectorAll('*').forEach(el => {
-            if(el.classList && el.classList.length > 0) {
-                el.classList.forEach(cls => {
-                    if (cls.startsWith('Q&')) generateCSS(cls);
-                });
-            }
+    // ============================================================
+    // 4. INICJALIZACJA
+    // ============================================================
+    function scan(root=document) {
+        root.querySelectorAll('*').forEach(el => {
+            if(el.classList) el.classList.forEach(c => c.startsWith('Q&') && generate(c));
         });
     }
-
-    const observer = new MutationObserver((mutations) => {
-        mutations.forEach(m => {
-            if (m.type === 'childList') {
-                m.addedNodes.forEach(node => {
-                    if(node.nodeType === 1) {
-                        // Skan samego elementu
-                        node.classList.forEach(cls => {
-                            if(cls.startsWith('Q&')) generateCSS(cls);
-                        });
-                        // Skan dzieci
-                        node.querySelectorAll('*').forEach(el => {
-                           el.classList.forEach(cls => {
-                               if(cls.startsWith('Q&')) generateCSS(cls);
-                           });
-                        });
-                    }
-                });
-            } else if (m.type === 'attributes' && m.attributeName === 'class') {
-                m.target.classList.forEach(cls => {
-                    if (cls.startsWith('Q&')) generateCSS(cls);
-                });
-            }
-        });
-    });
-
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => {
-            scan();
-            observer.observe(document.body, { childList: true, subtree: true, attributes: true });
-        });
-    } else {
-        scan();
-        observer.observe(document.body, { childList: true, subtree: true, attributes: true });
-    }
+    const observer = new MutationObserver(ms => ms.forEach(m => {
+        if(m.type==='childList') m.addedNodes.forEach(n => n.nodeType===1 && (scan(n), n.classList.forEach(c=>c.startsWith('Q&')&&generate(c))));
+        if(m.type==='attributes') m.target.classList.forEach(c=>c.startsWith('Q&')&&generate(c));
+    }));
+    
+    const start = () => { scan(); observer.observe(document.body, {childList:true, subtree:true, attributes:true}); };
+    document.readyState==='loading' ? document.addEventListener('DOMContentLoaded', start) : start();
 
 })();
