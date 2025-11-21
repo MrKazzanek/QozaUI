@@ -92,7 +92,8 @@
         let rules = {
             normal: {},
             hover: {},
-            active: {}
+            active: {},
+            disabled: {}
         };
 
         // A. Pobierz Base
@@ -100,6 +101,7 @@
             if (compConfig.base.css) Object.assign(rules.normal, compConfig.base.css);
             if (compConfig.base.hover) Object.assign(rules.hover, compConfig.base.hover);
             if (compConfig.base.active) Object.assign(rules.active, compConfig.base.active);
+            if (compConfig.base.disabled) Object.assign(rules.disabled, compConfig.base.disabled);
         }
 
         // B. Pobierz Variant
@@ -108,6 +110,7 @@
             if (v.css) Object.assign(rules.normal, v.css);
             if (v.hover) Object.assign(rules.hover, v.hover);
             if (v.active) Object.assign(rules.active, v.active);
+            if (v.disabled) Object.assign(rules.disabled, v.disabled);
         }
 
         // C. Pobierz Size
