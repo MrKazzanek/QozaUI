@@ -58,6 +58,12 @@
                         "padding": "10px 20px",
                         "fontSize": "14px"
                     }
+                },
+                "3": {
+                    "default": {
+                        "padding": "14px 28px",
+                        "fontSize": "16px"
+                    }
                 }
             }
         }
