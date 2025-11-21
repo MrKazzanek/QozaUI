@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QozaUI - Responsive Future</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+    <style>
+        body { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; background-color: #0f172a; overflow-x: hidden; }
+        * { box-sizing: border-box; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
+    </style>
+</head>
+<body class="Q&bg-set-0f172a Q&clr-white">
+
+    <!-- POBRANIE SILNIKA (Upewnij się, że masz nowy plik) -->
+    <script src="https://qozaui.netlify.app/Y25R01-01.js"></script>
+
+    <!-- ================= NAWIGACJA ================= -->
+    <nav class="Q&pos-fixed Q&t-0 Q&l-0 Q&w-100-p Q&z-50 Q&bg-set-0f172acc Q&bblur-12-px Q&bd-1-px-solid-set-1e293b-dwn">
+        <div class="Q&mw-1200-px Q&mg-auto Q&pd-15-px Q&pd-20-px-x Q&d-flex Q&jc-sb Q&ai-center">
+            
+            <!-- Logo -->
+            <div class="Q&d-flex Q&ai-center Q&gap-10-px Q&cursor-pointer --hover-Q&op-0.8 Q&trans-0.2">
+                <div class="Q&w-36-px Q&h-36-px Q&bg-blue Q&br-8-px Q&d-flex Q&jc-center Q&ai-center Q&sh-lg">
+                    <span class="Q&fs-4 Q&fw-800">Q</span>
+                </div>
+                <span class="Q&fs-4 Q&fw-800 Q&ls-0.5-px">Qoza<span class="Q&clr-blue">UI</span></span>
+            </div>
+
+            <!-- Menu Desktop (ukryte na mobile 'd-none', widoczne od md 'md:d-flex') -->
+            <div class="Q&d-none md:Q&d-flex Q&gap-30-px Q&fs-2 Q&fw-500 Q&clr-slate">
+                <a class="Q&cursor-pointer --hover-Q&clr-white Q&trans-0.2">Funkcje</a>
+                <a class="Q&cursor-pointer --hover-Q&clr-white Q&trans-0.2">Komponenty</a>
+                <a class="Q&cursor-pointer --hover-Q&clr-white Q&trans-0.2">Docs</a>
+            </div>
+
+            <!-- Actions -->
+            <div class="Q&d-flex Q&gap-10-px">
+                <button class="Q&btn-ghost-sm Q&clr-slate --hover-Q&clr-white Q&d-none md:Q&d-inline-flex">Logowanie</button>
+                <button class="Q&btn-primary-sm Q&sh-lg --hover-Q&scale-105">Pobierz 2.0</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ================= HERO SECTION ================= -->
+    <header class="Q&pos-relative Q&pd-120-px-t Q&pd-60-px-b md:Q&pd-180-px-t md:Q&pd-100-px-b Q&txt-center Q&ov-hidden">
+        
+        <!-- Glow Effect Background -->
+        <div class="Q&pos-absolute Q&t-0 Q&l-50-p Q&w-100-p Q&mw-1000-px Q&h-600-px Q&bg-blue Q&op-0.08 Q&br-50-p Q&blur-80-px Q&z--1" style="transform: translate(-50%, -50%);"></div>
+
+        <div class="Q&mw-1200-px Q&mg-auto Q&pd-20-px">
+            
+            <!-- Badge -->
+            <div class="Q&d-inline-flex Q&ai-center Q&gap-8-px Q&bg-set-1e293b Q&pd-4-px Q&pd-12-px-rgt Q&br-50-px Q&bd-1-px-solid-set-334155 Q&mg-20-px-dwn md:Q&mg-30-px-dwn --hover-Q&bd-1-px-solid-blue Q&trans-0.2 Q&cursor-pointer">
+                <span class="Q&badge-purple">UPDATE 2.0</span>
+                <span class="Q&fs-1 Q&clr-slate">Pełna responsywność dodana &rarr;</span>
+            </div>
+
+            <!-- Headline Responsive -->
+            <h1 class="Q&fs-8 md:Q&fs-11 Q&fw-800 Q&lh-1.1 Q&mg-20-px-dwn Q&ls--1-px">
+                Twórz interfejsy <br class="Q&d-none md:Q&d-block">
+                <span class="Q&clr-transparent" style="-webkit-background-clip: text; background-clip: text; background-image: linear-gradient(to right, #3b82f6, #a855f7);">bez granic.</span>
+            </h1>
+
+            <p class="Q&fs-3 md:Q&fs-4 Q&clr-slate Q&mw-700-px Q&mg-auto Q&mg-30-px-dwn Q&lh-1.6">
+                QozaUI to teraz w pełni responsywny silnik. Używaj prefiksów <code>md:</code>, <code>lg:</code> i twórz strony, które wyglądają świetnie na każdym urządzeniu.
+            </p>
+
+            <div class="Q&d-flex Q&fx-col md:Q&fx-row Q&jc-center Q&gap-15-px">
+                <button class="Q&btn-primary-lg Q&sh-xl --hover-Q&scale-105 Q&w-100-p md:Q&w-auto">Rozpocznij teraz</button>
+                <button class="Q&btn-dark-lg Q&bd-1-px-solid-set-334155 --hover-Q&bg-set-1e293b Q&w-100-p md:Q&w-auto">Github Repo</button>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- ================= SHOWCASE SECTION (Split Layout) ================= -->
+    <section class="Q&mw-1200-px Q&mg-auto Q&pd-40-px-y Q&pd-20-px">
+        
+        <!-- Flex Column na mobile, Row na Desktop (lg:fx-row) -->
+        <div class="Q&d-flex Q&fx-col lg:Q&fx-row Q&gap-60-px Q&ai-center">
+            
+            <!-- LEWA: Tekst -->
+            <div class="Q&w-100-p lg:Q&w-40-p">
+                <h2 class="Q&fs-7 Q&fw-800 Q&mg-20-px-dwn">Potężny Dashboard</h2>
+                <p class="Q&fs-3 Q&clr-slate Q&mg-30-px-dwn Q&lh-1.6">
+                    Nowy Panel Sterowania pokazuje siłę zagnieżdżonych layoutów. Zobacz jak łatwo stworzyć Sidebar, Navbar i Content Area używając tylko klas.
+                </p>
+                
+                <div class="Q&d-flex Q&fx-col Q&gap-20-px">
+                    <div class="Q&d-flex Q&ai-center Q&gap-15-px">
+                        <div class="Q&w-24-px Q&h-24-px Q&bg-blue Q&br-50-p Q&d-flex Q&jc-center Q&ai-center Q&clr-white Q&fs-1">✓</div>
+                        <span class="Q&fs-3">Responsive Grid System</span>
+                    </div>
+                    <div class="Q&d-flex Q&ai-center Q&gap-15-px">
+                        <div class="Q&w-24-px Q&h-24-px Q&bg-purple Q&br-50-p Q&d-flex Q&jc-center Q&ai-center Q&clr-white Q&fs-1">✓</div>
+                        <span class="Q&fs-3">Glassmorphism & Blur</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRAWA: ULEPSZONY DASHBOARD MOCKUP -->
+            <div class="Q&w-100-p lg:Q&w-60-p Q&bg-set-1e293b Q&br-16-px Q&bd-1-px-solid-set-334155 Q&sh-2xl Q&ov-hidden Q&pos-relative">
+                <!-- Pasek Tytułu "Przeglądarki" -->
+                <div class="Q&bg-set-0f172a Q&pd-10-px Q&d-flex Q&gap-8-px Q&bd-1-px-solid-set-334155-b">
+                    <div class="Q&w-10-px Q&h-10-px Q&br-50-p Q&bg-red"></div>
+                    <div class="Q&w-10-px Q&h-10-px Q&br-50-p Q&bg-amber"></div>
+                    <div class="Q&w-10-px Q&h-10-px Q&br-50-p Q&bg-green"></div>
+                </div>
+
+                <!-- WNĘTRZE DASHBOARDU (Layout: Sidebar + Main) -->
+                <div class="Q&d-flex Q&h-400-px">
+                    
+                    <!-- Sidebar (Ikony) -->
+                    <div class="Q&w-60-px Q&bg-set-0f172a Q&bd-1-px-solid-set-334155-r Q&d-flex Q&fx-col Q&ai-center Q&pd-20-px-t Q&gap-20-px">
+                        <div class="Q&w-32-px Q&h-32-px Q&bg-blue Q&br-8-px Q&d-flex Q&jc-center Q&ai-center Q&fs-2">🏠</div>
+                        <div class="Q&w-32-px Q&h-32-px Q&bg-set-1e293b Q&br-8-px Q&d-flex Q&jc-center Q&ai-center Q&fs-2 --hover-Q&bg-set-334155 Q&cursor-pointer">📊</div>
+                        <div class="Q&w-32-px Q&h-32-px Q&bg-set-1e293b Q&br-8-px Q&d-flex Q&jc-center Q&ai-center Q&fs-2 --hover-Q&bg-set-334155 Q&cursor-pointer">⚙️</div>
+                    </div>
+
+                    <!-- Main Content -->
+                    <div class="Q&grow-1 Q&bg-set-111827 Q&pd-20-px Q&ov-auto">
+                        
+                        <!-- Header wewnątrz -->
+                        <div class="Q&d-flex Q&jc-sb Q&ai-center Q&mg-20-px-dwn">
+                            <div>
+                                <h3 class="Q&fs-4 Q&fw-bold">Dashboard</h3>
+                                <p class="Q&fs-1 Q&clr-slate">Witaj z powrotem, Admin</p>
+                            </div>
+                            <div class="Q&d-flex Q&gap-10-px">
+                                <span class="Q&badge-green">PRO</span>
+                                <div class="Q&avatar-sm">A</div>
+                            </div>
+                        </div>
+
+                        <!-- Stats Grid -->
+                        <div class="Q&d-flex Q&gap-15-px Q&mg-20-px-dwn">
+                            <div class="Q&grow-1 Q&bg-set-1f2937 Q&pd-15-px Q&br-8-px Q&bd-1-px-solid-set-374151">
+                                <div class="Q&fs-1 Q&clr-slate Q&mg-5-px-dwn">Przychód</div>
+                                <div class="Q&fs-5 Q&fw-bold">$12,450</div>
+                            </div>
+                            <div class="Q&grow-1 Q&bg-set-1f2937 Q&pd-15-px Q&br-8-px Q&bd-1-px-solid-set-374151">
+                                <div class="Q&fs-1 Q&clr-slate Q&mg-5-px-dwn">Użytkownicy</div>
+                                <div class="Q&fs-5 Q&fw-bold">+1,200</div>
+                            </div>
+                        </div>
+
+                        <!-- Wykres (CSS Bar Chart) -->
+                        <div class="Q&bg-set-1f2937 Q&pd-20-px Q&br-8-px Q&bd-1-px-solid-set-374151">
+                            <div class="Q&fs-2 Q&fw-bold Q&mg-15-px-dwn">Aktywność w tym tygodniu</div>
+                            <div class="Q&d-flex Q&ai-end Q&jc-sb Q&h-100-px Q&gap-5-px">
+                                <div class="Q&w-100-p Q&h-40-p Q&bg-blue Q&br-4-px-t Q&op-0.5"></div>
+                                <div class="Q&w-100-p Q&h-70-p Q&bg-blue Q&br-4-px-t Q&op-0.7"></div>
+                                <div class="Q&w-100-p Q&h-50-p Q&bg-blue Q&br-4-px-t Q&op-0.6"></div>
+                                <div class="Q&w-100-p Q&h-90-p Q&bg-blue Q&br-4-px-t"></div>
+                                <div class="Q&w-100-p Q&h-60-p Q&bg-blue Q&br-4-px-t Q&op-0.7"></div>
+                                <div class="Q&w-100-p Q&h-80-p Q&bg-blue Q&br-4-px-t Q&op-0.9"></div>
+                                <div class="Q&w-100-p Q&h-30-p Q&bg-blue Q&br-4-px-t Q&op-0.4"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= CARDS SECTION ================= -->
+    <section class="Q&bg-set-0b1120 Q&pd-80-px-y Q&bd-1-px-solid-set-1e293b-y">
+        <div class="Q&mw-1200-px Q&mg-auto Q&pd-20-px">
+            <h2 class="Q&txt-center Q&fs-7 Q&fw-bold Q&mg-50-px-dwn">Funkcje, które pokochasz</h2>
+            
+            <!-- GRID (Mobile: 1 col, Tablet: 2 col, Desktop: 3 col) -->
+            <div class="Q&d-grid Q&cols-1 md:Q&cols-2 lg:Q&cols-3 Q&gap-30-px">
+                
+                <!-- Card 1 -->
+                <div class="Q&card-dark Q&pd-30-px --hover-Q&bd-1-px-solid-blue --hover-Q&trans-0.3">
+                    <div class="Q&w-40-px Q&h-40-px Q&bg-set-0f172a Q&br-8-px Q&d-flex Q&jc-center Q&ai-center Q&fs-4 Q&mg-15-px-dwn Q&clr-blue">🚀</div>
+                    <h3 class="Q&fs-4 Q&fw-bold Q&mg-10-px-dwn">Zero Runtime Overhead</h3>
+                    <p class="Q&clr-slate Q&lh-1.5">Style generowane są natychmiastowo przy ładowaniu. Brak ciężkich bibliotek CSS.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="Q&card-dark Q&pd-30-px --hover-Q&bd-1-px-solid-purple --hover-Q&trans-0.3">
+                    <div class="Q&w-40-px Q&h-40-px Q&bg-set-0f172a Q&br-8-px Q&d-flex Q&jc-center Q&ai-center Q&fs-4 Q&mg-15-px-dwn Q&clr-purple">📱</div>
+                    <h3 class="Q&fs-4 Q&fw-bold Q&mg-10-px-dwn">Responsive First</h3>
+                    <p class="Q&clr-slate Q&lh-1.5">Wbudowane breakpointy <code>sm</code>, <code>md</code>, <code>lg</code> pozwalają budować mobilne widoki w sekundę.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="Q&card-dark Q&pd-30-px --hover-Q&bd-1-px-solid-green --hover-Q&trans-0.3">
+                    <div class="Q&w-40-px Q&h-40-px Q&bg-set-0f172a Q&br-8-px Q&d-flex Q&jc-center Q&ai-center Q&fs-4 Q&mg-15-px-dwn Q&clr-green">✨</div>
+                    <h3 class="Q&fs-4 Q&fw-bold Q&mg-10-px-dwn">Glassmorphism Ready</h3>
+                    <p class="Q&clr-slate Q&lh-1.5">Używaj <code>Q&bblur</code> i kolorów z przezroczystością, aby uzyskać efekt matowego szkła.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= CTA ================= -->
+    <section class="Q&pd-100-px-y Q&txt-center Q&pd-20-px">
+        <h2 class="Q&fs-8 Q&fw-800 Q&mg-20-px-dwn">Gotowy na zmianę?</h2>
+        <p class="Q&fs-3 Q&clr-slate Q&mg-30-px-dwn">Dołącz do rewolucji CSS-in-JS już dzisiaj.</p>
+        <button class="Q&btn-primary-xl Q&sh-xl --hover-Q&scale-105">Pobierz Framework</button>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="Q&pd-60-px-y Q&bg-set-0b1120 Q&bd-1-px-solid-set-1e293b-t">
+        <div class="Q&mw-1200-px Q&mg-auto Q&pd-20-px Q&d-flex Q&fx-col md:Q&fx-row Q&jc-sb Q&ai-center Q&gap-30-px">
+            <div class="Q&txt-center md:Q&ta-left">
+                <div class="Q&fs-5 Q&fw-bold Q&mg-5-px-dwn">Qoza<span class="Q&clr-blue">UI</span></div>
+                <p class="Q&clr-slate Q&fs-2">v2.0.1 Responsive Edition</p>
+            </div>
+            <div class="Q&d-flex Q&gap-30-px Q&fs-2 Q&clr-slate">
+                <a class="Q&cursor-pointer --hover-Q&clr-white">GitHub</a>
+                <a class="Q&cursor-pointer --hover-Q&clr-white">Twitter</a>
+                <a class="Q&cursor-pointer --hover-Q&clr-white">Kontakt</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
