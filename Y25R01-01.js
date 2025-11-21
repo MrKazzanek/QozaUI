@@ -4,7 +4,6 @@
     // ============================================================
     const config = {
         components: {
-            // PRZYCISKI
             'btn': {
                 base: { default: { border: 'none', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'sans-serif', borderRadius: '6px', transition: 'all 0.2s ease', userSelect: 'none', textDecoration: 'none', fontWeight: '500', lineHeight: '1' }, ':disabled': { opacity: '0.6', cursor: 'not-allowed', filter: 'grayscale(1)' }, ':active:not(:disabled)': { transform: 'scale(0.97)' } },
                 variants: {
@@ -14,34 +13,28 @@
                     'danger': { default: { backgroundColor: '#ef4444', color: '#fff' }, ':hover:not(:disabled)': { backgroundColor: '#dc2626' } },
                     'dark': { default: { backgroundColor: '#0f172a', color: '#fff' }, ':hover:not(:disabled)': { backgroundColor: '#1e293b' } },
                     'ghost': { default: { backgroundColor: 'transparent', color: '#94a3b8' }, ':hover:not(:disabled)': { backgroundColor: 'rgba(255,255,255,0.05)', color: '#fff' } },
-                    // Poprawiony outline dla ciemnego tła
                     'outline': { default: { backgroundColor: 'transparent', border: '1px solid #475569', color: '#cbd5e1' }, ':hover:not(:disabled)': { borderColor: '#94a3b8', backgroundColor: 'rgba(255,255,255,0.05)', color: '#fff' } }
                 },
                 sizes: { 'xs': { default: { padding: '6px 10px', fontSize: '11px' } }, 'sm': { default: { padding: '8px 12px', fontSize: '12px' } }, 'md': { default: { padding: '10px 16px', fontSize: '14px' } }, 'lg': { default: { padding: '12px 24px', fontSize: '16px' } }, 'xl': { default: { padding: '16px 32px', fontSize: '18px' } } }
             },
-            // FORMULARZE
             'input': {
                 base: { default: { display: 'block', width: '100%', padding: '10px 12px', fontSize: '14px', lineHeight: '1.5', borderRadius: '6px', outline: 'none', transition: 'border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out' }, ':focus': { borderColor: '#3b82f6', boxShadow: '0 0 0 3px rgba(59, 130, 246, 0.15)' }, ':disabled': { backgroundColor: '#f3f4f6', cursor: 'not-allowed', opacity: '0.7' } },
                 variants: {
                     'default': { default: { backgroundColor: '#fff', border: '1px solid #d1d5db', color: '#1f2937' } },
                     'error': { default: { borderColor: '#ef4444' }, ':focus': { borderColor: '#ef4444', boxShadow: '0 0 0 3px rgba(239, 68, 68, 0.15)' } },
-                    // Ciemny input
                     'dark': { default: { backgroundColor: '#0f172a', border: '1px solid #334155', color: '#f8fafc' }, ':focus': { borderColor: '#3b82f6', boxShadow: '0 0 0 3px rgba(59, 130, 246, 0.3)' } }
                 },
                 sizes: { 'sm': { default: { padding: '6px 10px', fontSize: '12px' } }, 'lg': { default: { padding: '12px 16px', fontSize: '16px' } } }
             },
-            // KARTY
             'card': {
                 base: { default: { borderRadius: '8px', overflow: 'hidden' } },
                 variants: {
                     'flat': { default: { backgroundColor: '#fff', border: '1px solid #f1f5f9' } },
                     'shadow': { default: { backgroundColor: '#fff', border: 'none', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' } },
-                    // Ciemna karta
                     'dark': { default: { backgroundColor: '#1e293b', border: '1px solid #334155', color: '#fff' } }
                 },
                 sizes: { '1': { default: { padding: '12px' } }, '2': { default: { padding: '24px' } }, '3': { default: { padding: '32px' } } }
             },
-            // BADGES
             'badge': {
                 base: { default: { display: 'inline-flex', alignItems: 'center', padding: '2px 8px', borderRadius: '9999px', fontSize: '11px', fontWeight: '700', lineHeight: '1', textTransform: 'uppercase', letterSpacing: '0.5px', whiteSpace: 'nowrap' } },
                 variants: {
@@ -51,12 +44,10 @@
                     'purple': { default: { backgroundColor: 'rgba(168, 85, 247, 0.2)', color: '#c084fc', border: '1px solid rgba(168, 85, 247, 0.3)' } }
                 }
             },
-            // AVATAR
             'avatar': {
                 base: { default: { display: 'inline-flex', alignItems: 'center', justifyContent: 'center', borderRadius: '50%', backgroundColor: '#334155', color: '#fff', fontWeight: '600', objectFit: 'cover', overflow: 'hidden' } },
                 sizes: { 'sm': { default: { width: '32px', height: '32px', fontSize: '12px' } }, 'md': { default: { width: '40px', height: '40px', fontSize: '14px' } }, 'lg': { default: { width: '64px', height: '64px', fontSize: '24px' } } }
             },
-            // SPINNER
             'spinner': {
                 base: { default: { display: 'inline-block', border: '2px solid currentColor', borderRightColor: 'transparent', borderRadius: '50%', animation: 'spin 0.75s linear infinite' } },
                 sizes: { 'sm': { default: { width: '16px', height: '16px' } }, 'md': { default: { width: '24px', height: '24px' } } }
@@ -85,9 +76,15 @@
         'fs': (p) => p[0]==='set' ? ({fontSize: `${p[1]}${getUnit(p[2])}`}) : ({fontSize: config.vars.fonts[p[0]]}), 'fw': (p) => ({ fontWeight: p[0] }), 'sft': (p) => p[0]==='set' ? ({fontFamily: p.slice(1).join(' ')}) : ({fontFamily: config.vars.fontFamilies[p[0]]}), 'ta': (p) => ({ textAlign: p[0] }), 'tt': (p) => ({ textTransform: p[0] }), 'ls': (p) => ({ letterSpacing: `${p[0]}${getUnit(p[1])}` }), 'lh': (p) => ({ lineHeight: p[0] }),
         'bd': (p) => parseBorderLike(p, 'border'), 'out': (p) => parseBorderLike(p, 'outline'), 'br': (p) => { const v = `${p[0]}${getUnit(p[1])}`; const s = p[2]; if(!s) return { borderRadius: v }; if(s==='t') return { borderTopLeftRadius: v, borderTopRightRadius: v }; if(s==='b') return { borderBottomLeftRadius: v, borderBottomRightRadius: v }; return { borderRadius: v }; },
         'd': (p) => ({ display: p[0] }), 'pos': (p) => ({ position: p[0] }), 't': (p) => ({ top: `${p[0]}${getUnit(p[1])}` }), 'b': (p) => ({ bottom: `${p[0]}${getUnit(p[1])}` }), 'l': (p) => ({ left: `${p[0]}${getUnit(p[1])}` }), 'r': (p) => ({ right: `${p[0]}${getUnit(p[1])}` }), 'inset': (p) => ({ top: `${p[0]}${getUnit(p[1])}`, right: `${p[0]}${getUnit(p[1])}`, bottom: `${p[0]}${getUnit(p[1])}`, left: `${p[0]}${getUnit(p[1])}` }), 'z': (p) => ({ zIndex: p[0] }), 'ov': (p) => ({ overflow: p[0] }), 'ovx': (p) => ({ overflowX: p[0] }),
-        'fx': (p) => { if(['row','column','wrap'].includes(p[0])) return p[0]==='wrap'?{flexWrap:'wrap'}:{flexDirection:p[0]}; return { flex: p[0] }; }, 'grow': (p) => ({ flexGrow: p[0]||'1' }), 'ai': (p) => ({ alignItems: p[0]==='center'?'center':(p[0]==='start'?'flex-start':(p[0]==='end'?'flex-end':p[0])) }), 'jc': (p) => ({ justifyContent: p[0]==='sb'?'space-between':(p[0]==='sa'?'space-around':(p[0]==='center'?'center':(p[0]==='end'?'flex-end':'flex-start'))) }), 'gap': (p) => ({ gap: `${p[0]}${getUnit(p[1])}` }),
+        'fx': (p) => { if(['row','column','wrap'].includes(p[0])) return p[0]==='wrap'?{flexWrap:'wrap'}:{flexDirection:p[0]}; return { flex: p[0] }; }, 'grow': (p) => ({ flexGrow: p[0]||'1' }), 'ai': (p) => ({ alignItems: p[0]==='center'?'center':(p[0]==='start'?'flex-start':(p[0]==='end'?'flex-end':p[0])) }), 'jc': (p) => ({ justifyContent: p[0]==='sb'?'space-between':(p[0]==='center'?'center':p[0]) }), 'gap': (p) => ({ gap: `${p[0]}${getUnit(p[1])}` }),
         'cols': (p) => ({ gridTemplateColumns: `repeat(${p[0]}, minmax(0, 1fr))` }), 'span': (p) => ({ gridColumn: `span ${p[0]} / span ${p[0]}` }),
-        'sh': (p) => ({ boxShadow: p[0]==='set' ? p.slice(1).join(' ') : (config.vars.shadows[p[0]] || 'none') }), 'cursor': (p) => ({ cursor: p[0] }), 'blur': (p) => ({ filter: `blur(${p[0]}${getUnit(p[1])})` }), 'scale': (p) => ({ transform: `scale(${p[0]/100})` }), 'rot': (p) => ({ transform: `rotate(${p[0]}deg)` }), 'trans': (p) => ({ transition: `all ${p[0]||'0.2'}s ease` }), 'fit': (p) => ({ objectFit: p[0] })
+        'sh': (p) => ({ boxShadow: p[0]==='set' ? p.slice(1).join(' ') : (config.vars.shadows[p[0]] || 'none') }), 'cursor': (p) => ({ cursor: p[0] }),
+        
+        // POPRAWIONY BLUR I BACKDROP BLUR
+        'blur': (p) => ({ filter: `blur(${p[0]}${getUnit(p[1])})` }), // Rozmywa element
+        'bblur': (p) => ({ backdropFilter: `blur(${p[0]}${getUnit(p[1])})`, WebkitBackdropFilter: `blur(${p[0]}${getUnit(p[1])})` }), // Rozmywa TŁO (szkło)
+        
+        'scale': (p) => ({ transform: `scale(${p[0]/100})` }), 'rot': (p) => ({ transform: `rotate(${p[0]}deg)` }), 'trans': (p) => ({ transition: `all ${p[0]||'0.2'}s ease` }), 'fit': (p) => ({ objectFit: p[0] })
     };
 
     const generated = new Set(); const styleTag = document.createElement('style'); styleTag.id = 'q-style-engine'; document.head.appendChild(styleTag);
