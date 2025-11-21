@@ -1,174 +1,217 @@
 (function() {
-    // 1. KONFIGURACJA WYGLĄDU (Baza danych stylów)
-    // Teraz obsługujemy obiekt 'css' (zwykły wygląd) i 'hover' (po najechaniu)
-    const theme = {
-        // Komponent: Przycisk
-        'btn': {
-            // Style bazowe (wspólne dla każdego przycisku)
-            base: {
-                css: {
-                    border: 'none',
-                    cursor: 'pointer',
-                    transition: 'transform 0.1s, background-color 0.2s',
-                    fontFamily: 'Arial, sans-serif',
-                    borderRadius: '6px',
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    justifyContent: 'center'
+    // ==========================================
+    // 1. KONFIGURACJA (Twoja "Design System")
+    // ==========================================
+    const config = {
+        // A. KOMPONENTY (np. przyciski, karty - zdefiniowane warianty i rozmiary)
+        components: {
+            'btn': {
+                // Style bazowe (zawsze aplikowane)
+                base: {
+                    default: {
+                        border: 'none',
+                        cursor: 'pointer',
+                        fontFamily: 'sans-serif',
+                        borderRadius: '4px',
+                        transition: 'all 0.2s ease',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        userSelect: 'none'
+                    },
+                    ':disabled': { // Obsługa disabled
+                        opacity: '0.6',
+                        cursor: 'not-allowed',
+                        filter: 'grayscale(80%)'
+                    },
+                    ':active:not(:disabled)': {
+                        transform: 'scale(0.98)'
+                    }
                 },
-                active: { transform: 'scale(0.95)' } // Efekt kliknięcia
-            },
-            // Warianty kolorystyczne
-            variants: {
-                'primary': {
-                    css:   { backgroundColor: '#3b82f6', color: '#ffffff' },
-                    hover: { backgroundColor: '#2563eb' } // Ciemniejszy niebieski
+                // Warianty (np. kolory)
+                variants: {
+                    'primary': {
+                        default: { backgroundColor: '#2563eb', color: 'white' },
+                        ':hover:not(:disabled)': { backgroundColor: '#1d4ed8' }
+                    },
+                    'danger': {
+                        default: { backgroundColor: '#dc2626', color: 'white' },
+                        ':hover:not(:disabled)': { backgroundColor: '#b91c1c' }
+                    },
+                    'outline': {
+                        default: { backgroundColor: 'transparent', border: '2px solid #ccc', color: '#333' },
+                        ':hover:not(:disabled)': { borderColor: '#333', backgroundColor: '#f5f5f5' }
+                    }
                 },
-                'danger': {
-                    css:   { backgroundColor: '#ef4444', color: '#ffffff' },
-                    hover: { backgroundColor: '#dc2626' } // Ciemniejszy czerwony
-                },
-                'ghost': {
-                    css:   { backgroundColor: 'transparent', color: '#333', border: '1px solid #ccc' },
-                    hover: { backgroundColor: '#f3f4f6', color: '#000' },
-                    disabled: { backgroundColor: 'black'}
+                // Rozmiary
+                sizes: {
+                    '1': { default: { padding: '4px 8px', fontSize: '12px' } },
+                    '2': { default: { padding: '8px 16px', fontSize: '16px' } }, // Domyślny, jeśli nie podano
+                    '3': { default: { padding: '12px 24px', fontSize: '20px' } }
                 }
-            },
-            // Rozmiary
-            sizes: {
-                '1': { css: { fontSize: '12px', padding: '6px 12px' } },
-                '2': { css: { fontSize: '16px', padding: '10px 20px' } },
-                '3': { css: { fontSize: '20px', padding: '16px 32px', textTransform: 'uppercase' } }
             }
         },
-        // Komponent: Alert (Box)
-        'alert': {
-            base: {
-                css: { padding: '15px', borderRadius: '8px', borderLeft: '5px solid #333', marginBottom: '10px' }
-            },
-            variants: {
-                'info': { css: { backgroundColor: '#e0f2fe', borderColor: '#0ea5e9', color: '#0c4a6e' } },
-                'warn': { css: { backgroundColor: '#fef3c7', borderColor: '#d97706', color: '#78350f' } }
-            }
+
+        // B. UTILITIES (Dynamiczne wartości, np. kolory, marginesy)
+        // Funkcja otrzymuje "wartość" (np. 'ff0000') i zwraca obiekt stylów
+        utilities: {
+            // Użycie: Q&clr-ff0000 (Hex bez hash)
+            'clr': (val) => ({
+                default: { color: `#${val}` }
+            }),
+            // Użycie: Q&bg-333333
+            'bg': (val) => ({
+                default: { backgroundColor: `#${val}` }
+            }),
+            // Użycie: Q&m-20 (margin: 20px)
+            'm': (val) => ({
+                default: { margin: `${val}px` }
+            }),
+            // Użycie: Q&w-100p (width: 100%) - mały hack na znaki specjalne
+            'w': (val) => ({
+                default: { width: val.replace('p', '%').replace('vh', 'vh') }
+            })
         }
     };
 
-    // Zbiór już wygenerowanych klas, żeby nie duplikować kodu CSS
+    // ==========================================
+    // 2. LOGIKA GENERATORA (Nie musisz tu grzebać)
+    // ==========================================
+    
     const generatedClasses = new Set();
-
-    // Utworzenie elementu <style> w head
     const styleTag = document.createElement('style');
-    styleTag.id = 'q-dynamic-styles';
+    styleTag.id = 'q-style-system';
     document.head.appendChild(styleTag);
 
-    // Funkcja pomocnicza: konwersja obiektu JS na string CSS
-    // np. { backgroundColor: 'red' } -> "background-color: red;"
     function objToCss(obj) {
-        if (!obj) return '';
-        return Object.entries(obj).map(([key, value]) => {
-            // Zamiana camelCase na kebab-case (backgroundColor -> background-color)
-            const cssKey = key.replace(/([A-Z])/g, '-$1').toLowerCase();
-            return `${cssKey}: ${value};`;
+        return Object.entries(obj).map(([k, v]) => {
+            const key = k.replace(/([A-Z])/g, '-$1').toLowerCase();
+            return `${key}: ${v};`;
         }).join(' ');
     }
 
-    // 2. GENERATOR CSS
     function generateCSS(className) {
-        // Jeśli już wygenerowaliśmy styl dla tej klasy, pomiń
         if (generatedClasses.has(className)) return;
-        
-        // Oczyszczanie nazwy: "Q&btn-primary-1" -> ["btn", "primary", "1"]
+
         const rawName = className.substring(2); // usuń "Q&"
-        const parts = rawName.split('-');
+        const firstDash = rawName.indexOf('-');
         
-        const compName = parts[0];
-        const variantName = parts[1];
-        const sizeName = parts[2];
+        let key, argsString;
 
-        const compConfig = theme[compName];
-        if (!compConfig) return;
-
-        // Zbieranie reguł
-        let rules = {
-            normal: {},
-            hover: {},
-            active: {},
-            disabled: {}
-        };
-
-        // A. Pobierz Base
-        if (compConfig.base) {
-            if (compConfig.base.css) Object.assign(rules.normal, compConfig.base.css);
-            if (compConfig.base.hover) Object.assign(rules.hover, compConfig.base.hover);
-            if (compConfig.base.active) Object.assign(rules.active, compConfig.base.active);
-            if (compConfig.base.disabled) Object.assign(rules.disabled, compConfig.base.disabled);
+        if (firstDash === -1) {
+            key = rawName; // np. Q&btn (bez argumentów)
+            argsString = '';
+        } else {
+            key = rawName.substring(0, firstDash); // np. btn
+            argsString = rawName.substring(firstDash + 1); // np. danger-2
         }
 
-        // B. Pobierz Variant
-        if (variantName && compConfig.variants && compConfig.variants[variantName]) {
-            const v = compConfig.variants[variantName];
-            if (v.css) Object.assign(rules.normal, v.css);
-            if (v.hover) Object.assign(rules.hover, v.hover);
-            if (v.active) Object.assign(rules.active, v.active);
-            if (v.disabled) Object.assign(rules.disabled, v.disabled);
+        let rules = {}; // Struktura: { 'default': {}, ':hover': {} }
+
+        // --- SCIEŻKA 1: KOMPONENTY ---
+        if (config.components[key]) {
+            const comp = config.components[key];
+            const args = argsString ? argsString.split('-') : [];
+
+            // 1. Aplikuj Base
+            mergeStyles(rules, comp.base);
+
+            // 2. Szukaj wariantów i rozmiarów w argumentach
+            // Dzięki temu kolejność (danger-2 czy 2-danger) nie ma znaczenia,
+            // a brakujące argumenty są ignorowane.
+            args.forEach(arg => {
+                if (comp.variants && comp.variants[arg]) {
+                    mergeStyles(rules, comp.variants[arg]);
+                }
+                else if (comp.sizes && comp.sizes[arg]) {
+                    mergeStyles(rules, comp.sizes[arg]);
+                }
+            });
+
+            // Opcjonalnie: Domyślny rozmiar jeśli żaden nie został podany
+            // (Możesz to usunąć jeśli nie chcesz defaultów)
+            const hasSize = args.some(arg => comp.sizes && comp.sizes[arg]);
+            if (!hasSize && comp.sizes && comp.sizes['2']) {
+                mergeStyles(rules, comp.sizes['2']);
+            }
+        } 
+        // --- SCIEŻKA 2: UTILITIES ---
+        else if (config.utilities[key] && argsString) {
+            // Przekazujemy resztę stringa jako wartość do funkcji
+            const utilStyles = config.utilities[key](argsString);
+            mergeStyles(rules, utilStyles);
+        } 
+        else {
+            return; // Nieznana klasa
         }
 
-        // C. Pobierz Size
-        if (sizeName && compConfig.sizes && compConfig.sizes[sizeName]) {
-            const s = compConfig.sizes[sizeName];
-            if (s.css) Object.assign(rules.normal, s.css);
+        // Budowanie CSS stringa
+        const safeClassName = className.replace(/&/g, '\\&'); // Escape znaku &
+        let cssString = '';
+
+        for (const [pseudo, styles] of Object.entries(rules)) {
+            const selector = pseudo === 'default' 
+                ? `.${safeClassName}` 
+                : `.${safeClassName}${pseudo}`; // np. .klasa:hover
+            
+            cssString += `${selector} { ${objToCss(styles)} }\n`;
         }
 
-        // D. Zbuduj String CSS
-        // Musimy "eskejować" znaki specjalne w selektorze CSS (np. &)
-        const selector = `.${className.replace(/&/g, '\\&')}`; 
-        
-        let cssString = `
-            ${selector} { ${objToCss(rules.normal)} }
-            ${selector}:hover { ${objToCss(rules.hover)} }
-            ${selector}:active { ${objToCss(rules.active)} }
-        `;
-
-        // Wstrzyknij do <style>
         styleTag.innerHTML += cssString;
-        
-        // Zapamiętaj, że zrobione
         generatedClasses.add(className);
     }
 
-    // 3. SKANER DOM
-    function scanAndApply() {
-        // Znajdź wszystkie elementy z klasą zawierającą "Q&"
-        const elements = document.querySelectorAll('[class*="Q&"]');
-        
-        elements.forEach(el => {
-            el.classList.forEach(cls => {
-                if (cls.startsWith('Q&')) {
-                    generateCSS(cls);
-                }
-            });
+    // Funkcja pomocnicza do łączenia obiektów stylów (deep merge dla pseudo-klas)
+    function mergeStyles(target, source) {
+        for (const [state, styles] of Object.entries(source)) {
+            if (!target[state]) target[state] = {};
+            Object.assign(target[state], styles);
+        }
+    }
+
+    // Skaner i Observer
+    function scan() {
+        document.querySelectorAll('*').forEach(el => {
+            if(el.classList && el.classList.length > 0) {
+                el.classList.forEach(cls => {
+                    if (cls.startsWith('Q&')) generateCSS(cls);
+                });
+            }
         });
     }
 
-    // 4. OBSERWATOR (Dla dynamicznych elementów)
     const observer = new MutationObserver((mutations) => {
-        let needsScan = false;
-        mutations.forEach(mutation => {
-            if (mutation.addedNodes.length > 0 || mutation.attributeName === 'class') {
-                needsScan = true;
+        mutations.forEach(m => {
+            if (m.type === 'childList') {
+                m.addedNodes.forEach(node => {
+                    if(node.nodeType === 1) {
+                        // Skan samego elementu
+                        node.classList.forEach(cls => {
+                            if(cls.startsWith('Q&')) generateCSS(cls);
+                        });
+                        // Skan dzieci
+                        node.querySelectorAll('*').forEach(el => {
+                           el.classList.forEach(cls => {
+                               if(cls.startsWith('Q&')) generateCSS(cls);
+                           });
+                        });
+                    }
+                });
+            } else if (m.type === 'attributes' && m.attributeName === 'class') {
+                m.target.classList.forEach(cls => {
+                    if (cls.startsWith('Q&')) generateCSS(cls);
+                });
             }
         });
-        if (needsScan) scanAndApply();
     });
 
-    // Start
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', () => {
-            scanAndApply();
+            scan();
             observer.observe(document.body, { childList: true, subtree: true, attributes: true });
         });
     } else {
-        scanAndApply();
+        scan();
         observer.observe(document.body, { childList: true, subtree: true, attributes: true });
     }
 
