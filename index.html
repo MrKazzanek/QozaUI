@@ -6,7 +6,7 @@
     <title>QozaUI - Enterprise Framework</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet">
     <style>
-        /* STICKY FOOTER & BASE SETUP */
+        /* STICKY FOOTER & BASE */
         body { 
             margin: 0; 
             padding: 0; 
@@ -15,14 +15,13 @@
             background-color: #0f172a; 
             overflow-x: hidden; 
             transition: background-color 0.3s, color 0.3s;
-            /* Sticky Footer Logic */
             display: flex;
             flex-direction: column;
-            min-height: 100vh; 
+            min-height: 100vh; /* Sticky Footer */
         }
         
         main {
-            flex-grow: 1; /* Rozpycha treść, dopychając footer do dołu */
+            flex-grow: 1; /* Wypycha footer */
         }
 
         * { box-sizing: border-box; }
@@ -34,14 +33,15 @@
             background-size: 40px 40px;
         }
 
-        /* NO UNDERLINE */
-        a { text-decoration: none !important; }
+        /* LOGO - BEZ PODKREŚLENIA */
+        a.logo-link { text-decoration: none !important; }
+        a.logo-link:hover { text-decoration: none !important; }
 
         /* --- LIGHT MODE OVERRIDES --- */
         body.light-mode { background-color: #ffffff !important; color: #0f172a !important; }
         body.light-mode .dark-only { display: none !important; opacity: 0 !important; }
         
-        /* Tła sekcji */
+        /* Tła */
         body.light-mode .Q\&bg-set-0f172a, 
         body.light-mode .Q\&bg-set-0b1120,
         body.light-mode .Q\&bg-set-111827,
@@ -66,13 +66,34 @@
             border-bottom-color: #e2e8f0 !important;
         }
 
-        /* Menu Links - ciemne w light mode */
+        /* Linki w menu */
         body.light-mode .nav-link { color: #334155 !important; font-weight: 600 !important; }
         body.light-mode .nav-link:hover { color: #2563eb !important; }
+
+        /* Footer linki */
+        body.light-mode .footer-link { color: #64748b !important; }
+        body.light-mode .footer-link:hover { color: #2563eb !important; }
 
         /* Teksty */
         body.light-mode .Q\&clr-white { color: #0f172a !important; }
         body.light-mode .Q\&clr-slate { color: #475569 !important; }
+        
+        /* Button Outline Fix Light Mode */
+        body.light-mode .Q\&btn-outline-sm,
+        body.light-mode .Q\&btn-outline-xs {
+            border-color: #cbd5e1 !important;
+            color: #334155 !important;
+        }
+        body.light-mode .Q\&btn-outline-sm:hover {
+            background-color: #f1f5f9 !important;
+            color: #0f172a !important;
+        }
+
+        /* Skeleton Fix */
+        body.light-mode .Q\&skeleton-text,
+        body.light-mode .Q\&skeleton-circle {
+            background-color: #e2e8f0 !important;
+        }
         
         /* Formularze */
         body.light-mode .Q\&input-dark, 
@@ -89,14 +110,14 @@
 </head>
 <body class="Q&bg-set-0f172a Q&clr-white Q&ovx-hidden grid-bg">
 
-    <script src="Y25R01-01.js"></script>
+    <script src="Y25R01-1.js"></script>
 
     <!-- NAWIGACJA -->
     <nav class="Q&pos-fixed Q&t-0 Q&l-0 Q&w-100-p Q&z-100 Q&bg-set-0f172acc Q&bblur-12-px Q&bd-1-px-solid-set-1e293b-dwn Q&trans-0.3">
         <div class="Q&mw-1200-px Q&mg-auto Q&pd-15-px Q&pd-20-px-x Q&d-flex Q&jc-sb Q&ai-center">
             
-            <!-- Logo (Bez podkreślenia) -->
-            <a href="#" class="Q&d-flex Q&ai-center Q&gap-10-px Q&cursor-pointer Q&td-none --hover-Q&op-0.8 Q&trans-0.2">
+            <!-- Logo -->
+            <a href="#" class="logo-link Q&d-flex Q&ai-center Q&gap-10-px Q&cursor-pointer Q&td-none --hover-Q&op-0.8 Q&trans-0.2">
                 <div class="Q&w-32-px Q&h-32-px md:Q&w-36-px md:Q&h-36-px Q&grad-br-blue-purple Q&br-8-px Q&d-flex Q&jc-center Q&ai-center Q&sh-lg">
                     <span class="Q&fs-3 md:Q&fs-4 Q&fw-800 Q&clr-white">Q</span>
                 </div>
@@ -129,7 +150,7 @@
         </div>
     </nav>
 
-    <!-- MAIN WRAPPER (Sticky Footer) -->
+    <!-- MAIN WRAPPER -->
     <main class="Q&grow-1">
 
         <!-- HERO SECTION -->
@@ -143,12 +164,11 @@
                 
                 <!-- Badge -->
                 <div class="Q&d-inline-flex Q&ai-center Q&jc-center Q&gap-8-px Q&bg-set-1e293b Q&pd-4-px Q&pd-12-px-rgt Q&br-50-px Q&bd-1-px-solid-set-334155 Q&mg-20-px-dwn md:Q&mg-30-px-dwn Q&mg-20-px-t --hover-Q&bd-1-px-solid-blue Q&trans-0.2 Q&cursor-pointer Q&mw-95-p Q&ov-hidden">
-                    <span class="Q&badge-blue Q&ws-nowrap Q&shrink-0">v4.4</span>
+                    <span class="Q&badge-blue Q&ws-nowrap Q&shrink-0">v4.5</span>
                     <span class="Q&fs-1 Q&clr-slate Q&d-inline md:Q&d-none Q&ws-nowrap">Nowości →</span>
                     <span class="Q&fs-1 Q&clr-slate Q&d-none md:Q&d-inline Q&ws-nowrap">Tabele, Formularze i Gradienty →</span>
                 </div>
 
-                <!-- Tytuł -->
                 <h1 class="Q&fs-7 sm:Q&fs-9 md:Q&fs-11 Q&fw-800 Q&lh-1.1 Q&mg-20-px-dwn Q&ls--1-px Q&clr-white">
                     Kompletny Framework<br>
                     <span class="Q&clr-transparent" style="-webkit-background-clip: text; background-clip: text; background-image: linear-gradient(to right, #3b82f6, #a855f7);">dla Twojego Biznesu.</span>
@@ -208,30 +228,28 @@
                 <!-- KOLUMNA 2 -->
                 <div class="Q&d-flex Q&fx-col Q&gap-30-px">
                     <div class="Q&fs-5 Q&fw-bold Q&mg-10-px-dwn Q&clr-white">Dane i Modale</div>
-                    <div class="Q&card-dark Q&ov-hidden Q&sh-xl">
-                        <div class="Q&pd-20-px Q&bd-1-px-solid-set-334155-b Q&d-flex Q&jc-sb Q&ai-center">
-                            <span class="Q&fw-bold Q&clr-white">Ostatnie Transakcje</span>
-                        </div>
-                        <div class="Q&ovx-auto">
-                            <table class="Q&table-dark">
-                                <thead><tr class="Q&bg-set-0f172a"><th>Status</th><th>Klient</th><th>Data</th></tr></thead>
-                                <tbody>
-                                    <tr><td><span class="Q&badge-blue">W toku</span></td><td>Anna N.</td><td>11 Lis</td></tr>
-                                    <tr><td><span class="Q&badge-green">Gotowe</span></td><td>Jan K.</td><td>12 Lis</td></tr>
-                                </tbody>
-                            </table>
+                    
+                    <!-- Skeleton Naprawiony -->
+                    <div class="Q&card-dark Q&pd-20-px">
+                        <div class="Q&fs-2 Q&fw-bold Q&mg-15-px-dwn Q&clr-slate">SKELETON LOADING STATE</div>
+                        <div class="Q&d-flex Q&ai-center Q&gap-15-px">
+                            <div class="Q&skeleton-circle Q&w-48-px Q&h-48-px Q&minw-48-px"></div>
+                            <div class="Q&grow-1 Q&d-flex Q&fx-col Q&gap-8-px">
+                                <div class="Q&skeleton-text Q&w-60-p"></div>
+                                <div class="Q&skeleton-text Q&w-90-p"></div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Modal Demo (Naprawione pozycjonowanie) -->
+                    <!-- Modal Demo (Fixed Layout) -->
                     <div class="Q&pos-relative Q&h-300-px Q&br-16-px Q&ov-hidden Q&bd-1-px-solid-set-334155">
                         <div class="Q&pos-absolute Q&inset-0 Q&bg-set-0f172a Q&d-flex Q&jc-center Q&ai-center">
                             <button class="Q&btn-dark-md">Otwórz Modal</button>
                         </div>
-                        <!-- Modal wewnątrz kontenera -->
                         <div class="Q&modal Q&pos-absolute Q&z-10">
                             <div class="Q&modal-box Q&sh-xl">
-                                <div class="Q&d-flex Q&jc-sb Q&ai-center Q&mg-20-px-dwn">
+                                <!-- Header Modala -->
+                                <div class="Q&d-flex Q&jc-sb Q&ai-center Q&mg-20-px-dwn Q&gap-10-px">
                                     <h3 class="Q&fs-4 Q&fw-bold Q&clr-white">Potwierdzenie</h3>
                                     <span class="Q&cursor-pointer Q&fs-4 Q&clr-slate">&times;</span>
                                 </div>
@@ -255,8 +273,8 @@
         <div class="Q&mw-1200-px Q&mg-auto Q&pd-20-px Q&txt-center">
             <p class="Q&clr-slate Q&fs-1">© 2023 Qoza Systems</p>
             <div class="Q&d-flex Q&jc-center Q&gap-20-px Q&mg-20-px-t Q&fs-1 Q&clr-slate">
-                <a href="#" class="Q&td-none Q&clr-current --hover-Q&clr-white">GitHub</a>
-                <a href="#" class="Q&td-none Q&clr-current --hover-Q&clr-white">Twitter</a>
+                <a href="#" class="footer-link Q&td-none Q&clr-current --hover-Q&clr-white">GitHub</a>
+                <a href="#" class="footer-link Q&td-none Q&clr-current --hover-Q&clr-white">Twitter</a>
             </div>
         </div>
     </footer>
