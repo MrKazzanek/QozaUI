@@ -1,21 +1,19 @@
 (function() {
     // ============================================================
-    // 1. KONFIGURACJA (Design System)
+    // 1. KONFIGURACJA
     // ============================================================
     const config = {
         components: {
-            // --- BUTTONS ---
             'btn': {
                 base: { default: { border: 'none', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'sans-serif', borderRadius: '8px', transition: 'all 0.2s ease', fontWeight: '600', lineHeight: '1', whiteSpace: 'nowrap' }, ':disabled': { opacity: '0.6', cursor: 'not-allowed', filter: 'grayscale(1)' }, ':active:not(:disabled)': { transform: 'scale(0.98)' } },
                 variants: {
-                    'primary': { default: { backgroundColor: '#3b82f6', color: '#fff', boxShadow: '0 4px 6px -1px rgba(59, 130, 246, 0.3)' }, ':hover:not(:disabled)': { backgroundColor: '#2563eb', boxShadow: '0 6px 10px -2px rgba(59, 130, 246, 0.4)' } },
-                    'dark': { default: { backgroundColor: '#1e293b', color: '#fff', border: '1px solid #334155' }, ':hover:not(:disabled)': { backgroundColor: '#334155', borderColor: '#475569' } },
+                    'primary': { default: { backgroundColor: '#3b82f6', color: '#fff', boxShadow: '0 4px 6px -1px rgba(59, 130, 246, 0.3)' }, ':hover:not(:disabled)': { backgroundColor: '#2563eb' } },
+                    'dark': { default: { backgroundColor: '#1e293b', color: '#fff', border: '1px solid #334155' }, ':hover:not(:disabled)': { backgroundColor: '#334155' } },
                     'ghost': { default: { backgroundColor: 'transparent', color: '#94a3b8' }, ':hover:not(:disabled)': { backgroundColor: 'rgba(255,255,255,0.05)', color: '#fff' } },
                     'outline': { default: { backgroundColor: 'transparent', border: '1px solid #475569', color: '#cbd5e1' }, ':hover:not(:disabled)': { borderColor: '#94a3b8', backgroundColor: 'rgba(255,255,255,0.05)', color: '#fff' } }
                 },
                 sizes: { 'sm': { default: { padding: '8px 14px', fontSize: '13px' } }, 'md': { default: { padding: '12px 20px', fontSize: '14px' } }, 'lg': { default: { padding: '14px 28px', fontSize: '16px' } }, 'xl': { default: { padding: '18px 36px', fontSize: '18px' } } }
             },
-            // --- INPUTS & TEXTAREAS ---
             'input': {
                 base: { default: { display: 'block', width: '100%', padding: '10px 14px', fontSize: '14px', lineHeight: '1.5', borderRadius: '8px', outline: 'none', transition: 'border-color 0.15s, box-shadow 0.15s', color: '#fff' }, ':focus': { borderColor: '#3b82f6', boxShadow: '0 0 0 3px rgba(59, 130, 246, 0.2)' } },
                 variants: { 'dark': { default: { backgroundColor: '#0f172a', border: '1px solid #334155', color: '#f8fafc' }, ':focus': { borderColor: '#3b82f6' } } }
@@ -24,31 +22,21 @@
                 base: { default: { display: 'block', width: '100%', padding: '10px 14px', fontSize: '14px', lineHeight: '1.5', borderRadius: '8px', outline: 'none', minHeight: '80px', resize: 'vertical', color: '#fff' } },
                 variants: { 'dark': { default: { backgroundColor: '#0f172a', border: '1px solid #334155', color: '#f8fafc' }, ':focus': { borderColor: '#3b82f6' } } }
             },
-            // --- TOGGLE SWITCH ---
             'switch': {
-                base: { default: { appearance: 'none', width: '42px', height: '24px', borderRadius: '99px', backgroundColor: '#334155', position: 'relative', cursor: 'pointer', outline: 'none', transition: '0.3s' }, ':checked': { backgroundColor: '#3b82f6' }, ':after': { content: '""', position: 'absolute', top: '2px', left: '2px', width: '20px', height: '20px', borderRadius: '50%', backgroundColor: '#fff', transition: '0.3s' }, ':checked:after': { transform: 'translateX(18px)' } }
+                base: { default: { appearance: 'none', width: '42px', height: '24px', borderRadius: '99px', backgroundColor: '#334155', position: 'relative', cursor: 'pointer', outline: 'none', transition: '0.3s', flexShrink: '0' }, ':checked': { backgroundColor: '#3b82f6' }, ':after': { content: '""', position: 'absolute', top: '2px', left: '2px', width: '20px', height: '20px', borderRadius: '50%', backgroundColor: '#fff', transition: '0.3s' }, ':checked:after': { transform: 'translateX(18px)' } }
             },
-            // --- PROGRESS BAR ---
             'progress': {
                 base: { default: { width: '100%', height: '8px', borderRadius: '99px', backgroundColor: '#334155', overflow: 'hidden' } },
-                variants: { 'blue': { default: { backgroundColor: '#1e293b' } } } // Wrapper style. Inner bar needs utility classes like Q&bg-blue
+                variants: { 'blue': { default: { backgroundColor: '#1e293b' } } }
             },
-            // --- CONTAINERS ---
             'card': {
                 base: { default: { borderRadius: '16px', overflow: 'hidden', position: 'relative' } },
-                variants: { 
-                    'dark': { default: { backgroundColor: '#1e293b', border: '1px solid #334155', color: '#fff' } }, 
-                    'glass': { default: { backgroundColor: 'rgba(30, 41, 59, 0.6)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.08)' } } 
-                },
+                variants: { 'dark': { default: { backgroundColor: '#1e293b', border: '1px solid #334155', color: '#fff' } } },
                 sizes: { '1': { default: { padding: '16px' } }, '2': { default: { padding: '24px' } }, '3': { default: { padding: '32px' } } }
             },
             'badge': {
-                base: { default: { display: 'inline-flex', alignItems: 'center', padding: '4px 10px', borderRadius: '9999px', fontSize: '11px', fontWeight: '700', lineHeight: '1', textTransform: 'uppercase', letterSpacing: '0.5px' } },
-                variants: { 
-                    'green': { default: { backgroundColor: 'rgba(34, 197, 94, 0.15)', color: '#4ade80', border: '1px solid rgba(34, 197, 94, 0.2)' } }, 
-                    'blue': { default: { backgroundColor: 'rgba(59, 130, 246, 0.15)', color: '#60a5fa', border: '1px solid rgba(59, 130, 246, 0.2)' } },
-                    'purple': { default: { backgroundColor: 'rgba(168, 85, 247, 0.15)', color: '#c084fc', border: '1px solid rgba(168, 85, 247, 0.2)' } }
-                }
+                base: { default: { display: 'inline-flex', alignItems: 'center', padding: '4px 10px', borderRadius: '9999px', fontSize: '11px', fontWeight: '700', lineHeight: '1.4', textTransform: 'uppercase', letterSpacing: '0.5px' } },
+                variants: { 'green': { default: { backgroundColor: 'rgba(34, 197, 94, 0.15)', color: '#4ade80', border: '1px solid rgba(34, 197, 94, 0.2)' } }, 'blue': { default: { backgroundColor: 'rgba(59, 130, 246, 0.15)', color: '#60a5fa', border: '1px solid rgba(59, 130, 246, 0.2)' } }, 'purple': { default: { backgroundColor: 'rgba(168, 85, 247, 0.15)', color: '#c084fc', border: '1px solid rgba(168, 85, 247, 0.2)' } } }
             },
             'avatar': {
                 base: { default: { display: 'inline-flex', alignItems: 'center', justifyContent: 'center', borderRadius: '50%', backgroundColor: '#334155', color: '#fff', fontWeight: '600', objectFit: 'cover' } },
@@ -92,7 +80,6 @@
     function objToCss(obj, imp=false) { return Object.entries(obj).map(([k, v]) => { const key = k.replace(/([A-Z])/g, '-$1').toLowerCase(); return `${key}: ${v}${imp?' !important':''};`; }).join(' '); }
     function mergeDeep(t, s) { for(const k in s) if(typeof s[k]==='object') { if(!t[k])t[k]={}; mergeDeep(t[k], s[k]); } else t[k]=s[k]; }
 
-    // 4. CORE GENERATOR (Multi-Prefix Logic)
     function generate(className) {
         if(generated.has(className)) return;
         
@@ -100,7 +87,6 @@
         let mediaQuery = null;
         let pseudoState = "default";
 
-        // 1. Breakpoint prefix (e.g., md:...)
         for (const bp in config.vars.breakpoints) {
             const prefix = `${bp}:`;
             if (rawName.startsWith(prefix)) {
@@ -110,18 +96,15 @@
             }
         }
 
-        // 2. Pseudo prefix (e.g., --hover-...)
-        if (rawName.startsWith('--')) {
+        if (rawName.startsWith('Q&')) {
+            rawName = rawName.substring(2);
+        } else if (rawName.startsWith('--')) {
             const idx = rawName.indexOf('-Q&');
             if (idx !== -1) {
                 pseudoState = `:${rawName.substring(2, idx)}`;
-                rawName = rawName.substring(idx + 1); // leave 'Q&' for next step
+                rawName = rawName.substring(idx + 1);
             }
-        }
-
-        // 3. Core Prefix (Q&...)
-        if (!rawName.startsWith('Q&')) return;
-        rawName = rawName.substring(2);
+        } else { return; }
 
         const parts = rawName.split('-'); const key = parts[0]; const args = parts.slice(1);
         let rules = {}, isUtil = false;
@@ -129,7 +112,6 @@
         if(config.components[key]) {
             const comp = config.components[key]; mergeDeep(rules, comp.base);
             args.forEach(a => { if(comp.variants&&comp.variants[a]) mergeDeep(rules,comp.variants[a]); if(comp.sizes&&comp.sizes[a]) mergeDeep(rules,comp.sizes[a]); });
-            // Default fallback logic
             if(comp.sizes && Object.keys(comp.sizes).length > 0 && !args.some(a => comp.sizes[a])) {
                  const defSize = comp.sizes['md'] || comp.sizes['2'] || Object.values(comp.sizes)[0];
                  if(defSize) mergeDeep(rules, defSize);
