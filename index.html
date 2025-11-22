@@ -2,34 +2,34 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <!-- KLUCZ DO RESPONSYWNOŚCI: -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QozaUI - Enterprise Ready</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet">
     <style>
-        /* STYLE BAZOWE (Działają zanim załaduje się JS) */
         body { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; background-color: #0f172a; overflow-x: hidden; }
         * { box-sizing: border-box; }
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #0f172a; }
         ::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
-        /* Fix dla komórek tabeli */
+        /* Fix tabeli */
         td, th { padding: 12px; border-bottom: 1px solid #334155; color: #cbd5e1; }
         th { font-weight: 600; color: #fff; text-transform: uppercase; font-size: 12px; }
     </style>
-    <script src="https://qozaui.netlify.app/Y25R01-01.js"></script>
 </head>
 <body class="Q&bg-set-0f172a Q&clr-white Q&ovx-hidden">
+
+    <!-- SKRYPT -->
+    <script src="Y25R01-01.js"></script>
 
     <!-- ================= NAWIGACJA ================= -->
     <nav class="Q&pos-fixed Q&t-0 Q&l-0 Q&w-100-p Q&z-100 Q&bg-set-0f172acc Q&bblur-12-px Q&bd-1-px-solid-set-1e293b-dwn">
         <div class="Q&mw-1200-px Q&mg-auto Q&pd-15-px Q&pd-20-px-x Q&d-flex Q&jc-sb Q&ai-center">
+            <!-- Logo -->
             <div class="Q&d-flex Q&ai-center Q&gap-10-px Q&cursor-pointer">
-                <!-- Logo z gradientem -->
-                <div class="Q&w-36-px Q&h-36-px Q&grad-br-blue-purple Q&br-8-px Q&d-flex Q&jc-center Q&ai-center Q&sh-lg">
-                    <span class="Q&fs-4 Q&fw-800">Q</span>
+                <div class="Q&w-32-px Q&h-32-px md:Q&w-36-px md:Q&h-36-px Q&grad-br-blue-purple Q&br-8-px Q&d-flex Q&jc-center Q&ai-center Q&sh-lg">
+                    <span class="Q&fs-3 md:Q&fs-4 Q&fw-800">Q</span>
                 </div>
-                <span class="Q&fs-4 Q&fw-800 Q&ls-0.5-px">Qoza<span class="Q&clr-blue">UI</span></span>
+                <span class="Q&fs-3 md:Q&fs-4 Q&fw-800 Q&ls-0.5-px">Qoza<span class="Q&clr-blue">UI</span></span>
             </div>
             
             <!-- Menu Desktop -->
@@ -39,7 +39,7 @@
                 <a class="Q&cursor-pointer --hover-Q&clr-white Q&trans-0.2">Enterprise</a>
             </div>
             
-            <!-- Przycisk -->
+            <!-- Przycisk Prawy -->
             <div class="Q&d-flex Q&gap-10-px">
                 <button class="Q&btn-primary-sm Q&sh-lg">Pobierz v4.0</button>
             </div>
@@ -48,19 +48,20 @@
 
     <!-- ================= HERO SECTION ================= -->
     <header class="Q&pos-relative Q&pd-160-px-t Q&pd-60-px-b md:Q&pd-200-px-t md:Q&pd-100-px-b Q&txt-center Q&ov-hidden">
-        <!-- Tło: Gradient -->
-        <div class="Q&pos-absolute Q&t-0 Q&l-0 Q&w-100-p Q&h-100-p Q&grad-b-set-1e293b-set-0f172a Q&op-0.5 Q&z--1"></div>
+        
+        <!-- Tło (Bez szarego gradientu!) -->
         <div class="Q&pos-absolute Q&t-0 Q&l-50-p Q&w-100-p Q&mw-1000-px Q&h-600-px Q&bg-blue Q&op-0.1 Q&br-50-p Q&blur-90-px Q&z--1" style="transform: translate(-50%, -50%);"></div>
 
         <div class="Q&mw-1200-px Q&mg-auto Q&pd-20-px">
             
-            <!-- Badge RWD -->
+            <!-- Badge NAPRAWIONY (Ukryty tekst na mobile) -->
             <div class="Q&d-inline-flex Q&ai-center Q&jc-center Q&gap-8-px Q&bg-set-1e293b Q&pd-4-px Q&pd-12-px-rgt Q&br-50-px Q&bd-1-px-solid-set-334155 Q&mg-20-px-dwn md:Q&mg-30-px-dwn Q&mg-20-px-t --hover-Q&bd-1-px-solid-blue Q&trans-0.2 Q&cursor-pointer Q&mw-100-p">
                 <span class="Q&badge-blue Q&ws-nowrap">v4.0 ENTERPRISE</span>
-                <span class="Q&fs-1 Q&clr-slate Q&d-inline md:Q&d-none">Zobacz nowości →</span>
+                <!-- Tylko na desktopie tekst -->
                 <span class="Q&fs-1 Q&clr-slate Q&d-none md:Q&d-inline">Tabele, Formularze i Gradienty →</span>
             </div>
 
+            <!-- Tytuł -->
             <h1 class="Q&fs-7 sm:Q&fs-9 md:Q&fs-11 Q&fw-800 Q&lh-1.1 Q&mg-20-px-dwn Q&ls--1-px">
                 Kompletny Framework<br>
                 <span class="Q&clr-transparent" style="-webkit-background-clip: text; background-clip: text; background-image: linear-gradient(to right, #3b82f6, #a855f7);">dla Twojego Biznesu.</span>
@@ -80,15 +81,13 @@
     <!-- ================= ENTERPRISE SHOWCASE ================= -->
     <section class="Q&mw-1200-px Q&mg-auto Q&pd-40-px-y Q&pd-20-px">
         
-        <!-- GRID GŁÓWNY: 1 kolumna na mobile, 2 na desktopie -->
+        <!-- GRID -->
         <div class="Q&d-grid Q&cols-1 lg:Q&cols-2 Q&gap-40-px">
             
-            <!-- KOLUMNA 1: Formularze i UI -->
+            <!-- KOLUMNA 1 -->
             <div class="Q&d-flex Q&fx-col Q&gap-30-px">
-                
                 <div class="Q&fs-5 Q&fw-bold Q&mg-10-px-dwn">Zaawansowane Formularze</div>
                 
-                <!-- Formularz Demo -->
                 <div class="Q&card-dark Q&pd-25-px Q&sh-xl">
                     <div class="Q&d-grid Q&cols-1 md:Q&cols-2 Q&gap-20-px">
                         <div>
@@ -100,16 +99,13 @@
                             <input type="text" class="Q&input-dark" placeholder="Kowalski">
                         </div>
                     </div>
-
                     <div class="Q&mg-20-px-y">
                         <label class="Q&fs-1 Q&fw-bold Q&clr-slate Q&d-block Q&mg-8-px-dwn">ROLA (SELECT)</label>
                         <select class="Q&select">
                             <option>Administrator</option>
                             <option>Użytkownik</option>
-                            <option>Gość</option>
                         </select>
                     </div>
-
                     <div class="Q&d-flex Q&gap-20-px Q&mg-20-px-dwn">
                         <label class="Q&d-flex Q&ai-center Q&gap-10-px Q&cursor-pointer">
                             <input type="radio" name="plan" class="Q&radio" checked>
@@ -120,16 +116,14 @@
                             <span class="Q&fs-2">Plan Pro</span>
                         </label>
                     </div>
-
                     <div class="Q&d-flex Q&ai-center Q&gap-10-px Q&pd-15-px Q&bg-set-0f172a Q&br-8-px">
                         <input type="checkbox" class="Q&checkbox" checked>
                         <div class="Q&fs-2">Akceptuję regulamin serwisu</div>
                     </div>
-
                     <button class="Q&btn-primary-md Q&w-100-p Q&mg-20-px-t">Zarejestruj się</button>
                 </div>
 
-                <!-- Skeleton Loader Demo -->
+                <!-- Skeleton -->
                 <div class="Q&card-dark Q&pd-20-px">
                     <div class="Q&fs-2 Q&fw-bold Q&mg-15-px-dwn Q&clr-slate">SKELETON LOADING STATE</div>
                     <div class="Q&d-flex Q&ai-center Q&gap-15-px">
@@ -140,83 +134,41 @@
                         </div>
                     </div>
                 </div>
-
             </div>
 
-            <!-- KOLUMNA 2: Tabele i Modale -->
+            <!-- KOLUMNA 2 -->
             <div class="Q&d-flex Q&fx-col Q&gap-30-px">
-                
                 <div class="Q&fs-5 Q&fw-bold Q&mg-10-px-dwn">Dane i Modale</div>
 
-                <!-- Tabela -->
                 <div class="Q&card-dark Q&ov-hidden Q&sh-xl">
                     <div class="Q&pd-20-px Q&bd-1-px-solid-set-334155-b Q&d-flex Q&jc-sb Q&ai-center">
-                        <span class="Q&fw-bold">Ostatnie Transakcje</span>
+                        <span class="Q&fw-bold">Transakcje</span>
                         <button class="Q&btn-outline-xs">Eksportuj</button>
                     </div>
-                    <!-- Wrapper dla tabeli na mobile -->
                     <div class="Q&ovx-auto">
                         <table class="Q&table-dark">
-                            <thead>
-                                <tr class="Q&bg-set-0f172a">
-                                    <th>Status</th>
-                                    <th>Klient</th>
-                                    <th>Kwota</th>
-                                    <th>Data</th>
-                                </tr>
-                            </thead>
+                            <thead><tr class="Q&bg-set-0f172a"><th>Status</th><th>Klient</th><th>Kwota</th><th>Data</th></tr></thead>
                             <tbody>
-                                <tr>
-                                    <td><span class="Q&badge-green">Opłacone</span></td>
-                                    <td>Jan Kowalski</td>
-                                    <td>$120.00</td>
-                                    <td>12 Lis</td>
-                                </tr>
-                                <tr>
-                                    <td><span class="Q&badge-blue">W toku</span></td>
-                                    <td>Anna Nowak</td>
-                                    <td>$450.50</td>
-                                    <td>11 Lis</td>
-                                </tr>
-                                <tr>
-                                    <td><span class="Q&badge-purple">Nowy</span></td>
-                                    <td>Piotr Żyła</td>
-                                    <td>$80.00</td>
-                                    <td>10 Lis</td>
-                                </tr>
+                                <tr><td><span class="Q&badge-green">Opłacone</span></td><td>Jan K.</td><td>$120</td><td>12 Lis</td></tr>
+                                <tr><td><span class="Q&badge-blue">W toku</span></td><td>Anna N.</td><td>$450</td><td>11 Lis</td></tr>
+                                <tr><td><span class="Q&badge-purple">Nowy</span></td><td>Piotr Ż.</td><td>$80</td><td>10 Lis</td></tr>
                             </tbody>
                         </table>
                     </div>
-                    <!-- Pagination -->
-                    <div class="Q&pd-15-px Q&d-flex Q&jc-sb Q&ai-center Q&bg-set-0f172a Q&bd-1-px-solid-set-334155-t">
-                        <span class="Q&fs-1 Q&clr-slate">Strona 1 z 5</span>
-                        <div class="Q&pagination">
-                            <button class="Q&btn-ghost-xs">Prev</button>
-                            <button class="Q&btn-dark-xs Q&bg-blue">1</button>
-                            <button class="Q&btn-dark-xs">2</button>
-                            <button class="Q&btn-ghost-xs">Next</button>
-                        </div>
-                    </div>
                 </div>
 
-                <!-- Modal Visual Representation -->
+                <!-- Modal Demo -->
                 <div class="Q&pos-relative Q&h-300-px Q&br-16-px Q&ov-hidden Q&bd-1-px-solid-set-334155">
-                    <!-- Tło pod "modalem" -->
                     <div class="Q&pos-absolute Q&inset-0 Q&bg-set-0f172a Q&d-flex Q&jc-center Q&ai-center">
                         <button class="Q&btn-dark-md">Otwórz Modal</button>
                     </div>
-                    
-                    <!-- Symulacja Overlayu Modala -->
-                    <!-- Używam Q&pos-absolute, aby modal był wewnątrz tego boxa -->
                     <div class="Q&modal Q&pos-absolute Q&z-10">
                         <div class="Q&modal-box Q&sh-xl">
                             <div class="Q&d-flex Q&jc-sb Q&ai-center Q&mg-20-px-dwn">
                                 <h3 class="Q&fs-4 Q&fw-bold">Potwierdzenie</h3>
                                 <span class="Q&cursor-pointer Q&fs-4">&times;</span>
                             </div>
-                            <p class="Q&clr-slate Q&lh-1.5 Q&mg-20-px-dwn">
-                                Czy na pewno chcesz usunąć ten projekt? Tej operacji nie można cofnąć.
-                            </p>
+                            <p class="Q&clr-slate Q&lh-1.5 Q&mg-20-px-dwn">Czy na pewno usunąć?</p>
                             <div class="Q&d-flex Q&jc-end Q&gap-10-px">
                                 <button class="Q&btn-outline-sm">Anuluj</button>
                                 <button class="Q&btn-danger-sm">Usuń</button>
@@ -224,7 +176,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
 
         </div>
@@ -237,6 +188,6 @@
             <p class="Q&clr-slate">Enterprise Grade Runtime CSS Framework</p>
         </div>
     </footer>
-  
+
 </body>
 </html>
