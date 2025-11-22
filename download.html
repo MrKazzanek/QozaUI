@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download – QozaUI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="logo.png">
+    <style>
+        /* BAZA - Kopia z index.html dla spójności */
+        body { 
+            margin: 0; padding: 0; box-sizing: border-box; 
+            font-family: 'Inter', sans-serif; 
+            background-color: #0f172a; 
+            overflow-x: hidden; 
+            transition: background-color 0.3s, color 0.3s;
+            display: flex; flex-direction: column; min-height: 100vh; 
+        }
+        main { flex-grow: 1; }
+        * { box-sizing: border-box; }
+        
+        /* Grid Pattern */
+        .grid-bg {
+            background-image: linear-gradient(to right, rgba(59, 130, 246, 0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        /* Linki bez podkreśleń */
+        a.logo-link { text-decoration: none !important; }
+        
+        /* --- LIGHT MODE CONFIG --- */
+        body.light-mode { background-color: #ffffff !important; color: #0f172a !important; }
+        body.light-mode .dark-only { display: none !important; opacity: 0 !important; }
+        
+        /* Tła i sekcje */
+        body.light-mode .Q\&bg-set-0f172a, 
+        body.light-mode .Q\&bg-set-0b1120,
+        body.light-mode .Q\&bg-set-111827,
+        body.light-mode .Q\&bg-set-1e293b,
+        body.light-mode .Q\&bg-set-1f2937 { background-color: #ffffff !important; border-color: #e2e8f0 !important; }
+        
+        /* Karty */
+        body.light-mode .Q\&card-dark,
+        body.light-mode .Q\&modal-box {
+            background-color: #ffffff !important;
+            border: 1px solid #e2e8f0 !important;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
+            color: #0f172a !important;
+        }
+
+        /* Navbar */
+        body.light-mode .Q\&bg-set-0f172acc { 
+            background-color: rgba(255, 255, 255, 0.95) !important; 
+            border-bottom-color: #e2e8f0 !important;
+        }
+
+        /* Linki */
+        body.light-mode .nav-link { color: #334155 !important; font-weight: 600 !important; }
+        body.light-mode .nav-link:hover { color: #2563eb !important; }
+        body.light-mode .footer-link { color: #64748b !important; }
+        body.light-mode .footer-link:hover { color: #2563eb !important; }
+
+        /* Teksty */
+        body.light-mode .Q\&clr-white { color: #0f172a !important; }
+        body.light-mode .Q\&clr-slate { color: #475569 !important; }
+        
+        /* Formularze */
+        body.light-mode .Q\&input-dark, body.light-mode .Q\&select, body.light-mode .Q\&textarea-dark { 
+            background-color: #f8fafc !important; border-color: #cbd5e1 !important; color: #0f172a !important; 
+        }
+        
+        /* Code block specific for light mode */
+        body.light-mode .code-block { background-color: #1e293b !important; color: #e2e8f0 !important; border-color: #cbd5e1 !important; }
+
+        body.light-mode ::-webkit-scrollbar-track { background: #fff; }
+        body.light-mode ::-webkit-scrollbar-thumb { background: #cbd5e1; }
+    </style>
+</head>
+<body class="Q&bg-set-0f172a Q&clr-white Q&ovx-hidden grid-bg">
+
+    <script src="Y25R01-01.js"></script>
+
+    <!-- NAV -->
+    <nav class="Q&pos-fixed Q&t-0 Q&l-0 Q&w-100-p Q&z-100 Q&bg-set-0f172acc Q&bblur-12-px Q&bd-1-px-solid-set-1e293b-dwn Q&trans-0.3">
+        <div class="Q&mw-1200-px Q&mg-auto Q&pd-15-px Q&pd-20-px-x Q&d-flex Q&jc-sb Q&ai-center">
+            <!-- LOGO ZMIENIONE NA LINK DO INDEX.HTML -->
+            <a href="index.html" class="logo-link Q&d-flex Q&ai-center Q&gap-10-px Q&cursor-pointer Q&td-none --hover-Q&op-0.8 Q&trans-0.2">
+                <div class="Q&w-32-px Q&h-32-px md:Q&w-36-px md:Q&h-36-px Q&grad-br-blue-purple Q&br-8-px Q&d-flex Q&jc-center Q&ai-center Q&sh-lg">
+                    <span class="Q&fs-3 md:Q&fs-4 Q&fw-800 Q&clr-white">Q</span>
+                </div>
+                <span class="Q&fs-3 md:Q&fs-4 Q&fw-800 Q&ls-0.5-px Q&clr-white">Qoza<span class="Q&clr-blue">UI</span></span>
+            </a>
+            <div class="Q&d-none md:Q&d-flex Q&gap-30-px Q&fs-2 Q&fw-500 Q&clr-slate">
+                <a href="components.html" class="nav-link Q&cursor-pointer Q&td-none Q&clr-current --hover-Q&clr-white Q&trans-0.2">Components</a>
+                <a href="docs.html" class="nav-link Q&cursor-pointer Q&td-none Q&clr-current --hover-Q&clr-white Q&trans-0.2">Documentation</a>
+            </div>
+            <div class="Q&d-flex Q&ai-center Q&gap-10-px">
+                <button id="theme-btn" class="Q&btn-ghost-sm Q&clr-slate --hover-Q&clr-white Q&pd-8-px"><span id="theme-icon">💻</span></button>
+                <!-- Button Download jest disabled/ukryty bo tu jesteśmy -->
+                <button id="menu-btn" class="Q&btn-ghost-sm Q&d-flex md:Q&d-none Q&fs-4 Q&clr-white">≡</button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="Q&d-none Q&bg-set-0f172a Q&bd-1-px-solid-set-1e293b-t Q&pd-20-px Q&fx-col Q&gap-15-px Q&sh-xl">
+            <a href="index.html" class="Q&fs-3 Q&fw-600 Q&clr-white Q&td-none">Home</a>
+            <a href="components.html" class="Q&fs-3 Q&fw-600 Q&clr-white Q&td-none">Components</a>
+            <a href="docs.html" class="Q&fs-3 Q&fw-600 Q&clr-white Q&td-none">Documentation</a>
+        </div>
+    </nav>
+
+    <main class="Q&grow-1 Q&pd-100-px-t Q&pd-40-px-b">
+        <div class="Q&mw-800-px Q&mg-auto Q&pd-20-px">
+            
+            <!-- HEADER SEKCJI -->
+            <div class="Q&txt-center Q&mg-40-px-dwn">
+                <h1 class="Q&fs-8 md:Q&fs-10 Q&fw-800 Q&lh-1.1 Q&mg-20-px-dwn Q&clr-white">Get Qoza<span class="Q&clr-blue">UI</span></h1>
+                <p class="Q&fs-3 Q&clr-slate Q&mw-600-px Q&mg-auto">Import the framework with a single line of code and start building modern interfaces instantly.</p>
+            </div>
+
+            <!-- KARTA POBIERANIA -->
+            <div class="Q&card-dark Q&pd-30-px Q&sh-xl">
+                <div class="Q&d-flex Q&fx-col Q&gap-25-px">
+                    
+                    <!-- Wybór wersji -->
+                    <div>
+                        <label class="Q&fs-1 Q&fw-bold Q&clr-slate Q&d-block Q&mg-8-px-dwn">Select Version</label>
+                        <select id="version-select" class="Q&select">
+                            <option value="Y25R01-01.js" selected>v. Y25R01-01 (Latest)</option>
+                            <option value="Y24R12-05.js">v. Y24R12-05 (Stable)</option>
+                            <option value="Y24R11-02.js">v. Y24R11-02 (Legacy)</option>
+                        </select>
+                    </div>
+
+                    <!-- Instrukcja -->
+                    <div class="Q&bd-1-px-solid-set-334155-b Q&pd-20-px-b">
+                        <p class="Q&fs-2 Q&clr-white Q&lh-1.5">To install QozaUI, simply download the `.js` file (or host it yourself) and place the following script tag in your HTML file just before the closing <code class="Q&bg-set-1e293b Q&pd-4-px Q&br-4-px">&lt;/body&gt;</code> tag.</p>
+                    </div>
+
+                    <!-- Pole z kodem -->
+                    <div class="Q&pos-relative">
+                        <div class="code-block Q&bg-set-0b1120 Q&pd-20-px Q&br-8-px Q&bd-1-px-solid-set-334155 Q&ovx-auto">
+                            <code id="code-display" class="Q&sft-mono Q&fs-2 Q&clr-blue">&lt;script src="Y25R01-01.js"&gt;&lt;/script&gt;</code>
+                        </div>
+                        <div class="Q&mg-15-px-t Q&d-flex Q&jc-end">
+                            <button id="copy-btn" class="Q&btn-primary-sm Q&d-flex Q&ai-center Q&gap-8-px">
+                                <span>📋</span> <span id="copy-text">Copy Code</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Direct Download Link (Fake) -->
+                    <div class="Q&txt-center Q&mg-10-px-t">
+                        <a href="#" class="Q&fs-1 Q&clr-slate Q&td-underline --hover-Q&clr-blue">Download raw .js file</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features List Small -->
+            <div class="Q&mg-50-px-t Q&d-grid Q&cols-1 sm:Q&cols-3 Q&gap-20-px">
+                <div class="Q&txt-center">
+                    <div class="Q&fs-5 Q&mg-10-px-dwn">⚡</div>
+                    <div class="Q&fs-2 Q&fw-bold Q&clr-white">Fast Loading</div>
+                    <div class="Q&fs-1 Q&clr-slate">Less than 10KB gzipped</div>
+                </div>
+                <div class="Q&txt-center">
+                    <div class="Q&fs-5 Q&mg-10-px-dwn">🎨</div>
+                    <div class="Q&fs-2 Q&fw-bold Q&clr-white">Theme Ready</div>
+                    <div class="Q&fs-1 Q&clr-slate">Auto dark & light mode</div>
+                </div>
+                <div class="Q&txt-center">
+                    <div class="Q&fs-5 Q&mg-10-px-dwn">🔧</div>
+                    <div class="Q&fs-2 Q&fw-bold Q&clr-white">Utility First</div>
+                    <div class="Q&fs-1 Q&clr-slate">Build layouts without CSS</div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="Q&bg-set-0b1120 Q&pd-40-px-y Q&bd-1-px-solid-set-1e293b-t Q&w-100-p">
+        <div class="Q&mw-1200-px Q&mg-auto Q&pd-20-px Q&d-flex Q&fx-col md:Q&fx-row Q&jc-sb Q&ai-center Q&gap-20-px">
+            <p class="Q&clr-slate Q&fs-1">© 2023 Qoza Systems</p>
+            <div class="Q&d-flex Q&gap-25-px Q&fs-1 Q&clr-slate">
+                <a href="https://discord.gg/YzcBM7MUZy" class="footer-link Q&td-none Q&clr-current --hover-Q&clr-white">Discord</a>
+                <a href="https://x.com/MrKazanek" class="footer-link Q&td-none Q&clr-current --hover-Q&clr-white">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- THEME LOGIC (Identyczna jak w index.html) ---
+        const themeBtn = document.getElementById('theme-btn');
+        const themeIcon = document.getElementById('theme-icon');
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        let currentTheme = localStorage.getItem('theme') || 'system';
+        const themes = ['system', 'light', 'dark'];
+
+        function applyTheme(t) {
+            const body = document.body;
+            let icon = '💻';
+            if(t==='system') {
+                if(window.matchMedia('(prefers-color-scheme: dark)').matches) body.classList.remove('light-mode');
+                else body.classList.add('light-mode');
+            } else if(t==='light') { body.classList.add('light-mode'); icon='☀️'; }
+            else { body.classList.remove('light-mode'); icon='🌙'; }
+            themeIcon.innerText = icon;
+            localStorage.setItem('theme', t);
+        }
+
+        themeBtn.addEventListener('click', () => {
+            let idx = themes.indexOf(currentTheme);
+            currentTheme = themes[(idx + 1) % themes.length];
+            applyTheme(currentTheme);
+        });
+        applyTheme(currentTheme);
+
+        let isMenuOpen = false;
+        menuBtn.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            if(isMenuOpen) { mobileMenu.classList.remove('Q&d-none'); mobileMenu.classList.add('Q&d-flex'); menuBtn.innerText='✕'; }
+            else { mobileMenu.classList.add('Q&d-none'); mobileMenu.classList.remove('Q&d-flex'); menuBtn.innerText='≡'; }
+        });
+
+        // --- DOWNLOAD PAGE SPECIFIC LOGIC ---
+        const versionSelect = document.getElementById('version-select');
+        const codeDisplay = document.getElementById('code-display');
+        const copyBtn = document.getElementById('copy-btn');
+        const copyText = document.getElementById('copy-text');
+
+        // Aktualizacja kodu po zmianie wersji
+        versionSelect.addEventListener('change', (e) => {
+            const version = e.target.value;
+            codeDisplay.innerText = `<script src="${version}"><\/script>`;
+        });
+
+        // Funkcja kopiowania
+        copyBtn.addEventListener('click', () => {
+            const codeToCopy = codeDisplay.innerText;
+            navigator.clipboard.writeText(codeToCopy).then(() => {
+                const originalText = copyText.innerText;
+                copyText.innerText = "Copied!";
+                copyBtn.classList.add('Q&bg-set-10b981', 'Q&bd-1-px-solid-set-10b981'); // Zielony kolor z bazy frameworka (emerald)
+                
+                setTimeout(() => {
+                    copyText.innerText = originalText;
+                    copyBtn.classList.remove('Q&bg-set-10b981', 'Q&bd-1-px-solid-set-10b981');
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>
