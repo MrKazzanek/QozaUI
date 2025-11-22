@@ -3,132 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QozaUI - Framework dla Twojego Biznesu</title>
+    <title>QozaUI - Modern Framework</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet">
     <style>
-        /* BAZOWE STYLE */
+        /* BASE */
         body { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; background-color: #0f172a; overflow-x: hidden; transition: background-color 0.3s, color 0.3s; }
         * { box-sizing: border-box; }
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #0f172a; }
-        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
         
-        /* FIX TABELI */
-        td, th { padding: 12px; border-bottom: 1px solid #334155; color: #cbd5e1; }
-        th { font-weight: 600; color: #fff; text-transform: uppercase; font-size: 12px; }
+        /* GRID PATTERN (Daje efekt "tech" w tle, wygląda dobrze na dark i light) */
+        .grid-bg {
+            background-image: linear-gradient(to right, rgba(59, 130, 246, 0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
 
-        /* --- LIGHT MODE OVERRIDES (Nadpisuje ciemne kolory frameworka) --- */
+        /* LIGHT MODE OVERRIDES - WYMUSZANIE CZYSTEJ BIELI */
         body.light-mode { background-color: #ffffff !important; color: #0f172a !important; }
+        
+        /* Ukrywanie elementów "dark only" (np. ciemne gradienty) */
+        body.light-mode .dark-only { display: none !important; opacity: 0 !important; }
+        
+        /* Tła sekcji w light mode */
         body.light-mode .Q\&bg-set-0f172a, 
         body.light-mode .Q\&bg-set-0b1120,
         body.light-mode .Q\&bg-set-111827 { background-color: #ffffff !important; }
         
+        /* Karty i kontenery w light mode - jasne szarości */
         body.light-mode .Q\&bg-set-1e293b,
-        body.light-mode .Q\&bg-set-1f2937 { background-color: #f1f5f9 !important; border-color: #e2e8f0 !important; }
+        body.light-mode .Q\&bg-set-1f2937,
+        body.light-mode .Q\&bg-set-0f172a { 
+            background-color: #ffffff !important; 
+            border-color: #e2e8f0 !important; 
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
         
-        body.light-mode .Q\&bg-set-0f172acc { background-color: rgba(255, 255, 255, 0.8) !important; }
-        
+        /* Navbar w light mode */
+        body.light-mode .Q\&bg-set-0f172acc { 
+            background-color: rgba(255, 255, 255, 0.85) !important; 
+            border-bottom-color: #e2e8f0 !important;
+        }
+
+        /* Teksty w light mode */
         body.light-mode .Q\&clr-white { color: #0f172a !important; }
         body.light-mode .Q\&clr-slate { color: #64748b !important; }
-        body.light-mode .Q\&bd-1-px-solid-set-1e293b-dwn,
-        body.light-mode .Q\&bd-1-px-solid-set-1e293b-t,
-        body.light-mode .Q\&bd-1-px-solid-set-1e293b-y,
-        body.light-mode .Q\&bd-1-px-solid-set-334155 { border-color: #e2e8f0 !important; }
         
-        body.light-mode .Q\&input-dark, 
+        /* Przyciski i inputy w light mode */
+        body.light-mode .Q\&btn-dark-lg,
+        body.light-mode .Q\&input-dark,
         body.light-mode .Q\&textarea-dark,
-        body.light-mode .Q\&select { background-color: #fff !important; border-color: #cbd5e1 !important; color: #0f172a !important; }
-        
-        body.light-mode ::-webkit-scrollbar-track { background: #fff; }
-        body.light-mode ::-webkit-scrollbar-thumb { background: #cbd5e1; }
+        body.light-mode .Q\&select { 
+            background-color: #f8fafc !important; 
+            border-color: #cbd5e1 !important; 
+            color: #0f172a !important; 
+        }
+        body.light-mode .Q\&btn-dark-lg:hover { background-color: #e2e8f0 !important; }
+
     </style>
 </head>
-<body class="Q&bg-set-0f172a Q&clr-white Q&ovx-hidden">
+<body class="Q&bg-set-0f172a Q&clr-white Q&ovx-hidden grid-bg">
 
-    <!-- SKRYPT FRAMEWORKA (v4.1) -->
+    <!-- SKRYPT -->
     <script src="Y25R01-01.js"></script>
 
-    <!-- ================= NAWIGACJA ================= -->
+    <!-- NAWIGACJA -->
     <nav class="Q&pos-fixed Q&t-0 Q&l-0 Q&w-100-p Q&z-100 Q&bg-set-0f172acc Q&bblur-12-px Q&bd-1-px-solid-set-1e293b-dwn Q&trans-0.3">
         <div class="Q&mw-1200-px Q&mg-auto Q&pd-15-px Q&pd-20-px-x Q&d-flex Q&jc-sb Q&ai-center">
             
-            <!-- LOGO (Scroll to top) -->
+            <!-- Logo -->
             <a href="#" class="Q&d-flex Q&ai-center Q&gap-10-px Q&cursor-pointer Q&td-none --hover-Q&op-0.8 Q&trans-0.2">
-                <div class="Q&w-32-px Q&h-32-px md:Q&w-36-px md:Q&h-36-px Q&grad-br-blue-purple Q&br-8-px Q&d-flex Q&jc-center Q&ai-center Q&sh-lg">
+                <div class="Q&w-32-px Q&h-32-px md:Q&w-36-px md:Q&h-36-px Q&bg-blue Q&br-8-px Q&d-flex Q&jc-center Q&ai-center Q&sh-lg">
                     <span class="Q&fs-3 md:Q&fs-4 Q&fw-800 Q&clr-white">Q</span>
                 </div>
                 <span class="Q&fs-3 md:Q&fs-4 Q&fw-800 Q&ls-0.5-px Q&clr-white">Qoza<span class="Q&clr-blue">UI</span></span>
             </a>
 
-            <!-- MENU DESKTOP -->
+            <!-- Menu -->
             <div class="Q&d-none md:Q&d-flex Q&gap-30-px Q&fs-2 Q&fw-500 Q&clr-slate">
                 <a href="components.html" class="Q&cursor-pointer Q&td-none Q&clr-current --hover-Q&clr-white Q&trans-0.2">Komponenty</a>
                 <a href="docs.html" class="Q&cursor-pointer Q&td-none Q&clr-current --hover-Q&clr-white Q&trans-0.2">Dokumentacja</a>
             </div>
 
-            <!-- AKCJE PRAWE (Theme + Download + Hamburger) -->
+            <!-- Akcje -->
             <div class="Q&d-flex Q&ai-center Q&gap-10-px">
-                
-                <!-- Theme Switcher -->
-                <button id="theme-btn" class="Q&btn-ghost-sm Q&clr-slate --hover-Q&clr-white Q&pd-8-px" title="Zmień motyw">
+                <button id="theme-btn" class="Q&btn-ghost-sm Q&clr-slate --hover-Q&clr-white Q&pd-8-px">
                     <span id="theme-icon">💻</span>
                 </button>
-
-                <!-- Download Button -->
                 <a href="download.html" class="Q&d-none sm:Q&d-inline-flex">
                     <button class="Q&btn-primary-sm Q&sh-lg --hover-Q&scale-105">Pobierz</button>
                 </a>
-
-                <!-- Hamburger (Mobile Only) -->
-                <button id="menu-btn" class="Q&btn-ghost-sm Q&d-flex md:Q&d-none Q&fs-4 Q&clr-white">
-                    ≡
-                </button>
+                <button id="menu-btn" class="Q&btn-ghost-sm Q&d-flex md:Q&d-none Q&fs-4 Q&clr-white">≡</button>
             </div>
         </div>
 
-        <!-- MOBILE MENU (Hidden by default) -->
+        <!-- Mobile Menu -->
         <div id="mobile-menu" class="Q&d-none Q&bg-set-0f172a Q&bd-1-px-solid-set-1e293b-t Q&pd-20-px Q&fx-col Q&gap-15-px Q&sh-xl">
             <a href="components.html" class="Q&fs-3 Q&fw-600 Q&clr-white Q&td-none">Komponenty</a>
             <a href="docs.html" class="Q&fs-3 Q&fw-600 Q&clr-white Q&td-none">Dokumentacja</a>
-            <a href="download.html" class="Q&btn-primary-md Q&w-100-p Q&txt-center">Pobierz Framework</a>
+            <a href="download.html" class="Q&btn-primary-md Q&w-100-p Q&txt-center">Pobierz</a>
         </div>
     </nav>
 
-    <!-- ================= HERO SECTION ================= -->
-    <header class="Q&pos-relative Q&pd-160-px-t Q&pd-40-px-b md:Q&pd-200-px-t md:Q&pd-100-px-b Q&txt-center Q&ov-hidden">
-        <!-- Tło -->
-        <div class="Q&pos-absolute Q&t-0 Q&l-0 Q&w-100-p Q&h-100-p Q&grad-b-set-1e293b-set-0f172a Q&op-0.5 Q&z--1"></div>
-        <div class="Q&pos-absolute Q&t-0 Q&l-50-p Q&w-100-p Q&mw-1000-px Q&h-600-px Q&bg-blue Q&op-0.1 Q&br-50-p Q&blur-90-px Q&z--1" style="transform: translate(-50%, -50%);"></div>
+    <!-- HERO SECTION -->
+    <header class="Q&pos-relative Q&pd-160-px-t Q&pd-60-px-b md:Q&pd-200-px-t md:Q&pd-100-px-b Q&txt-center Q&ov-hidden">
+        
+        <!-- Tło (Glow - niebieski działa dobrze na białym i czarnym) -->
+        <div class="Q&pos-absolute Q&t-0 Q&l-50-p Q&w-100-p Q&mw-1000-px Q&h-600-px Q&bg-blue Q&op-0.08 Q&br-50-p Q&blur-80-px Q&z--1" style="transform: translate(-50%, -50%);"></div>
+        
+        <!-- Ten ciemny gradient usuwamy w trybie jasnym klasą 'dark-only' -->
+        <div class="dark-only Q&pos-absolute Q&t-0 Q&l-0 Q&w-100-p Q&h-100-p Q&grad-b-set-1e293b-set-0f172a Q&op-0.5 Q&z--1"></div>
 
         <div class="Q&mw-1200-px Q&mg-auto Q&pd-20-px">
             
-            <!-- Badge RWD Fix -->
+            <!-- Badge RWD -->
             <div class="Q&d-inline-flex Q&ai-center Q&jc-center Q&gap-8-px Q&bg-set-1e293b Q&pd-4-px Q&pd-12-px-rgt Q&br-50-px Q&bd-1-px-solid-set-334155 Q&mg-20-px-dwn md:Q&mg-30-px-dwn Q&mg-20-px-t --hover-Q&bd-1-px-solid-blue Q&trans-0.2 Q&cursor-pointer Q&mw-95-p Q&ov-hidden">
-                <span class="Q&badge-blue Q&ws-nowrap Q&shrink-0">v4.0</span>
+                <span class="Q&badge-blue Q&ws-nowrap Q&shrink-0">v4.2</span>
                 <span class="Q&fs-1 Q&clr-slate Q&d-inline md:Q&d-none Q&ws-nowrap">Nowości →</span>
-                <span class="Q&fs-1 Q&clr-slate Q&d-none md:Q&d-inline Q&ws-nowrap">Tabele, Formularze i Gradienty →</span>
+                <span class="Q&fs-1 Q&clr-slate Q&d-none md:Q&d-inline Q&ws-nowrap">Pobierz najnowszą wersję →</span>
             </div>
 
-            <!-- Tytuł -->
             <h1 class="Q&fs-7 sm:Q&fs-9 md:Q&fs-11 Q&fw-800 Q&lh-1.1 Q&mg-20-px-dwn Q&ls--1-px Q&clr-white">
                 Kompletny Framework<br>
                 <span class="Q&clr-transparent" style="-webkit-background-clip: text; background-clip: text; background-image: linear-gradient(to right, #3b82f6, #a855f7);">dla Twojego Biznesu.</span>
             </h1>
 
             <p class="Q&fs-2 md:Q&fs-4 Q&clr-slate Q&mw-700-px Q&mg-auto Q&mg-30-px-dwn Q&lh-1.6">
-                Teraz z obsługą tabel, rozbudowanych formularzy (Radio, Checkbox), Modali i animacji ładowania (Skeleton). Gotowy na duże projekty.
+                Teraz z obsługą tabel, rozbudowanych formularzy, Modali i animacji ładowania. Gotowy na duże projekty.
             </p>
 
             <div class="Q&d-flex Q&fx-col sm:Q&fx-row Q&jc-center Q&gap-15-px">
-                <button onclick="window.location.href='download.html'" class="Q&btn-primary-lg Q&sh-xl --hover-Q&ty--2-px">Rozpocznij Projekt</button>
-                <button onclick="window.location.href='docs.html'" class="Q&btn-dark-lg Q&bd-1-px-solid-set-334155 --hover-Q&bg-set-1e293b">Dokumentacja</button>
+                <button class="Q&btn-primary-lg Q&sh-xl --hover-Q&ty--2-px">Rozpocznij Projekt</button>
+                <button class="Q&btn-dark-lg Q&bd-1-px-solid-set-334155 --hover-Q&bg-set-1e293b">Dokumentacja</button>
             </div>
         </div>
     </header>
 
-    <!-- ================= ENTERPRISE SHOWCASE ================= -->
+    <!-- SHOWCASE -->
     <section class="Q&mw-1200-px Q&mg-auto Q&pd-40-px-y Q&pd-20-px">
-        
         <div class="Q&d-grid Q&cols-1 lg:Q&cols-2 Q&gap-40-px">
             
             <!-- KOLUMNA 1 -->
@@ -147,7 +157,7 @@
                         </div>
                     </div>
                     <div class="Q&mg-20-px-y">
-                        <label class="Q&fs-1 Q&fw-bold Q&clr-slate Q&d-block Q&mg-8-px-dwn">ROLA (SELECT)</label>
+                        <label class="Q&fs-1 Q&fw-bold Q&clr-slate Q&d-block Q&mg-8-px-dwn">ROLA</label>
                         <select class="Q&select">
                             <option>Administrator</option>
                             <option>Użytkownik</option>
@@ -156,71 +166,32 @@
                     <div class="Q&d-flex Q&gap-20-px Q&mg-20-px-dwn">
                         <label class="Q&d-flex Q&ai-center Q&gap-10-px Q&cursor-pointer">
                             <input type="radio" name="plan" class="Q&radio" checked>
-                            <span class="Q&fs-2 Q&clr-white">Plan Free</span>
+                            <span class="Q&fs-2 Q&clr-white">Free</span>
                         </label>
                         <label class="Q&d-flex Q&ai-center Q&gap-10-px Q&cursor-pointer">
                             <input type="radio" name="plan" class="Q&radio">
-                            <span class="Q&fs-2 Q&clr-white">Plan Pro</span>
+                            <span class="Q&fs-2 Q&clr-white">Pro</span>
                         </label>
                     </div>
-                    <div class="Q&d-flex Q&ai-center Q&gap-10-px Q&pd-15-px Q&bg-set-0f172a Q&br-8-px">
-                        <input type="checkbox" class="Q&checkbox" checked>
-                        <div class="Q&fs-2 Q&clr-white">Akceptuję regulamin serwisu</div>
-                    </div>
-                    <button class="Q&btn-primary-md Q&w-100-p Q&mg-20-px-t">Zarejestruj się</button>
-                </div>
-
-                <!-- Skeleton -->
-                <div class="Q&card-dark Q&pd-20-px">
-                    <div class="Q&fs-2 Q&fw-bold Q&mg-15-px-dwn Q&clr-slate">SKELETON LOADING STATE</div>
-                    <div class="Q&d-flex Q&ai-center Q&gap-15-px">
-                        <div class="Q&skeleton-circle Q&w-48-px Q&h-48-px Q&minw-48-px"></div>
-                        <div class="Q&grow-1 Q&d-flex Q&fx-col Q&gap-8-px">
-                            <div class="Q&skeleton-text Q&w-60-p"></div>
-                            <div class="Q&skeleton-text Q&w-90-p"></div>
-                        </div>
-                    </div>
+                    <button class="Q&btn-primary-md Q&w-100-p">Zarejestruj</button>
                 </div>
             </div>
 
             <!-- KOLUMNA 2 -->
             <div class="Q&d-flex Q&fx-col Q&gap-30-px">
-                <div class="Q&fs-5 Q&fw-bold Q&mg-10-px-dwn Q&clr-white">Dane i Modale</div>
-
+                <div class="Q&fs-5 Q&fw-bold Q&mg-10-px-dwn Q&clr-white">Dane i Tabele</div>
                 <div class="Q&card-dark Q&ov-hidden Q&sh-xl">
                     <div class="Q&pd-20-px Q&bd-1-px-solid-set-334155-b Q&d-flex Q&jc-sb Q&ai-center">
-                        <span class="Q&fw-bold Q&clr-white">Transakcje</span>
-                        <button class="Q&btn-outline-xs">Eksportuj</button>
+                        <span class="Q&fw-bold Q&clr-white">Ostatnie Transakcje</span>
                     </div>
                     <div class="Q&ovx-auto">
                         <table class="Q&table-dark">
-                            <thead><tr class="Q&bg-set-0f172a"><th>Status</th><th>Klient</th><th>Kwota</th><th>Data</th></tr></thead>
+                            <thead><tr class="Q&bg-set-0f172a"><th>Status</th><th>Klient</th><th>Data</th></tr></thead>
                             <tbody>
-                                <tr><td><span class="Q&badge-green">Opłacone</span></td><td>Jan K.</td><td>$120</td><td>12 Lis</td></tr>
-                                <tr><td><span class="Q&badge-blue">W toku</span></td><td>Anna N.</td><td>$450</td><td>11 Lis</td></tr>
-                                <tr><td><span class="Q&badge-purple">Nowy</span></td><td>Piotr Ż.</td><td>$80</td><td>10 Lis</td></tr>
+                                <tr><td><span class="Q&badge-blue">W toku</span></td><td>Anna N.</td><td>11 Lis</td></tr>
+                                <tr><td><span class="Q&badge-green">Gotowe</span></td><td>Jan K.</td><td>12 Lis</td></tr>
                             </tbody>
                         </table>
-                    </div>
-                </div>
-
-                <!-- Modal Demo (Bez logiki, tylko wygląd) -->
-                <div class="Q&pos-relative Q&h-300-px Q&br-16-px Q&ov-hidden Q&bd-1-px-solid-set-334155">
-                    <div class="Q&pos-absolute Q&inset-0 Q&bg-set-0f172a Q&d-flex Q&jc-center Q&ai-center">
-                        <button class="Q&btn-dark-md">Otwórz Modal</button>
-                    </div>
-                    <div class="Q&modal Q&pos-absolute Q&z-10">
-                        <div class="Q&modal-box Q&sh-xl">
-                            <div class="Q&d-flex Q&jc-sb Q&ai-center Q&mg-20-px-dwn">
-                                <h3 class="Q&fs-4 Q&fw-bold Q&clr-white">Potwierdzenie</h3>
-                                <span class="Q&cursor-pointer Q&fs-4 Q&clr-slate">&times;</span>
-                            </div>
-                            <p class="Q&clr-slate Q&lh-1.5 Q&mg-20-px-dwn">Czy na pewno chcesz usunąć ten projekt? Tej operacji nie można cofnąć.</p>
-                            <div class="Q&d-flex Q&jc-end Q&gap-10-px">
-                                <button class="Q&btn-outline-sm">Anuluj</button>
-                                <button class="Q&btn-danger-sm">Usuń</button>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -229,80 +200,49 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="Q&bg-set-0b1120 Q&pd-30-px-y Q&bd-1-px-solid-set-1e293b-t">
-        <div class="Q&mw-1200-px Q&mg-auto Q&pd-20-px Q&d-flex Q&fx-col md:Q&fx-row Q&jc-sb Q&ai-center Q&gap-20-px">
-            <div class="Q&txt-center md:Q&ta-left">
-                <div class="Q&fs-4 Q&fw-bold Q&mg-5-px-dwn Q&clr-white">Qoza<span class="Q&clr-blue">UI</span></div>
-                <p class="Q&clr-slate Q&fs-1">© 2023 Qoza Systems</p>
-            </div>
-            <div class="Q&d-flex Q&gap-25-px Q&fs-2 Q&clr-slate">
-                <a href="https://github.com" target="_blank" class="Q&cursor-pointer --hover-Q&clr-white Q&td-none">GitHub</a>
-                <a href="https://twitter.com" target="_blank" class="Q&cursor-pointer --hover-Q&clr-white Q&td-none">Twitter</a>
-                <a href="https://discord.com" target="_blank" class="Q&cursor-pointer --hover-Q&clr-white Q&td-none">Discord</a>
-            </div>
+    <footer class="Q&bg-set-0b1120 Q&pd-40-px-y Q&bd-1-px-solid-set-1e293b-t Q&mg-60-px-t">
+        <div class="Q&mw-1200-px Q&mg-auto Q&pd-20-px Q&txt-center">
+            <p class="Q&clr-slate Q&fs-1">© 2023 Qoza Systems</p>
         </div>
     </footer>
 
-    <!-- ================= LOGIKA JS (Theme, Menu) ================= -->
+    <!-- LOGIKA -->
     <script>
-        // --- 1. OBSŁUGA MOTYWÓW ---
         const themeBtn = document.getElementById('theme-btn');
         const themeIcon = document.getElementById('theme-icon');
-        const themes = ['system', 'light', 'dark'];
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
         
-        // Pobierz zapisany motyw lub domyślny
+        // Theme Logic
         let currentTheme = localStorage.getItem('theme') || 'system';
+        const themes = ['system', 'light', 'dark'];
 
-        function applyTheme(theme) {
+        function applyTheme(t) {
             const body = document.body;
-            let icon = '💻'; // System
-
-            if (theme === 'system') {
-                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                if (prefersDark) body.classList.remove('light-mode');
+            let icon = '💻';
+            if(t==='system') {
+                if(window.matchMedia('(prefers-color-scheme: dark)').matches) body.classList.remove('light-mode');
                 else body.classList.add('light-mode');
-            } else if (theme === 'light') {
-                body.classList.add('light-mode');
-                icon = '☀️';
-            } else if (theme === 'dark') {
-                body.classList.remove('light-mode');
-                icon = '🌙';
-            }
-
+            } else if(t==='light') { body.classList.add('light-mode'); icon='☀️'; }
+            else { body.classList.remove('light-mode'); icon='🌙'; }
             themeIcon.innerText = icon;
-            localStorage.setItem('theme', theme);
+            localStorage.setItem('theme', t);
         }
 
         themeBtn.addEventListener('click', () => {
-            // Cykl: System -> Light -> Dark
             let idx = themes.indexOf(currentTheme);
-            idx = (idx + 1) % themes.length;
-            currentTheme = themes[idx];
+            currentTheme = themes[(idx + 1) % themes.length];
             applyTheme(currentTheme);
         });
-
-        // Inicjalizacja
         applyTheme(currentTheme);
 
-
-        // --- 2. MENU MOBILNE ---
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
+        // Mobile Menu
         let isMenuOpen = false;
-
         menuBtn.addEventListener('click', () => {
             isMenuOpen = !isMenuOpen;
-            if (isMenuOpen) {
-                mobileMenu.classList.remove('Q&d-none');
-                mobileMenu.classList.add('Q&d-flex');
-                menuBtn.innerText = '✕';
-            } else {
-                mobileMenu.classList.add('Q&d-none');
-                mobileMenu.classList.remove('Q&d-flex');
-                menuBtn.innerText = '≡';
-            }
+            if(isMenuOpen) { mobileMenu.classList.remove('Q&d-none'); mobileMenu.classList.add('Q&d-flex'); menuBtn.innerText='✕'; }
+            else { mobileMenu.classList.add('Q&d-none'); mobileMenu.classList.remove('Q&d-flex'); menuBtn.innerText='≡'; }
         });
-
     </script>
 
 </body>
