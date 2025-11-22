@@ -15,11 +15,12 @@
 </head>
 <body class="Q&bg-set-0f172a Q&clr-white Q&ovx-hidden">
 
-    <!-- POBIERZ SKRYPT -->
+    <!-- SKRYPT FRAMEWORKA -->
     <script src="Y25R01-01.js"></script>
 
     <!-- ================= NAWIGACJA ================= -->
-    <nav class="Q&pos-fixed Q&t-0 Q&l-0 Q&w-100-p Q&z-50 Q&bg-set-0f172acc Q&bblur-12-px Q&bd-1-px-solid-set-1e293b-dwn">
+    <!-- Zmieniono z-50 na z-100 dla pewności -->
+    <nav class="Q&pos-fixed Q&t-0 Q&l-0 Q&w-100-p Q&z-100 Q&bg-set-0f172acc Q&bblur-12-px Q&bd-1-px-solid-set-1e293b-dwn">
         <div class="Q&mw-1200-px Q&mg-auto Q&pd-15-px Q&pd-20-px-x Q&d-flex Q&jc-sb Q&ai-center">
             
             <!-- Logo -->
@@ -45,23 +46,27 @@
         </div>
     </nav>
 
-    <!-- ================= HERO SECTION (POPRAWKA MOBILE) ================= -->
-    <!-- ZMIENIONO: Q&pd-180-px-t dla Mobile. To da bardzo duży odstęp od góry -->
-    <header class="Q&pos-relative Q&pd-180-px-t Q&pd-40-px-b md:Q&pd-200-px-t md:Q&pd-100-px-b Q&txt-center Q&ov-hidden">
+    <!-- ================= HERO SECTION ================= -->
+    <header class="Q&pos-relative Q&pd-140-px-t Q&pd-40-px-b md:Q&pd-200-px-t md:Q&pd-100-px-b Q&txt-center Q&ov-hidden">
         
         <!-- Tło -->
         <div class="Q&pos-absolute Q&t-0 Q&l-50-p Q&w-100-p Q&mw-1000-px Q&h-600-px Q&bg-blue Q&op-0.08 Q&br-50-p Q&blur-80-px Q&z--1" style="transform: translate(-50%, -50%);"></div>
 
         <div class="Q&mw-1200-px Q&mg-auto Q&pd-20-px">
             
-            <!-- Badge (ZMIENIONO: dodano Q&mg-20-px-t, aby odepchnąć go dodatkowo) -->
-            <div class="Q&d-inline-flex Q&fx-wrap Q&jc-center Q&ai-center Q&gap-8-px Q&bg-set-1e293b Q&pd-6-px Q&pd-12-px-rgt Q&br-50-px Q&bd-1-px-solid-set-334155 Q&mg-20-px-dwn md:Q&mg-30-px-dwn Q&mg-20-px-t --hover-Q&bd-1-px-solid-blue Q&trans-0.2 Q&cursor-pointer Q&mw-100-p">
-                <span class="Q&badge-purple">UPDATE v3.0</span>
-                <span class="Q&fs-1 Q&clr-slate Q&ws-normal Q&ta-center">Nowe komponenty & RWD &rarr;</span>
+            <!-- BADGE NAPRAWIONY -->
+            <!-- Usunięto fx-wrap (żeby nie spadało), dodano mw-100-p (żeby nie rozpychało), wycentrowano -->
+            <div class="Q&d-inline-flex Q&ai-center Q&jc-center Q&gap-8-px Q&bg-set-1e293b Q&pd-4-px Q&pd-12-px-rgt Q&br-50-px Q&bd-1-px-solid-set-334155 Q&mg-20-px-dwn md:Q&mg-30-px-dwn Q&mg-20-px-t --hover-Q&bd-1-px-solid-blue Q&trans-0.2 Q&cursor-pointer Q&mw-100-p Q&ov-hidden">
+                
+                <!-- Sam Tag -->
+                <span class="Q&badge-purple Q&ws-nowrap">UPDATE v3.1</span>
+                
+                <!-- Tekst: truncate ucina tekst (...) jeśli za długi, fs-1 zmniejsza font -->
+                <span class="Q&fs-1 Q&clr-slate Q&trunc">Nowe komponenty & RWD &rarr;</span>
             </div>
 
             <!-- Headline -->
-            <h1 class="Q&fs-6 sm:Q&fs-8 md:Q&fs-11 Q&fw-800 Q&lh-1.1 Q&mg-15-px-dwn md:Q&mg-20-px-dwn Q&ls--1-px">
+            <h1 class="Q&fs-7 sm:Q&fs-8 md:Q&fs-11 Q&fw-800 Q&lh-1.1 Q&mg-15-px-dwn md:Q&mg-20-px-dwn Q&ls--1-px">
                 Kompletny system UI <br class="Q&d-none md:Q&d-block">
                 <span class="Q&clr-transparent" style="-webkit-background-clip: text; background-clip: text; background-image: linear-gradient(to right, #3b82f6, #a855f7);">w jednym pliku JS.</span>
             </h1>
@@ -82,13 +87,12 @@
     <section class="Q&mw-1200-px Q&mg-auto Q&pd-40-px-y Q&pd-20-px">
         <div class="Q&d-flex Q&fx-col lg:Q&fx-row Q&gap-40-px lg:Q&gap-60-px Q&ai-center">
             
-            <!-- LEWA: Opis -->
+            <!-- LEWA -->
             <div class="Q&w-100-p lg:Q&w-40-p">
                 <h2 class="Q&fs-6 md:Q&fs-7 Q&fw-800 Q&mg-20-px-dwn">Nowe Komponenty</h2>
                 <p class="Q&fs-2 md:Q&fs-3 Q&clr-slate Q&mg-30-px-dwn Q&lh-1.6">
                     Dodaliśmy elementy niezbędne do budowy paneli administracyjnych i formularzy. Wszystko działa "out of the box" z obsługą trybu ciemnego.
                 </p>
-                
                 <div class="Q&d-flex Q&fx-col Q&gap-15-px">
                     <div class="Q&d-flex Q&ai-center Q&gap-15-px">
                         <div class="Q&w-24-px Q&h-24-px Q&bg-set-1e293b Q&br-50-p Q&d-flex Q&jc-center Q&ai-center Q&clr-blue Q&bd-1-px-solid-set-334155">✓</div>
@@ -107,73 +111,47 @@
 
             <!-- PRAWA: DASHBOARD MOCKUP -->
             <div class="Q&w-100-p lg:Q&w-60-p Q&bg-set-1e293b Q&br-16-px Q&bd-1-px-solid-set-334155 Q&sh-2xl Q&ov-hidden Q&pos-relative">
-                
                 <!-- Pasek okna -->
                 <div class="Q&bg-set-0f172a Q&pd-12-px Q&d-flex Q&gap-8-px Q&bd-1-px-solid-set-334155-b">
                     <div class="Q&w-10-px Q&h-10-px Q&br-50-p Q&bg-red"></div>
                     <div class="Q&w-10-px Q&h-10-px Q&br-50-p Q&bg-amber"></div>
                     <div class="Q&w-10-px Q&h-10-px Q&br-50-p Q&bg-green"></div>
                 </div>
-
                 <!-- Content -->
                 <div class="Q&d-flex Q&fx-col md:Q&fx-row">
-                    <!-- Sidebar (ukryty na mobile d-none) -->
+                    <!-- Sidebar (desktop) -->
                     <div class="Q&w-200-px Q&bg-set-0f172a Q&bd-1-px-solid-set-334155-r Q&pd-20-px Q&d-none md:Q&d-flex Q&fx-col Q&gap-10-px">
                         <div class="Q&fs-1 Q&fw-bold Q&clr-slate Q&mg-10-px-dwn">MENU</div>
                         <div class="Q&pd-10-px Q&bg-set-1e293b Q&br-6-px Q&clr-white Q&fs-2 Q&cursor-pointer">Dashboard</div>
                         <div class="Q&pd-10-px Q&clr-slate Q&fs-2 Q&cursor-pointer --hover-Q&clr-white">Ustawienia</div>
                     </div>
-
                     <!-- Main Area -->
                     <div class="Q&grow-1 Q&bg-set-111827 Q&pd-20-px md:Q&pd-30-px">
-                        
-                        <!-- Header -->
                         <div class="Q&d-flex Q&jc-sb Q&ai-center Q&mg-30-px-dwn">
                             <h3 class="Q&fs-4 md:Q&fs-5 Q&fw-bold">Ustawienia</h3>
                             <button class="Q&btn-primary-sm">Zapisz</button>
                         </div>
-
-                        <!-- Sekcja Ustawień -->
                         <div class="Q&d-grid Q&cols-1 Q&gap-20-px">
-                            
-                            <!-- Karta 1 -->
                             <div class="Q&card-dark Q&pd-15-px md:Q&pd-20-px">
                                 <label class="Q&fs-1 Q&fw-bold Q&clr-slate Q&d-block Q&mg-8-px-dwn">ADRES EMAIL</label>
                                 <input type="text" class="Q&input-dark" value="admin@qozaui.com">
-                                
                                 <label class="Q&fs-1 Q&fw-bold Q&clr-slate Q&d-block Q&mg-15-px-up Q&mg-8-px-dwn">BIOGRAM</label>
                                 <textarea class="Q&textarea-dark">Piszę kod bez CSS...</textarea>
                             </div>
-
-                            <!-- Karta 2: Switche -->
                             <div class="Q&card-dark Q&pd-15-px md:Q&pd-20-px">
                                 <div class="Q&d-flex Q&jc-sb Q&ai-center Q&mg-15-px-dwn">
-                                    <div>
-                                        <div class="Q&fs-2 Q&fw-bold">Powiadomienia</div>
-                                        <div class="Q&fs-1 Q&clr-slate">Otrzymuj e-maile</div>
-                                    </div>
+                                    <div><div class="Q&fs-2 Q&fw-bold">Powiadomienia</div><div class="Q&fs-1 Q&clr-slate">E-maile</div></div>
                                     <input type="checkbox" class="Q&switch" checked>
                                 </div>
                                 <div class="Q&d-flex Q&jc-sb Q&ai-center">
-                                    <div>
-                                        <div class="Q&fs-2 Q&fw-bold">Profil Publiczny</div>
-                                        <div class="Q&fs-1 Q&clr-slate">Widoczny dla wszystkich</div>
-                                    </div>
+                                    <div><div class="Q&fs-2 Q&fw-bold">Publiczny</div><div class="Q&fs-1 Q&clr-slate">Profil</div></div>
                                     <input type="checkbox" class="Q&switch">
                                 </div>
                             </div>
-
-                            <!-- Karta 3: Progress -->
                             <div class="Q&card-dark Q&pd-15-px md:Q&pd-20-px">
-                                <div class="Q&d-flex Q&jc-sb Q&mg-10-px-dwn">
-                                    <span class="Q&fs-1 Q&fw-bold">ZUŻYCIE DYSKU</span>
-                                    <span class="Q&fs-1 Q&clr-blue">75%</span>
-                                </div>
-                                <div class="Q&progress-blue">
-                                    <div class="Q&bg-blue Q&h-100-p Q&br-99-px" style="width: 75%"></div>
-                                </div>
+                                <div class="Q&d-flex Q&jc-sb Q&mg-10-px-dwn"><span class="Q&fs-1 Q&fw-bold">DYSK</span><span class="Q&fs-1 Q&clr-blue">75%</span></div>
+                                <div class="Q&progress-blue"><div class="Q&bg-blue Q&h-100-p Q&br-99-px" style="width: 75%"></div></div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -187,7 +165,6 @@
             <h2 class="Q&fs-6 md:Q&fs-8 Q&fw-800 Q&mg-20-px-dwn">Zbuduj coś wielkiego.</h2>
             <p class="Q&fs-2 md:Q&fs-3 Q&clr-slate Q&mg-30-px-dwn md:Q&mg-40-px-dwn">
                 QozaUI jest darmowy, lekki i gotowy do produkcji. 
-                Pobierz go teraz i zapomnij o pisaniu plików .css
             </p>
             <button class="Q&btn-primary-lg md:Q&btn-primary-xl Q&sh-xl --hover-Q&scale-105">Pobierz QozaUI v3.0</button>
         </div>
