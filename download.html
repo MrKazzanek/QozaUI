@@ -112,7 +112,6 @@
             <!-- HEADER SEKCJI -->
             <div class="Q&txt-center Q&mg-30-px-dwn">
                 <h1 class="Q&fs-8 md:Q&fs-10 Q&fw-800 Q&lh-1.1 Q&mg-20-px-dwn Q&clr-white">Get Qoza<span class="Q&clr-blue">UI</span></h1>
-                <!-- INSTRUKCJA PRZENIESIONA NAD KARTĘ -->
                 <p class="Q&fs-3 Q&clr-slate Q&mw-600-px Q&mg-auto Q&lh-1.6">
                     To install QozaUI, simply download the file or copy the link below and place the following script tag in your HTML file just before the closing <code class="Q&bg-set-1e293b Q&pd-4-px Q&br-4-px">body</code> tag.
                 </p>
@@ -144,14 +143,12 @@
                         </div>
                     </div>
                     
-                    <!-- Direct Download Link (Fake) -->
+                    <!-- Direct Download Link - TERAZ POSIADA ID I DYNAMICZNY HREF -->
                     <div class="Q&txt-center Q&mg-10-px-t">
-                        <a href="#" class="Q&fs-1 Q&clr-slate Q&td-underline --hover-Q&clr-blue">Download raw .js file</a>
+                        <a id="download-link" href="https://qozaui.netlify.app/Y25R01-01.js" target="_blank" class="Q&fs-1 Q&clr-slate Q&td-underline --hover-Q&clr-blue">Download raw .js file</a>
                     </div>
                 </div>
             </div>
-
-            <!-- Usunięto sekcję "Features" (Fast Loading itp.) -->
 
         </div>
     </main>
@@ -207,13 +204,23 @@
         const codeDisplay = document.getElementById('code-display');
         const copyBtn = document.getElementById('copy-btn');
         const copyText = document.getElementById('copy-text');
+        const downloadLink = document.getElementById('download-link');
         const baseUrl = 'https://qozaui.netlify.app/';
 
-        // Aktualizacja kodu po zmianie wersji z prefiksem URL
-        versionSelect.addEventListener('change', (e) => {
-            const version = e.target.value;
-            codeDisplay.innerText = `<script src="${baseUrl}${version}"><\/script>`;
-        });
+        // Funkcja aktualizująca treści
+        function updateDownloadContent() {
+            const version = versionSelect.value;
+            const fullUrl = `${baseUrl}${version}`;
+            
+            // Aktualizacja kodu do skopiowania
+            codeDisplay.innerText = `<script src="${fullUrl}"><\/script>`;
+            
+            // Aktualizacja linku pobierania
+            downloadLink.href = fullUrl;
+        }
+
+        // Nasłuchiwanie zmian w liście wyboru
+        versionSelect.addEventListener('change', updateDownloadContent);
 
         // Funkcja kopiowania
         copyBtn.addEventListener('click', () => {
@@ -229,6 +236,9 @@
                 }, 2000);
             });
         });
+
+        // Wywołaj raz na starcie, aby upewnić się, że wszystko się zgadza
+        updateDownloadContent();
     </script>
 </body>
 </html>
