@@ -15,11 +15,10 @@
 </head>
 <body class="Q&bg-set-0f172a Q&clr-white Q&ovx-hidden">
 
-    <!-- SKRYPT FRAMEWORKA -->
-    <script src="Y25R01-01.js"></script>
+    <!-- SKRYPT FRAMEWORKA (Ten sam co poprzednio, wersja 04) -->
+    <script src="Y25R01-04.js"></script>
 
     <!-- ================= NAWIGACJA ================= -->
-    <!-- Zmieniono z-50 na z-100 dla pewności -->
     <nav class="Q&pos-fixed Q&t-0 Q&l-0 Q&w-100-p Q&z-100 Q&bg-set-0f172acc Q&bblur-12-px Q&bd-1-px-solid-set-1e293b-dwn">
         <div class="Q&mw-1200-px Q&mg-auto Q&pd-15-px Q&pd-20-px-x Q&d-flex Q&jc-sb Q&ai-center">
             
@@ -46,23 +45,26 @@
         </div>
     </nav>
 
-    <!-- ================= HERO SECTION ================= -->
-    <header class="Q&pos-relative Q&pd-140-px-t Q&pd-40-px-b md:Q&pd-200-px-t md:Q&pd-100-px-b Q&txt-center Q&ov-hidden">
+    <!-- ================= HERO SECTION (MEGA FIX) ================= -->
+    <!-- ZWIĘKSZONO PADDING GÓRNY DO 160px NA MOBILE -->
+    <header class="Q&pos-relative Q&pd-160-px-t Q&pd-40-px-b md:Q&pd-200-px-t md:Q&pd-100-px-b Q&txt-center Q&ov-hidden">
         
         <!-- Tło -->
         <div class="Q&pos-absolute Q&t-0 Q&l-50-p Q&w-100-p Q&mw-1000-px Q&h-600-px Q&bg-blue Q&op-0.08 Q&br-50-p Q&blur-80-px Q&z--1" style="transform: translate(-50%, -50%);"></div>
 
         <div class="Q&mw-1200-px Q&mg-auto Q&pd-20-px">
             
-            <!-- BADGE NAPRAWIONY -->
-            <!-- Usunięto fx-wrap (żeby nie spadało), dodano mw-100-p (żeby nie rozpychało), wycentrowano -->
-            <div class="Q&d-inline-flex Q&ai-center Q&jc-center Q&gap-8-px Q&bg-set-1e293b Q&pd-4-px Q&pd-12-px-rgt Q&br-50-px Q&bd-1-px-solid-set-334155 Q&mg-20-px-dwn md:Q&mg-30-px-dwn Q&mg-20-px-t --hover-Q&bd-1-px-solid-blue Q&trans-0.2 Q&cursor-pointer Q&mw-100-p Q&ov-hidden">
+            <!-- BADGE NAPRAWIONY - RWD TEXT -->
+            <div class="Q&d-inline-flex Q&ai-center Q&jc-center Q&gap-8-px Q&bg-set-1e293b Q&pd-4-px Q&pd-12-px-rgt Q&br-50-px Q&bd-1-px-solid-set-334155 Q&mg-20-px-dwn md:Q&mg-30-px-dwn --hover-Q&bd-1-px-solid-blue Q&trans-0.2 Q&cursor-pointer Q&mw-100-p">
                 
-                <!-- Sam Tag -->
-                <span class="Q&badge-purple Q&ws-nowrap">UPDATE v3.1</span>
+                <!-- Tag -->
+                <span class="Q&badge-purple Q&ws-nowrap">v3.0</span>
                 
-                <!-- Tekst: truncate ucina tekst (...) jeśli za długi, fs-1 zmniejsza font -->
-                <span class="Q&fs-1 Q&clr-slate Q&trunc">Nowe komponenty & RWD &rarr;</span>
+                <!-- Tekst na Mobile (Krótki) - widoczny tylko do 'md' -->
+                <span class="Q&fs-1 Q&clr-slate Q&d-inline md:Q&d-none">Sprawdź nowości &rarr;</span>
+
+                <!-- Tekst na Desktop (Długi) - ukryty na mobile, widoczny od 'md' -->
+                <span class="Q&fs-1 Q&clr-slate Q&d-none md:Q&d-inline">Nowe komponenty & RWD &rarr;</span>
             </div>
 
             <!-- Headline -->
@@ -93,6 +95,7 @@
                 <p class="Q&fs-2 md:Q&fs-3 Q&clr-slate Q&mg-30-px-dwn Q&lh-1.6">
                     Dodaliśmy elementy niezbędne do budowy paneli administracyjnych i formularzy. Wszystko działa "out of the box" z obsługą trybu ciemnego.
                 </p>
+                
                 <div class="Q&d-flex Q&fx-col Q&gap-15-px">
                     <div class="Q&d-flex Q&ai-center Q&gap-15-px">
                         <div class="Q&w-24-px Q&h-24-px Q&bg-set-1e293b Q&br-50-p Q&d-flex Q&jc-center Q&ai-center Q&clr-blue Q&bd-1-px-solid-set-334155">✓</div>
