@@ -13,7 +13,7 @@
                     'outline': { default: { backgroundColor: 'transparent', border: '1px solid #475569', color: '#cbd5e1' }, ':hover:not(:disabled)': { borderColor: '#94a3b8', backgroundColor: 'rgba(255,255,255,0.05)', color: '#fff' } },
                     'danger': { default: { backgroundColor: '#ef4444', color: '#fff' }, ':hover:not(:disabled)': { backgroundColor: '#dc2626' } }
                 },
-                sizes: { 'sm': { default: { padding: '8px 14px', fontSize: '13px' } }, 'md': { default: { padding: '12px 20px', fontSize: '14px' } }, 'lg': { default: { padding: '14px 28px', fontSize: '16px' } }, 'xl': { default: { padding: '18px 36px', fontSize: '18px' } } }
+                sizes: { 'xs': { default: { padding: '6px 10px', fontSize: '11px' } }, 'sm': { default: { padding: '8px 14px', fontSize: '13px' } }, 'md': { default: { padding: '12px 20px', fontSize: '14px' } }, 'lg': { default: { padding: '14px 28px', fontSize: '16px' } }, 'xl': { default: { padding: '18px 36px', fontSize: '18px' } } }
             },
             'input': {
                 base: { default: { display: 'block', width: '100%', padding: '10px 14px', fontSize: '14px', lineHeight: '1.5', borderRadius: '8px', outline: 'none', transition: 'border-color 0.15s, box-shadow 0.15s', color: 'inherit' }, ':focus': { borderColor: '#3b82f6', boxShadow: '0 0 0 3px rgba(59, 130, 246, 0.2)' } },
