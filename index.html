@@ -15,100 +15,102 @@
 </head>
 <body class="Q&bg-set-0f172a Q&clr-white Q&ovx-hidden">
 
-    <!-- POBIERZ NOWY SKRYPT -->
-    <script src="Y25R01-01.js"></script>
+    <!-- SKRYPT FRAMEWORKA -->
+    <script src="Y25R01-03.js"></script>
 
-    <!-- ================= NAWIGACJA (RWD) ================= -->
+    <!-- ================= NAWIGACJA ================= -->
     <nav class="Q&pos-fixed Q&t-0 Q&l-0 Q&w-100-p Q&z-50 Q&bg-set-0f172acc Q&bblur-12-px Q&bd-1-px-solid-set-1e293b-dwn">
         <div class="Q&mw-1200-px Q&mg-auto Q&pd-15-px Q&pd-20-px-x Q&d-flex Q&jc-sb Q&ai-center">
             
             <!-- Logo -->
             <div class="Q&d-flex Q&ai-center Q&gap-10-px Q&cursor-pointer --hover-Q&op-0.8 Q&trans-0.2">
-                <div class="Q&w-36-px Q&h-36-px Q&bg-blue Q&br-8-px Q&d-flex Q&jc-center Q&ai-center Q&sh-lg">
-                    <span class="Q&fs-4 Q&fw-800">Q</span>
+                <div class="Q&w-32-px Q&h-32-px md:Q&w-36-px md:Q&h-36-px Q&bg-blue Q&br-8-px Q&d-flex Q&jc-center Q&ai-center Q&sh-lg">
+                    <span class="Q&fs-3 md:Q&fs-4 Q&fw-800">Q</span>
                 </div>
-                <span class="Q&fs-4 Q&fw-800 Q&ls-0.5-px">Qoza<span class="Q&clr-blue">UI</span></span>
+                <span class="Q&fs-3 md:Q&fs-4 Q&fw-800 Q&ls-0.5-px">Qoza<span class="Q&clr-blue">UI</span></span>
             </div>
 
-            <!-- Menu Desktop (ukryte na mobile, widoczne od md) -->
+            <!-- Menu Desktop -->
             <div class="Q&d-none md:Q&d-flex Q&gap-30-px Q&fs-2 Q&fw-500 Q&clr-slate">
                 <a class="Q&cursor-pointer --hover-Q&clr-white Q&trans-0.2">Funkcje</a>
                 <a class="Q&cursor-pointer --hover-Q&clr-white Q&trans-0.2">Komponenty</a>
                 <a class="Q&cursor-pointer --hover-Q&clr-white Q&trans-0.2">Docs</a>
             </div>
 
-            <!-- Actions Desktop -->
-            <div class="Q&d-none md:Q&d-flex Q&gap-10-px">
-                <button class="Q&btn-ghost-sm Q&clr-slate --hover-Q&clr-white">Zaloguj</button>
-                <button class="Q&btn-primary-sm Q&sh-lg --hover-Q&scale-105">Pobierz v3.0</button>
-            </div>
-
-            <!-- Hamburger Mobile (widoczny tylko na mobile) -->
-            <div class="Q&d-flex md:Q&d-none Q&fs-5 Q&cursor-pointer">
-                ☰
+            <!-- Actions -->
+            <div class="Q&d-flex Q&gap-10-px">
+                <button class="Q&btn-ghost-sm Q&clr-slate --hover-Q&clr-white Q&d-none md:Q&d-inline-flex">Zaloguj</button>
+                <button class="Q&btn-primary-sm Q&sh-lg --hover-Q&scale-105">Pobierz</button>
             </div>
         </div>
     </nav>
 
-    <!-- ================= HERO SECTION ================= -->
-    <header class="Q&pos-relative Q&pd-120-px-t Q&pd-60-px-b md:Q&pd-180-px-t md:Q&pd-100-px-b Q&txt-center Q&ov-hidden">
+    <!-- ================= HERO SECTION (POPRAWIONE) ================= -->
+    <!-- Zmniejszono padding górny na mobile (80px zamiast 120px) -->
+    <header class="Q&pos-relative Q&pd-100-px-t Q&pd-40-px-b md:Q&pd-180-px-t md:Q&pd-100-px-b Q&txt-center Q&ov-hidden">
+        
         <!-- Tło -->
         <div class="Q&pos-absolute Q&t-0 Q&l-50-p Q&w-100-p Q&mw-1000-px Q&h-600-px Q&bg-blue Q&op-0.08 Q&br-50-p Q&blur-80-px Q&z--1" style="transform: translate(-50%, -50%);"></div>
 
         <div class="Q&mw-1200-px Q&mg-auto Q&pd-20-px">
-            <!-- Badge -->
-            <div class="Q&d-inline-flex Q&ai-center Q&gap-8-px Q&bg-set-1e293b Q&pd-4-px Q&pd-12-px-rgt Q&br-50-px Q&bd-1-px-solid-set-334155 Q&mg-20-px-dwn md:Q&mg-30-px-dwn --hover-Q&bd-1-px-solid-blue Q&trans-0.2 Q&cursor-pointer">
+            
+            <!-- Badge POPRAWIONY: fx-wrap pozwala tekstowi spaść niżej, ws-normal pozwala na łamanie linii -->
+            <div class="Q&d-inline-flex Q&fx-wrap Q&jc-center Q&ai-center Q&gap-8-px Q&bg-set-1e293b Q&pd-6-px Q&pd-12-px-rgt Q&br-50-px Q&bd-1-px-solid-set-334155 Q&mg-20-px-dwn md:Q&mg-30-px-dwn --hover-Q&bd-1-px-solid-blue Q&trans-0.2 Q&cursor-pointer Q&mw-100-p">
                 <span class="Q&badge-purple">UPDATE v3.0</span>
-                <span class="Q&fs-1 Q&clr-slate">Nowe komponenty & RWD &rarr;</span>
+                <!-- Dodano 'ta-center' i zmiejszono font na mobile -->
+                <span class="Q&fs-1 Q&clr-slate Q&ws-normal Q&ta-center">Nowe komponenty & RWD &rarr;</span>
             </div>
 
-            <h1 class="Q&fs-8 md:Q&fs-11 Q&fw-800 Q&lh-1.1 Q&mg-20-px-dwn Q&ls--1-px">
+            <!-- Headline POPRAWIONY: fs-6 na mobile (mniejszy), fs-11 na desktopie -->
+            <h1 class="Q&fs-6 sm:Q&fs-8 md:Q&fs-11 Q&fw-800 Q&lh-1.1 Q&mg-15-px-dwn md:Q&mg-20-px-dwn Q&ls--1-px">
                 Kompletny system UI <br class="Q&d-none md:Q&d-block">
                 <span class="Q&clr-transparent" style="-webkit-background-clip: text; background-clip: text; background-image: linear-gradient(to right, #3b82f6, #a855f7);">w jednym pliku JS.</span>
             </h1>
 
-            <p class="Q&fs-3 md:Q&fs-4 Q&clr-slate Q&mw-700-px Q&mg-auto Q&mg-30-px-dwn Q&lh-1.6">
+            <p class="Q&fs-2 md:Q&fs-4 Q&clr-slate Q&mw-700-px Q&mg-auto Q&mg-30-px-dwn Q&lh-1.6">
                 W pełni responsywny silnik. Teraz z obsługą <code>Switch</code>, <code>Progress Bar</code> i zaawansowanych inputów. Buduj aplikacje szybciej niż kiedykolwiek.
             </p>
 
-            <div class="Q&d-flex Q&fx-col md:Q&fx-row Q&jc-center Q&gap-15-px">
-                <button class="Q&btn-primary-lg Q&sh-xl --hover-Q&scale-105 Q&w-100-p md:Q&w-auto">Rozpocznij teraz</button>
-                <button class="Q&btn-dark-lg Q&bd-1-px-solid-set-334155 --hover-Q&bg-set-1e293b Q&w-100-p md:Q&w-auto">Github Repo</button>
+            <div class="Q&d-flex Q&fx-col sm:Q&fx-row Q&jc-center Q&gap-15-px">
+                <button class="Q&btn-primary-md md:Q&btn-primary-lg Q&sh-xl --hover-Q&scale-105 Q&w-100-p sm:Q&w-auto">Rozpocznij teraz</button>
+                <button class="Q&btn-dark-md md:Q&btn-dark-lg Q&bd-1-px-solid-set-334155 --hover-Q&bg-set-1e293b Q&w-100-p sm:Q&w-auto">Github Repo</button>
             </div>
+
         </div>
     </header>
 
-    <!-- ================= INTERACTIVE DEMO (Split Layout) ================= -->
+    <!-- ================= INTERACTIVE DEMO ================= -->
     <section class="Q&mw-1200-px Q&mg-auto Q&pd-40-px-y Q&pd-20-px">
-        <div class="Q&d-flex Q&fx-col lg:Q&fx-row Q&gap-60-px Q&ai-center">
+        <div class="Q&d-flex Q&fx-col lg:Q&fx-row Q&gap-40-px lg:Q&gap-60-px Q&ai-center">
             
-            <!-- LEWA: Opis nowych funkcji -->
+            <!-- LEWA: Opis -->
             <div class="Q&w-100-p lg:Q&w-40-p">
-                <h2 class="Q&fs-7 Q&fw-800 Q&mg-20-px-dwn">Nowe Komponenty</h2>
-                <p class="Q&fs-3 Q&clr-slate Q&mg-30-px-dwn Q&lh-1.6">
+                <h2 class="Q&fs-6 md:Q&fs-7 Q&fw-800 Q&mg-20-px-dwn">Nowe Komponenty</h2>
+                <p class="Q&fs-2 md:Q&fs-3 Q&clr-slate Q&mg-30-px-dwn Q&lh-1.6">
                     Dodaliśmy elementy niezbędne do budowy paneli administracyjnych i formularzy. Wszystko działa "out of the box" z obsługą trybu ciemnego.
                 </p>
                 
-                <div class="Q&d-flex Q&fx-col Q&gap-20-px">
+                <div class="Q&d-flex Q&fx-col Q&gap-15-px">
                     <div class="Q&d-flex Q&ai-center Q&gap-15-px">
-                        <div class="Q&w-30-px Q&h-30-px Q&bg-set-1e293b Q&br-50-p Q&d-flex Q&jc-center Q&ai-center Q&clr-blue Q&bd-1-px-solid-set-334155">✓</div>
-                        <span class="Q&fs-3">Przełączniki (Toggles)</span>
+                        <div class="Q&w-24-px Q&h-24-px Q&bg-set-1e293b Q&br-50-p Q&d-flex Q&jc-center Q&ai-center Q&clr-blue Q&bd-1-px-solid-set-334155">✓</div>
+                        <span class="Q&fs-2 md:Q&fs-3">Przełączniki (Toggles)</span>
                     </div>
                     <div class="Q&d-flex Q&ai-center Q&gap-15-px">
-                        <div class="Q&w-30-px Q&h-30-px Q&bg-set-1e293b Q&br-50-p Q&d-flex Q&jc-center Q&ai-center Q&clr-purple Q&bd-1-px-solid-set-334155">✓</div>
-                        <span class="Q&fs-3">Paski postępu (Progress Bars)</span>
+                        <div class="Q&w-24-px Q&h-24-px Q&bg-set-1e293b Q&br-50-p Q&d-flex Q&jc-center Q&ai-center Q&clr-purple Q&bd-1-px-solid-set-334155">✓</div>
+                        <span class="Q&fs-2 md:Q&fs-3">Paski postępu (Progress Bars)</span>
                     </div>
                     <div class="Q&d-flex Q&ai-center Q&gap-15-px">
-                        <div class="Q&w-30-px Q&h-30-px Q&bg-set-1e293b Q&br-50-p Q&d-flex Q&jc-center Q&ai-center Q&clr-green Q&bd-1-px-solid-set-334155">✓</div>
-                        <span class="Q&fs-3">Responsywne Gridy</span>
+                        <div class="Q&w-24-px Q&h-24-px Q&bg-set-1e293b Q&br-50-p Q&d-flex Q&jc-center Q&ai-center Q&clr-green Q&bd-1-px-solid-set-334155">✓</div>
+                        <span class="Q&fs-2 md:Q&fs-3">Responsywne Gridy</span>
                     </div>
                 </div>
             </div>
 
-            <!-- PRAWA: DASHBOARD MOCKUP (Pokaz nowych komponentów) -->
+            <!-- PRAWA: DASHBOARD MOCKUP -->
+            <!-- Ustawiono overflow-x hidden, żeby nie rozpychało strony na boki na mobile -->
             <div class="Q&w-100-p lg:Q&w-60-p Q&bg-set-1e293b Q&br-16-px Q&bd-1-px-solid-set-334155 Q&sh-2xl Q&ov-hidden Q&pos-relative">
                 
-                <!-- Tytuł okna -->
+                <!-- Pasek okna -->
                 <div class="Q&bg-set-0f172a Q&pd-12-px Q&d-flex Q&gap-8-px Q&bd-1-px-solid-set-334155-b">
                     <div class="Q&w-10-px Q&h-10-px Q&br-50-p Q&bg-red"></div>
                     <div class="Q&w-10-px Q&h-10-px Q&br-50-p Q&bg-amber"></div>
@@ -117,28 +119,27 @@
 
                 <!-- Content -->
                 <div class="Q&d-flex Q&fx-col md:Q&fx-row">
-                    <!-- Sidebar (desktop only) -->
+                    <!-- Sidebar (ukryty na mobile d-none) -->
                     <div class="Q&w-200-px Q&bg-set-0f172a Q&bd-1-px-solid-set-334155-r Q&pd-20-px Q&d-none md:Q&d-flex Q&fx-col Q&gap-10-px">
                         <div class="Q&fs-1 Q&fw-bold Q&clr-slate Q&mg-10-px-dwn">MENU</div>
                         <div class="Q&pd-10-px Q&bg-set-1e293b Q&br-6-px Q&clr-white Q&fs-2 Q&cursor-pointer">Dashboard</div>
                         <div class="Q&pd-10-px Q&clr-slate Q&fs-2 Q&cursor-pointer --hover-Q&clr-white">Ustawienia</div>
-                        <div class="Q&pd-10-px Q&clr-slate Q&fs-2 Q&cursor-pointer --hover-Q&clr-white">Użytkownicy</div>
                     </div>
 
                     <!-- Main Area -->
-                    <div class="Q&grow-1 Q&bg-set-111827 Q&pd-30-px">
+                    <div class="Q&grow-1 Q&bg-set-111827 Q&pd-20-px md:Q&pd-30-px">
                         
                         <!-- Header -->
                         <div class="Q&d-flex Q&jc-sb Q&ai-center Q&mg-30-px-dwn">
-                            <h3 class="Q&fs-5 Q&fw-bold">Ustawienia Konta</h3>
-                            <button class="Q&btn-primary-sm">Zapisz zmiany</button>
+                            <h3 class="Q&fs-4 md:Q&fs-5 Q&fw-bold">Ustawienia</h3>
+                            <button class="Q&btn-primary-sm">Zapisz</button>
                         </div>
 
                         <!-- Sekcja Ustawień -->
                         <div class="Q&d-grid Q&cols-1 Q&gap-20-px">
                             
-                            <!-- Karta 1: Dane -->
-                            <div class="Q&card-dark Q&pd-20-px">
+                            <!-- Karta 1 -->
+                            <div class="Q&card-dark Q&pd-15-px md:Q&pd-20-px">
                                 <label class="Q&fs-1 Q&fw-bold Q&clr-slate Q&d-block Q&mg-8-px-dwn">ADRES EMAIL</label>
                                 <input type="text" class="Q&input-dark" value="admin@qozaui.com">
                                 
@@ -146,33 +147,31 @@
                                 <textarea class="Q&textarea-dark">Piszę kod bez CSS...</textarea>
                             </div>
 
-                            <!-- Karta 2: Przełączniki (Nowość) -->
-                            <div class="Q&card-dark Q&pd-20-px">
+                            <!-- Karta 2: Switche -->
+                            <div class="Q&card-dark Q&pd-15-px md:Q&pd-20-px">
                                 <div class="Q&d-flex Q&jc-sb Q&ai-center Q&mg-15-px-dwn">
                                     <div>
                                         <div class="Q&fs-2 Q&fw-bold">Powiadomienia</div>
-                                        <div class="Q&fs-1 Q&clr-slate">Otrzymuj e-maile o nowościach</div>
+                                        <div class="Q&fs-1 Q&clr-slate">Otrzymuj e-maile</div>
                                     </div>
                                     <input type="checkbox" class="Q&switch" checked>
                                 </div>
                                 <div class="Q&d-flex Q&jc-sb Q&ai-center">
                                     <div>
-                                        <div class="Q&fs-2 Q&fw-bold">Tryb Publiczny</div>
-                                        <div class="Q&fs-1 Q&clr-slate">Profil widoczny dla wszystkich</div>
+                                        <div class="Q&fs-2 Q&fw-bold">Profil Publiczny</div>
+                                        <div class="Q&fs-1 Q&clr-slate">Widoczny dla wszystkich</div>
                                     </div>
                                     <input type="checkbox" class="Q&switch">
                                 </div>
                             </div>
 
-                            <!-- Karta 3: Progress (Nowość) -->
-                            <div class="Q&card-dark Q&pd-20-px">
+                            <!-- Karta 3: Progress -->
+                            <div class="Q&card-dark Q&pd-15-px md:Q&pd-20-px">
                                 <div class="Q&d-flex Q&jc-sb Q&mg-10-px-dwn">
                                     <span class="Q&fs-1 Q&fw-bold">ZUŻYCIE DYSKU</span>
                                     <span class="Q&fs-1 Q&clr-blue">75%</span>
                                 </div>
-                                <!-- Progress Container -->
                                 <div class="Q&progress-blue">
-                                    <!-- Inner Bar (width utility) -->
                                     <div class="Q&bg-blue Q&h-100-p Q&br-99-px" style="width: 75%"></div>
                                 </div>
                             </div>
@@ -185,25 +184,25 @@
     </section>
 
     <!-- ================= CTA ================= -->
-    <section class="Q&bg-set-0b1120 Q&pd-100-px-y Q&bd-1-px-solid-set-1e293b-t Q&txt-center">
+    <section class="Q&bg-set-0b1120 Q&pd-60-px-y md:Q&pd-100-px-y Q&bd-1-px-solid-set-1e293b-t Q&txt-center">
         <div class="Q&mw-800-px Q&mg-auto Q&pd-20-px">
-            <h2 class="Q&fs-8 Q&fw-800 Q&mg-20-px-dwn">Zbuduj coś wielkiego.</h2>
-            <p class="Q&fs-3 Q&clr-slate Q&mg-40-px-dwn">
+            <h2 class="Q&fs-6 md:Q&fs-8 Q&fw-800 Q&mg-20-px-dwn">Zbuduj coś wielkiego.</h2>
+            <p class="Q&fs-2 md:Q&fs-3 Q&clr-slate Q&mg-30-px-dwn md:Q&mg-40-px-dwn">
                 QozaUI jest darmowy, lekki i gotowy do produkcji. 
                 Pobierz go teraz i zapomnij o pisaniu plików .css
             </p>
-            <button class="Q&btn-primary-xl Q&sh-xl --hover-Q&scale-105">Pobierz QozaUI v3.0</button>
+            <button class="Q&btn-primary-lg md:Q&btn-primary-xl Q&sh-xl --hover-Q&scale-105">Pobierz QozaUI v3.0</button>
         </div>
     </section>
 
     <!-- ================= FOOTER ================= -->
-    <footer class="Q&bg-set-0f172a Q&pd-60-px-y Q&bd-1-px-solid-set-1e293b-t">
-        <div class="Q&mw-1200-px Q&mg-auto Q&pd-20-px Q&d-flex Q&fx-col md:Q&fx-row Q&jc-sb Q&ai-center Q&gap-30-px">
+    <footer class="Q&bg-set-0f172a Q&pd-40-px-y md:Q&pd-60-px-y Q&bd-1-px-solid-set-1e293b-t">
+        <div class="Q&mw-1200-px Q&mg-auto Q&pd-20-px Q&d-flex Q&fx-col md:Q&fx-row Q&jc-sb Q&ai-center Q&gap-20-px md:Q&gap-30-px">
             <div class="Q&txt-center md:Q&ta-left">
-                <div class="Q&fs-5 Q&fw-bold Q&mg-5-px-dwn">Qoza<span class="Q&clr-blue">UI</span></div>
-                <p class="Q&clr-slate Q&fs-2">The Runtime CSS Framework.</p>
+                <div class="Q&fs-4 md:Q&fs-5 Q&fw-bold Q&mg-5-px-dwn">Qoza<span class="Q&clr-blue">UI</span></div>
+                <p class="Q&clr-slate Q&fs-1 md:Q&fs-2">The Runtime CSS Framework.</p>
             </div>
-            <div class="Q&d-flex Q&gap-30-px Q&fs-2 Q&clr-slate">
+            <div class="Q&d-flex Q&gap-20-px md:Q&gap-30-px Q&fs-2 Q&clr-slate">
                 <a class="Q&cursor-pointer --hover-Q&clr-white">GitHub</a>
                 <a class="Q&cursor-pointer --hover-Q&clr-white">Discord</a>
                 <a class="Q&cursor-pointer --hover-Q&clr-white">Twitter</a>
