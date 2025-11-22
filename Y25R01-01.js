@@ -4,7 +4,6 @@
     // ============================================================
     const config = {
         components: {
-            // --- PRZYCISKI ---
             'btn': {
                 base: { default: { border: 'none', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'sans-serif', borderRadius: '8px', transition: 'all 0.2s ease', fontWeight: '600', lineHeight: '1', whiteSpace: 'nowrap' }, ':disabled': { opacity: '0.6', cursor: 'not-allowed', filter: 'grayscale(1)' }, ':active:not(:disabled)': { transform: 'scale(0.98)' } },
                 variants: {
@@ -14,61 +13,23 @@
                     'outline': { default: { backgroundColor: 'transparent', border: '1px solid #475569', color: '#cbd5e1' }, ':hover:not(:disabled)': { borderColor: '#94a3b8', backgroundColor: 'rgba(255,255,255,0.05)', color: '#fff' } },
                     'danger': { default: { backgroundColor: '#ef4444', color: '#fff' }, ':hover:not(:disabled)': { backgroundColor: '#dc2626' } }
                 },
-                sizes: { 'xs': { default: { padding: '6px 10px', fontSize: '11px' } }, 'sm': { default: { padding: '8px 14px', fontSize: '13px' } }, 'md': { default: { padding: '12px 20px', fontSize: '14px' } }, 'lg': { default: { padding: '14px 28px', fontSize: '16px' } }, 'xl': { default: { padding: '18px 36px', fontSize: '18px' } } }
+                sizes: { 'sm': { default: { padding: '8px 14px', fontSize: '13px' } }, 'md': { default: { padding: '12px 20px', fontSize: '14px' } }, 'lg': { default: { padding: '14px 28px', fontSize: '16px' } }, 'xl': { default: { padding: '18px 36px', fontSize: '18px' } } }
             },
-            // --- INPUTY ---
             'input': {
                 base: { default: { display: 'block', width: '100%', padding: '10px 14px', fontSize: '14px', lineHeight: '1.5', borderRadius: '8px', outline: 'none', transition: 'border-color 0.15s, box-shadow 0.15s', color: 'inherit' }, ':focus': { borderColor: '#3b82f6', boxShadow: '0 0 0 3px rgba(59, 130, 246, 0.2)' } },
                 variants: { 'dark': { default: { backgroundColor: '#0f172a', border: '1px solid #334155', color: '#fff' }, ':focus': { borderColor: '#3b82f6' } } }
             },
-            // --- CHECKBOX / RADIO / SWITCH ---
-            'checkbox': {
-                base: { default: { appearance: 'none', width: '18px', height: '18px', borderRadius: '4px', border: '1px solid #475569', backgroundColor: '#0f172a', cursor: 'pointer', position: 'relative', display: 'inline-block', verticalAlign: 'middle' }, ':checked': { backgroundColor: '#3b82f6', borderColor: '#3b82f6', backgroundImage: "url(\"data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e\")" } }
-            },
-            'radio': {
-                base: { default: { appearance: 'none', width: '18px', height: '18px', borderRadius: '50%', border: '1px solid #475569', backgroundColor: '#0f172a', cursor: 'pointer', display: 'inline-block', verticalAlign: 'middle' }, ':checked': { borderColor: '#3b82f6', borderWidth: '5px' } }
-            },
-            'switch': {
-                base: { default: { appearance: 'none', width: '42px', height: '24px', borderRadius: '99px', backgroundColor: '#334155', position: 'relative', cursor: 'pointer', outline: 'none', transition: '0.3s', flexShrink: '0' }, ':checked': { backgroundColor: '#3b82f6' }, ':after': { content: '""', position: 'absolute', top: '2px', left: '2px', width: '20px', height: '20px', borderRadius: '50%', backgroundColor: '#fff', transition: '0.3s' }, ':checked:after': { transform: 'translateX(18px)' } }
-            },
-            'select': {
-                base: { default: { appearance: 'none', display: 'block', width: '100%', padding: '10px 32px 10px 14px', fontSize: '14px', borderRadius: '8px', border: '1px solid #334155', backgroundColor: '#0f172a', color: '#fff', outline: 'none', backgroundImage: "url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e\")", backgroundPosition: 'right 0.5rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.5em 1.5em' } }
-            },
-            // --- KARTY I KONTENERY ---
-            'card': {
-                base: { default: { borderRadius: '16px', overflow: 'hidden', position: 'relative' } },
-                variants: { 
-                    'dark': { default: { backgroundColor: '#1e293b', border: '1px solid #334155', color: '#fff' } },
-                    'glass': { default: { backgroundColor: 'rgba(30, 41, 59, 0.6)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.08)' } }
-                },
-                sizes: { '1': { default: { padding: '16px' } }, '2': { default: { padding: '24px' } }, '3': { default: { padding: '32px' } } }
-            },
-            'modal': {
-                base: { default: { position: 'fixed', top: '0', left: '0', width: '100%', height: '100%', backgroundColor: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(4px)', zIndex: '100', display: 'flex', alignItems: 'center', justifyContent: 'center' } }
-            },
-            'modal-box': {
-                base: { default: { backgroundColor: '#1e293b', border: '1px solid #334155', borderRadius: '16px', padding: '24px', maxWidth: '500px', width: '90%', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)' } }
-            },
-            // --- INNE (Table, Badge, Progress, Skeleton) ---
-            'table': {
-                base: { default: { width: '100%', borderCollapse: 'collapse', fontSize: '14px', textAlign: 'left' } },
-                variants: { 'dark': { default: { color: '#cbd5e1' } } }
-            },
-            'badge': {
-                base: { default: { display: 'inline-flex', alignItems: 'center', padding: '4px 10px', borderRadius: '9999px', fontSize: '11px', fontWeight: '700', lineHeight: '1.4', textTransform: 'uppercase', letterSpacing: '0.5px' } },
-                variants: { 
-                    'blue': { default: { backgroundColor: 'rgba(59, 130, 246, 0.15)', color: '#60a5fa', border: '1px solid rgba(59, 130, 246, 0.2)' } },
-                    'green': { default: { backgroundColor: 'rgba(34, 197, 94, 0.15)', color: '#4ade80', border: '1px solid rgba(34, 197, 94, 0.2)' } },
-                    'purple': { default: { backgroundColor: 'rgba(168, 85, 247, 0.15)', color: '#c084fc', border: '1px solid rgba(168, 85, 247, 0.2)' } }
-                }
-            },
-            'progress': {
-                base: { default: { width: '100%', height: '8px', borderRadius: '99px', backgroundColor: '#334155', overflow: 'hidden' } }
-            },
-            'skeleton': {
-                base: { default: { backgroundColor: '#334155', borderRadius: '4px', animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite' } },
-                variants: { 'text': { default: { height: '12px', width: '100%' } }, 'circle': { default: { borderRadius: '50%' } } }
-            }
+            'checkbox': { base: { default: { appearance: 'none', width: '18px', height: '18px', borderRadius: '4px', border: '1px solid #475569', backgroundColor: '#0f172a', cursor: 'pointer', position: 'relative', display: 'inline-block', verticalAlign: 'middle' }, ':checked': { backgroundColor: '#3b82f6', borderColor: '#3b82f6', backgroundImage: "url(\"data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e\")" } } },
+            'radio': { base: { default: { appearance: 'none', width: '18px', height: '18px', borderRadius: '50%', border: '1px solid #475569', backgroundColor: '#0f172a', cursor: 'pointer', display: 'inline-block', verticalAlign: 'middle' }, ':checked': { borderColor: '#3b82f6', borderWidth: '5px' } } },
+            'switch': { base: { default: { appearance: 'none', width: '42px', height: '24px', borderRadius: '99px', backgroundColor: '#334155', position: 'relative', cursor: 'pointer', outline: 'none', transition: '0.3s', flexShrink: '0' }, ':checked': { backgroundColor: '#3b82f6' }, ':after': { content: '""', position: 'absolute', top: '2px', left: '2px', width: '20px', height: '20px', borderRadius: '50%', backgroundColor: '#fff', transition: '0.3s' }, ':checked:after': { transform: 'translateX(18px)' } } },
+            'select': { base: { default: { appearance: 'none', display: 'block', width: '100%', padding: '10px 32px 10px 14px', fontSize: '14px', borderRadius: '8px', border: '1px solid #334155', backgroundColor: '#0f172a', color: '#fff', outline: 'none', backgroundImage: "url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e\")", backgroundPosition: 'right 0.5rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.5em 1.5em' } } },
+            'card': { base: { default: { borderRadius: '16px', overflow: 'hidden', position: 'relative' } }, variants: { 'dark': { default: { backgroundColor: '#1e293b', border: '1px solid #334155', color: '#fff' } } }, sizes: { '1': { default: { padding: '16px' } }, '2': { default: { padding: '24px' } } } },
+            'modal': { base: { default: { position: 'fixed', top: '0', left: '0', width: '100%', height: '100%', backgroundColor: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(4px)', zIndex: '100', display: 'flex', alignItems: 'center', justifyContent: 'center' } } },
+            'modal-box': { base: { default: { backgroundColor: '#1e293b', border: '1px solid #334155', borderRadius: '16px', padding: '24px', maxWidth: '500px', width: '90%', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)' } } },
+            'table': { base: { default: { width: '100%', borderCollapse: 'collapse', fontSize: '14px', textAlign: 'left' } }, variants: { 'dark': { default: { color: '#cbd5e1' } } } },
+            'badge': { base: { default: { display: 'inline-flex', alignItems: 'center', padding: '4px 10px', borderRadius: '9999px', fontSize: '11px', fontWeight: '700', lineHeight: '1.4', textTransform: 'uppercase', letterSpacing: '0.5px' } }, variants: { 'blue': { default: { backgroundColor: 'rgba(59, 130, 246, 0.15)', color: '#60a5fa', border: '1px solid rgba(59, 130, 246, 0.2)' } }, 'green': { default: { backgroundColor: 'rgba(34, 197, 94, 0.15)', color: '#4ade80', border: '1px solid rgba(34, 197, 94, 0.2)' } }, 'purple': { default: { backgroundColor: 'rgba(168, 85, 247, 0.15)', color: '#c084fc', border: '1px solid rgba(168, 85, 247, 0.2)' } } } },
+            'progress': { base: { default: { width: '100%', height: '8px', borderRadius: '99px', backgroundColor: '#334155', overflow: 'hidden' } } },
+            'skeleton': { base: { default: { backgroundColor: '#334155', borderRadius: '4px', animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite' } }, variants: { 'text': { default: { height: '12px', width: '100%' } }, 'circle': { default: { borderRadius: '50%' } } } }
         },
         vars: {
             colors: { 'white': '#ffffff', 'black': '#000000', 'transparent': 'transparent', 'current': 'currentColor', 'slate': '#64748b', 'gray': '#6b7280', 'zinc': '#71717a', 'red': '#ef4444', 'orange': '#f97316', 'amber': '#f59e0b', 'green': '#22c55e', 'emerald': '#10b981', 'teal': '#14b8a6', 'cyan': '#06b6d4', 'sky': '#0ea5e9', 'blue': '#3b82f6', 'indigo': '#6366f1', 'violet': '#8b5cf6', 'purple': '#a855f7', 'fuchsia': '#d946ef', 'pink': '#ec4899', 'rose': '#f43f5e', 'light': '#f8fafc', 'dark': '#0f172a' },
