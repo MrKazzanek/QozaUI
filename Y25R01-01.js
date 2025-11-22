@@ -1,10 +1,9 @@
 (function() {
     // ============================================================
-    // 1. KONFIGURACJA (Design System)
+    // 1. KONFIGURACJA
     // ============================================================
     const config = {
         components: {
-            // --- FORMULARZE ---
             'btn': {
                 base: { default: { border: 'none', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'sans-serif', borderRadius: '8px', transition: 'all 0.2s ease', fontWeight: '600', lineHeight: '1', whiteSpace: 'nowrap' }, ':disabled': { opacity: '0.6', cursor: 'not-allowed', filter: 'grayscale(1)' }, ':active:not(:disabled)': { transform: 'scale(0.98)' } },
                 variants: {
@@ -16,14 +15,14 @@
                 sizes: { 'sm': { default: { padding: '8px 14px', fontSize: '13px' } }, 'md': { default: { padding: '12px 20px', fontSize: '14px' } }, 'lg': { default: { padding: '14px 28px', fontSize: '16px' } }, 'xl': { default: { padding: '18px 36px', fontSize: '18px' } } }
             },
             'input': {
-                base: { default: { display: 'block', width: '100%', padding: '10px 14px', fontSize: '14px', lineHeight: '1.5', borderRadius: '8px', outline: 'none', transition: 'border-color 0.15s', color: '#fff' }, ':focus': { borderColor: '#3b82f6', boxShadow: '0 0 0 3px rgba(59, 130, 246, 0.2)' } },
+                base: { default: { display: 'block', width: '100%', padding: '10px 14px', fontSize: '14px', lineHeight: '1.5', borderRadius: '8px', outline: 'none', transition: 'border-color 0.15s, box-shadow 0.15s', color: '#fff' }, ':focus': { borderColor: '#3b82f6', boxShadow: '0 0 0 3px rgba(59, 130, 246, 0.2)' } },
                 variants: { 'dark': { default: { backgroundColor: '#0f172a', border: '1px solid #334155', color: '#f8fafc' }, ':focus': { borderColor: '#3b82f6' } } }
             },
             'checkbox': {
-                base: { default: { appearance: 'none', width: '18px', height: '18px', borderRadius: '4px', border: '1px solid #475569', backgroundColor: '#0f172a', cursor: 'pointer', position: 'relative' }, ':checked': { backgroundColor: '#3b82f6', borderColor: '#3b82f6', backgroundImage: "url(\"data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e\")" } }
+                base: { default: { appearance: 'none', width: '18px', height: '18px', borderRadius: '4px', border: '1px solid #475569', backgroundColor: '#0f172a', cursor: 'pointer', position: 'relative', flexShrink: '0' }, ':checked': { backgroundColor: '#3b82f6', borderColor: '#3b82f6', backgroundImage: "url(\"data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e\")" } }
             },
             'radio': {
-                base: { default: { appearance: 'none', width: '18px', height: '18px', borderRadius: '50%', border: '1px solid #475569', backgroundColor: '#0f172a', cursor: 'pointer' }, ':checked': { borderColor: '#3b82f6', borderWidth: '5px' } }
+                base: { default: { appearance: 'none', width: '18px', height: '18px', borderRadius: '50%', border: '1px solid #475569', backgroundColor: '#0f172a', cursor: 'pointer', flexShrink: '0' }, ':checked': { borderColor: '#3b82f6', borderWidth: '5px' } }
             },
             'select': {
                 base: { default: { appearance: 'none', display: 'block', width: '100%', padding: '10px 32px 10px 14px', fontSize: '14px', borderRadius: '8px', border: '1px solid #334155', backgroundColor: '#0f172a', color: '#fff', outline: 'none', backgroundImage: "url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e\")", backgroundPosition: 'right 0.5rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.5em 1.5em' } }
@@ -31,13 +30,12 @@
             'switch': {
                 base: { default: { appearance: 'none', width: '42px', height: '24px', borderRadius: '99px', backgroundColor: '#334155', position: 'relative', cursor: 'pointer', outline: 'none', transition: '0.3s', flexShrink: '0' }, ':checked': { backgroundColor: '#3b82f6' }, ':after': { content: '""', position: 'absolute', top: '2px', left: '2px', width: '20px', height: '20px', borderRadius: '50%', backgroundColor: '#fff', transition: '0.3s' }, ':checked:after': { transform: 'translateX(18px)' } }
             },
-            // --- DISPLAY DATA ---
             'table': {
                 base: { default: { width: '100%', borderCollapse: 'collapse', fontSize: '14px', textAlign: 'left' } },
-                variants: { 'dark': { default: { color: '#cbd5e1' } } } // Requires Q&th and Q&td classes on cells or custom CSS
+                variants: { 'dark': { default: { color: '#cbd5e1' } } }
             },
             'badge': {
-                base: { default: { display: 'inline-flex', alignItems: 'center', padding: '4px 10px', borderRadius: '9999px', fontSize: '11px', fontWeight: '700', lineHeight: '1.4', textTransform: 'uppercase', letterSpacing: '0.5px' } },
+                base: { default: { display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: '4px 10px', borderRadius: '9999px', fontSize: '11px', fontWeight: '700', lineHeight: '1.4', textTransform: 'uppercase', letterSpacing: '0.5px', whiteSpace: 'nowrap' } },
                 variants: { 'green': { default: { backgroundColor: 'rgba(34, 197, 94, 0.15)', color: '#4ade80' } }, 'blue': { default: { backgroundColor: 'rgba(59, 130, 246, 0.15)', color: '#60a5fa' } }, 'purple': { default: { backgroundColor: 'rgba(168, 85, 247, 0.15)', color: '#c084fc' } } }
             },
             'avatar': {
@@ -51,20 +49,16 @@
                 base: { default: { backgroundColor: '#334155', borderRadius: '4px', animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite' } },
                 variants: { 'text': { default: { height: '12px', width: '100%' } }, 'circle': { default: { borderRadius: '50%' } } }
             },
-            // --- NAVIGATION & LAYOUT ---
             'card': {
                 base: { default: { borderRadius: '16px', overflow: 'hidden', position: 'relative' } },
-                variants: { 'dark': { default: { backgroundColor: '#1e293b', border: '1px solid #334155', color: '#fff' } }, 'glass': { default: { backgroundColor: 'rgba(30, 41, 59, 0.6)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.08)' } } },
+                variants: { 'dark': { default: { backgroundColor: '#1e293b', border: '1px solid #334155', color: '#fff' } } },
                 sizes: { '1': { default: { padding: '16px' } }, '2': { default: { padding: '24px' } } }
             },
-            'modal': { // Overlay
+            'modal': {
                 base: { default: { position: 'fixed', top: '0', left: '0', width: '100%', height: '100%', backgroundColor: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(4px)', zIndex: '100', display: 'flex', alignItems: 'center', justifyContent: 'center' } }
             },
-            'modal-box': { // Content
+            'modal-box': {
                 base: { default: { backgroundColor: '#1e293b', border: '1px solid #334155', borderRadius: '16px', padding: '24px', maxWidth: '500px', width: '90%', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)' } }
-            },
-            'breadcrumb': {
-                base: { default: { display: 'flex', alignItems: 'center', gap: '8px', color: '#94a3b8', fontSize: '14px' } }
             },
             'pagination': {
                 base: { default: { display: 'flex', gap: '4px' } }
@@ -81,29 +75,27 @@
         }
     };
 
-    // 2. HELPERS
     const getUnit = (u) => config.vars.units[u] || u || 'px';
     const getSide = (s) => config.vars.sides[s] ? (config.vars.sides[s].length > 2 ? `-${config.vars.sides[s].toLowerCase()}` : '') : '';
     const parseColor = (parts, idx) => { if (parts[idx] === 'set') return { val: `#${parts[idx+1]}`, consumed: 2 }; return { val: config.vars.colors[parts[idx]] || parts[idx], consumed: 1 }; };
     const parseBorderLike = (parts, propName) => { let i = 0; const v = parts[i++], u = getUnit(parts[i++]), type = parts[i++]; const cObj = parseColor(parts, i); i += cObj.consumed; const s = parts[i]; if (s) { const sideName = config.vars.sides[s]; if (sideName) return { [`${propName}${sideName}`]: `${v}${u} ${type} ${cObj.val}` }; } return { [propName]: `${v}${u} ${type} ${cObj.val}` }; };
     function parseSpacing(prop, p) { const v = p[0]; if (v === 'auto') return { [prop]: 'auto' }; let u = 'px', s = ''; if(p.length > 1) { if(config.vars.units[p[1]] || p[1]==='p') { u=getUnit(p[1]); if(p[2]) s=p[2]; } else if(config.vars.sides[p[1]]) s=p[1]; } const val = `${v}${u}`; if (s === 'x') return { [`${prop}Left`]: val, [`${prop}Right`]: val }; if (s === 'y') return { [`${prop}Top`]: val, [`${prop}Bottom`]: val }; return { [`${prop}${getSide(s)}`]: val }; }
 
-    // 3. UTILITIES (MECHANIKI)
     const utilities = {
         'clr': (p) => ({ color: parseColor(p, 0).val }), 'bg': (p) => ({ backgroundColor: parseColor(p, 0).val }), 'op': (p) => ({ opacity: p[0] }),
         'mg': (p) => parseSpacing('margin', p), 'pd': (p) => parseSpacing('padding', p),
         'w': (p) => ({ width: p[0]==='auto'?'auto':`${p[0]}${getUnit(p[1])}` }), 'h': (p) => ({ height: p[0]==='auto'?'auto':`${p[0]}${getUnit(p[1])}` }), 'mw': (p) => ({ maxWidth: `${p[0]}${getUnit(p[1])}` }), 'minw': (p) => ({ minWidth: `${p[0]}${getUnit(p[1])}` }),
         'fs': (p) => p[0]==='set' ? ({fontSize: `${p[1]}${getUnit(p[2])}`}) : ({fontSize: config.vars.fonts[p[0]]}), 'fw': (p) => ({ fontWeight: p[0] }), 'sft': (p) => p[0]==='set' ? ({fontFamily: p.slice(1).join(' ')}) : ({fontFamily: config.vars.fontFamilies[p[0]]}), 'ta': (p) => ({ textAlign: p[0] }), 'tt': (p) => ({ textTransform: p[0] }), 'ls': (p) => ({ letterSpacing: `${p[0]}${getUnit(p[1])}` }), 'lh': (p) => ({ lineHeight: p[0] }),
-        'bd': (p) => parseBorderLike(p, 'border'), 'out': (p) => parseBorderLike(p, 'outline'), 
-        'br': (p) => { const v = `${p[0]}${getUnit(p[1])}`; const s = p[2]; if(!s) return { borderRadius: v }; if(s==='t') return { borderTopLeftRadius: v, borderTopRightRadius: v }; if(s==='b') return { borderBottomLeftRadius: v, borderBottomRightRadius: v }; if(s==='l') return { borderTopLeftRadius: v, borderBottomLeftRadius: v }; if(s==='r') return { borderTopRightRadius: v, borderBottomRightRadius: v }; return { borderRadius: v }; },
-        'd': (p) => ({ display: p[0] }), 'pos': (p) => ({ position: p[0] }), 't': (p) => ({ top: `${p[0]}${getUnit(p[1])}` }), 'b': (p) => ({ bottom: `${p[0]}${getUnit(p[1])}` }), 'l': (p) => ({ left: `${p[0]}${getUnit(p[1])}` }), 'r': (p) => ({ right: `${p[0]}${getUnit(p[1])}` }), 'inset': (p) => ({ top: `${p[0]}${getUnit(p[1])}`, right: `${p[0]}${getUnit(p[1])}`, bottom: `${p[0]}${getUnit(p[1])}`, left: `${p[0]}${getUnit(p[1])}` }), 'z': (p) => ({ zIndex: p[0] }), 'ov': (p) => ({ overflow: p[0] }),
+        'bd': (p) => parseBorderLike(p, 'border'), 'out': (p) => parseBorderLike(p, 'outline'), 'br': (p) => { const v = `${p[0]}${getUnit(p[1])}`; const s = p[2]; if(!s) return { borderRadius: v }; if(s==='t') return { borderTopLeftRadius: v, borderTopRightRadius: v }; if(s==='b') return { borderBottomLeftRadius: v, borderBottomRightRadius: v }; if(s==='l') return { borderTopLeftRadius: v, borderBottomLeftRadius: v }; if(s==='r') return { borderTopRightRadius: v, borderBottomRightRadius: v }; return { borderRadius: v }; },
+        'd': (p) => ({ display: p[0] }), 'pos': (p) => ({ position: p[0] }), 't': (p) => ({ top: `${p[0]}${getUnit(p[1])}` }), 'b': (p) => ({ bottom: `${p[0]}${getUnit(p[1])}` }), 'l': (p) => ({ left: `${p[0]}${getUnit(p[1])}` }), 'r': (p) => ({ right: `${p[0]}${getUnit(p[1])}` }), 'inset': (p) => ({ top: `${p[0]}${getUnit(p[1])}`, right: `${p[0]}${getUnit(p[1])}`, bottom: `${p[0]}${getUnit(p[1])}`, left: `${p[0]}${getUnit(p[1])}` }), 'z': (p) => ({ zIndex: p[0] }), 'ov': (p) => ({ overflow: p[0] }), 'ovx': (p) => ({ overflowX: p[0] }),
         'fx': (p) => { if(['row','column','col','wrap'].includes(p[0])) return p[0]==='wrap'?{flexWrap:'wrap'}:{flexDirection:p[0]==='col'?'column':p[0]}; return { flex: p[0] }; }, 'grow': (p) => ({ flexGrow: p[0]||'1' }), 'ai': (p) => ({ alignItems: p[0]==='center'?'center':(p[0]==='start'?'flex-start':(p[0]==='end'?'flex-end':p[0])) }), 'jc': (p) => ({ justifyContent: p[0]==='sb'?'space-between':(p[0]==='center'?'center':p[0]) }), 'gap': (p) => ({ gap: `${p[0]}${getUnit(p[1])}` }),
         'cols': (p) => ({ gridTemplateColumns: `repeat(${p[0]}, minmax(0, 1fr))` }), 'span': (p) => ({ gridColumn: `span ${p[0]} / span ${p[0]}` }),
-        'sh': (p) => ({ boxShadow: p[0]==='set' ? p.slice(1).join(' ') : (config.vars.shadows[p[0]] || 'none') }), 'cursor': (p) => ({ cursor: p[0] }), 'blur': (p) => ({ filter: `blur(${p[0]}${getUnit(p[1])})` }), 'bblur': (p) => ({ backdropFilter: `blur(${p[0]}${getUnit(p[1])})`, WebkitBackdropFilter: `blur(${p[0]}${getUnit(p[1])})` }), 'scale': (p) => ({ transform: `scale(${p[0]/100})` }), 'rot': (p) => ({ transform: `rotate(${p[0]}deg)` }), 'trans': (p) => ({ transition: `all ${p[0]||'0.2'}s ease` }), 'fit': (p) => ({ objectFit: p[0] }),
-        // NOWE MECHANIKI
+        'sh': (p) => ({ boxShadow: p[0]==='set' ? p.slice(1).join(' ') : (config.vars.shadows[p[0]] || 'none') }), 'cursor': (p) => ({ cursor: p[0] }), 
+        'blur': (p) => ({ filter: `blur(${p[0]}${getUnit(p[1])})` }), 'bblur': (p) => ({ backdropFilter: `blur(${p[0]}${getUnit(p[1])})`, WebkitBackdropFilter: `blur(${p[0]}${getUnit(p[1])})` }), 
+        'scale': (p) => ({ transform: `scale(${p[0]/100})` }), 'rot': (p) => ({ transform: `rotate(${p[0]}deg)` }), 'trans': (p) => ({ transition: `all ${p[0]||'0.2'}s ease` }), 'fit': (p) => ({ objectFit: p[0] }),
         'tx': (p) => ({ transform: `translateX(${p[0]}${getUnit(p[1])})` }), 'ty': (p) => ({ transform: `translateY(${p[0]}${getUnit(p[1])})` }), 'tr': (p) => ({ transform: `translate(${p[0]}${getUnit(p[1])}, ${p[2]}${getUnit(p[3])})` }),
         'aspect': (p) => ({ aspectRatio: `${p[0]}/${p[1]}` }),
-        'grad': (p) => { // Q&grad-r-blue-red
+        'grad': (p) => { 
             const map = { 'r':'right', 'b':'bottom', 'l':'left', 't':'top', 'br':'bottom right', 'bl':'bottom left', 'tr':'top right', 'tl':'top left' };
             const c1 = parseColor(p, 1).val;
             const offset = p[1] === 'set' ? 3 : 2;
