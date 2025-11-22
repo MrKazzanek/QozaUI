@@ -1,7 +1,4 @@
 (function() {
-    // ============================================================
-    // 1. KONFIGURACJA (Design System)
-    // ============================================================
     const config = {
         components: {
             'btn': {
@@ -13,7 +10,7 @@
                     'outline': { default: { backgroundColor: 'transparent', border: '1px solid #475569', color: '#cbd5e1' }, ':hover:not(:disabled)': { borderColor: '#94a3b8', backgroundColor: 'rgba(255,255,255,0.05)', color: '#fff' } },
                     'danger': { default: { backgroundColor: '#ef4444', color: '#fff' }, ':hover:not(:disabled)': { backgroundColor: '#dc2626' } }
                 },
-                sizes: { 'xs': { default: { padding: '6px 10px', fontSize: '11px' } }, 'sm': { default: { padding: '8px 14px', fontSize: '13px' } }, 'md': { default: { padding: '12px 20px', fontSize: '14px' } }, 'lg': { default: { padding: '14px 28px', fontSize: '16px' } }, 'xl': { default: { padding: '18px 36px', fontSize: '18px' } } }
+                sizes: { 'sm': { default: { padding: '8px 14px', fontSize: '13px' } }, 'md': { default: { padding: '12px 20px', fontSize: '14px' } }, 'lg': { default: { padding: '14px 28px', fontSize: '16px' } }, 'xl': { default: { padding: '18px 36px', fontSize: '18px' } } }
             },
             'input': {
                 base: { default: { display: 'block', width: '100%', padding: '10px 14px', fontSize: '14px', lineHeight: '1.5', borderRadius: '8px', outline: 'none', transition: 'border-color 0.15s, box-shadow 0.15s', color: 'inherit' }, ':focus': { borderColor: '#3b82f6', boxShadow: '0 0 0 3px rgba(59, 130, 246, 0.2)' } },
@@ -65,8 +62,6 @@
     };
 
     const generated = new Set(); const styleTag = document.createElement('style'); styleTag.id = 'q-style-engine'; document.head.appendChild(styleTag);
-    styleTag.innerHTML = `@keyframes spin { to { transform: rotate(360deg); } } @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }`;
-
     function objToCss(obj, imp=false) { return Object.entries(obj).map(([k, v]) => { const key = k.replace(/([A-Z])/g, '-$1').toLowerCase(); return `${key}: ${v}${imp?' !important':''};`; }).join(' '); }
     function mergeDeep(t, s) { for(const k in s) if(typeof s[k]==='object') { if(!t[k])t[k]={}; mergeDeep(t[k], s[k]); } else t[k]=s[k]; }
 
