@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QozaUI – A badass framework for your websites</title>
+    <title>QozaUI - Enterprise Framework</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet">
     <style>
         /* BAZA */
@@ -73,6 +73,30 @@
         body.light-mode .Q\&btn-outline-sm:hover, body.light-mode .Q\&btn-outline-sm { border-color: #cbd5e1 !important; color: #0f172a !important; }
         body.light-mode .Q\&btn-outline-sm:hover { background-color: #f1f5f9 !important; }
         
+        /* TABELA FIX */
+        .table-row-hover { transition: background-color 0.2s; }
+        .table-row-hover:hover { background-color: rgba(255,255,255,0.05); }
+        body.light-mode .table-row-hover:hover { background-color: #f8fafc; }
+        
+        /* HEADER TABELI FIX */
+        th { 
+            padding: 16px; 
+            border-bottom: 1px solid #334155; 
+            color: #cbd5e1; 
+            font-weight: 600; 
+            font-size: 13px; 
+            text-transform: uppercase; 
+            letter-spacing: 0.5px;
+        }
+        td { 
+            padding: 16px; 
+            border-bottom: 1px solid #334155; 
+            color: #94a3b8; 
+            font-size: 14px;
+        }
+        body.light-mode th { color: #475569; border-color: #e2e8f0; }
+        body.light-mode td { color: #1e293b; border-color: #e2e8f0; }
+
         body.light-mode ::-webkit-scrollbar-track { background: #fff; }
         body.light-mode ::-webkit-scrollbar-thumb { background: #cbd5e1; }
     </style>
@@ -148,15 +172,32 @@
                         <button class="Q&btn-primary-md Q&w-100-p">Register</button>
                     </div>
                 </div>
-                <!-- KOLUMNA 2 -->
+                <!-- KOLUMNA 2 - ULEPSZONA TABELA -->
                 <div class="Q&d-flex Q&fx-col Q&gap-30-px">
                     <div class="Q&fs-5 Q&fw-bold Q&mg-10-px-dwn Q&clr-white">Example Table and Modal Designs</div>
                     <div class="Q&card-dark Q&ov-hidden Q&sh-xl">
                         <div class="Q&pd-20-px Q&bd-1-px-solid-set-334155-b Q&d-flex Q&jc-sb Q&ai-center"><span class="Q&fw-bold Q&clr-white">Recent Transactions</span></div>
                         <div class="Q&ovx-auto">
-                            <table class="Q&table-dark">
-                                <thead><tr class="Q&bg-set-0f172a"><th>Status</th><th>Client</th><th>Date</th></tr></thead>
-                                <tbody><tr><td><span class="Q&badge-blue">In Progress</span></td><td>Anna N.</td><td>Nov 11</td></tr><tr><td><span class="Q&badge-green">Completed</span></td><td>Jan K.</td><td>Nov 12</td></tr></tbody>
+                            <table class="Q&w-100-p" style="border-collapse: collapse;">
+                                <thead>
+                                    <tr class="Q&bg-set-0f172a">
+                                        <th>Status</th>
+                                        <th>Client</th>
+                                        <th>Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="table-row-hover">
+                                        <td><span class="Q&badge-blue">In Progress</span></td>
+                                        <td>Anna N.</td>
+                                        <td>Nov 11</td>
+                                    </tr>
+                                    <tr class="table-row-hover">
+                                        <td><span class="Q&badge-green">Completed</span></td>
+                                        <td>Jan K.</td>
+                                        <td>Nov 12</td>
+                                    </tr>
+                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -165,11 +206,11 @@
         </section>
     </main>
 
-    <!-- FOOTER -->
+    <!-- FOOTER ZMODYFIKOWANY (Space-Between na Desktopie) -->
     <footer class="Q&bg-set-0b1120 Q&pd-40-px-y Q&bd-1-px-solid-set-1e293b-t Q&w-100-p">
-        <div class="Q&mw-1200-px Q&mg-auto Q&pd-20-px Q&txt-center">
+        <div class="Q&mw-1200-px Q&mg-auto Q&pd-20-px Q&d-flex Q&fx-col md:Q&fx-row Q&jc-sb Q&ai-center Q&gap-20-px">
             <p class="Q&clr-slate Q&fs-1">© 2023 Qoza Systems</p>
-            <div class="Q&d-flex Q&jc-center Q&gap-20-px Q&mg-20-px-t Q&fs-1 Q&clr-slate">
+            <div class="Q&d-flex Q&gap-25-px Q&fs-1 Q&clr-slate">
                 <a href="#" class="footer-link Q&td-none Q&clr-current --hover-Q&clr-white">GitHub</a>
                 <a href="#" class="footer-link Q&td-none Q&clr-current --hover-Q&clr-white">Twitter</a>
             </div>
